@@ -308,6 +308,11 @@ body{overflow-x:hidden}section{scroll-margin-top:90px;padding:100px 0}.wrap{widt
 .cv-work-empty{padding-top:19px}
 @media(max-width:850px){.cv-work-grid{grid-template-columns:1fr 1fr}}
 @media(max-width:590px){.cv-work-grid{grid-template-columns:1fr}.cv-work-company{padding:17px}}
+
+.cv-work-video{overflow:hidden;border:1px solid var(--border);border-radius:10px;background:rgba(0,0,0,.24)}
+.cv-work-video video{display:block;width:100%;aspect-ratio:16/9;object-fit:contain;background:#080a0c}
+.cv-work-video-meta{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:6px 12px;padding:11px 12px}
+.cv-work-video-meta strong{font-size:12px}.cv-work-video-meta small{font:10px var(--mono);color:var(--muted)}
 </style>
 </head>
 <body>
@@ -466,10 +471,10 @@ body{overflow-x:hidden}section{scroll-margin-top:90px;padding:100px 0}.wrap{widt
         </div>
       </div>
       <div class="cv-work" id="cv-trabajos">
-        <div class="cv-work-head"><span class="cv-kicker">04 / Trabajos realizados</span><h3>Experiencia en imágenes<span class="accent-dot">.</span></h3><p>Una selección de piezas audiovisuales realizadas para las empresas con las que trabajé. Los videos se incorporarán a medida que estén disponibles.</p></div>
+        <div class="cv-work-head"><span class="cv-kicker">04 / Trabajos realizados</span><h3>Experiencia en imágenes<span class="accent-dot">.</span></h3><p>Una selección de piezas audiovisuales realizadas para las empresas con las que trabajé. Videos realizados para MasHumanos y Hardrockexpert Cocktails. Próximamente se sumarán trabajos de Tecnoimagen.</p></div>
         <div class="cv-work-grid">
-          <article class="cv-work-company"><div class="cv-work-company-head"><span class="cv-work-number">01</span><div><h4>MasHumanos</h4><p>Edición audiovisual · Comunicación interna</p></div></div><div class="cv-work-items"><div class="cv-work-item"><span class="cv-work-play" aria-hidden="true">▶</span><div><strong>Compromiso v1</strong><small>Video · Pendiente de publicación</small></div></div></div></article>
-          <article class="cv-work-company"><div class="cv-work-company-head"><span class="cv-work-number">02</span><div><h4>Hardrockexpert Cocktails</h4><p>Edición audiovisual · Diseño publicitario</p></div></div><div class="cv-work-items"><div class="cv-work-item"><span class="cv-work-play" aria-hidden="true">▶</span><div><strong>Mojito</strong><small>Video · Pendiente de publicación</small></div></div><div class="cv-work-item"><span class="cv-work-play" aria-hidden="true">▶</span><div><strong>Passion Fruit</strong><small>Video · Pendiente de publicación</small></div></div><div class="cv-work-item"><span class="cv-work-play" aria-hidden="true">▶</span><div><strong>Piña Colada</strong><small>Video · Pendiente de publicación</small></div></div></div></article>
+          <article class="cv-work-company"><div class="cv-work-company-head"><span class="cv-work-number">01</span><div><h4>MasHumanos</h4><p>Edición audiovisual · Comunicación interna</p></div></div><div class="cv-work-items"><div class="cv-work-video"><video controls preload="none" playsinline aria-label="Compromiso v1" src="videos/Compromiso%20comp.mp4"></video><div class="cv-work-video-meta"><strong>Compromiso v1</strong><small>Edición y diseño audiovisual</small></div></div></div></article>
+          <article class="cv-work-company"><div class="cv-work-company-head"><span class="cv-work-number">02</span><div><h4>Hardrockexpert Cocktails</h4><p>Edición audiovisual · Diseño publicitario</p></div></div><div class="cv-work-items"><div class="cv-work-video"><video controls preload="none" playsinline aria-label="Mojito" src="videos/Mojito%20v3.mp4"></video><div class="cv-work-video-meta"><strong>Mojito</strong><small>Edición y diseño audiovisual</small></div></div><div class="cv-work-video"><video controls preload="none" playsinline aria-label="Passion Fruit" src="videos/Passion%20fruit.mp4"></video><div class="cv-work-video-meta"><strong>Passion Fruit</strong><small>Edición y diseño audiovisual</small></div></div><div class="cv-work-video"><video controls preload="none" playsinline aria-label="Piña Colada" src="videos/Pin%CC%83a%20colada%20.mp4"></video><div class="cv-work-video-meta"><strong>Piña Colada</strong><small>Edición y diseño audiovisual</small></div></div></div></article>
           <article class="cv-work-company"><div class="cv-work-company-head"><span class="cv-work-number">03</span><div><h4>Tecnoimagen</h4><p>Filmación · Edición · Diseño visual</p></div></div><div class="cv-work-empty">Próximamente, trabajos audiovisuales de Tecnoimagen.</div></article>
         </div>
       </div>
