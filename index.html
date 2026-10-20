@@ -344,6 +344,15 @@ video::-webkit-media-controls-download-button{display:none!important}video::-int
 @media(max-width:800px){.whatsapp-qr-popover{right:auto;left:0;top:calc(100% + 12px);transform:translateY(-8px)}.whatsapp-qr-wrap:hover .whatsapp-qr-popover,.whatsapp-qr-wrap:focus-within .whatsapp-qr-popover{transform:translateY(0)}}
 @media(hover:none){.whatsapp-qr-popover{display:none}}
 @media(prefers-reduced-motion:reduce){.whatsapp-qr-popover{transition:none}}
+
+/* QR visible y accesible sin depender exclusivamente de hover */
+.whatsapp-qr-wrap{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.whatsapp-qr-toggle{border:1px solid var(--teal);border-radius:6px;background:transparent;color:var(--teal);font:10px var(--mono);padding:5px 8px;cursor:pointer;transition:background .2s}
+.whatsapp-qr-toggle:hover,.whatsapp-qr-toggle:focus-visible{background:rgba(96,211,195,.12)}
+.whatsapp-qr-popover{top:auto;bottom:calc(100% + 12px);right:0;left:auto;transform:translateY(8px);z-index:80}
+.whatsapp-qr-wrap:hover .whatsapp-qr-popover,.whatsapp-qr-wrap:focus-within .whatsapp-qr-popover,.whatsapp-qr-wrap.is-open .whatsapp-qr-popover{opacity:1;visibility:visible;transform:translateY(0);display:block}
+@media(max-width:800px){.whatsapp-qr-popover{top:auto;bottom:calc(100% + 12px);right:0;left:auto;transform:translateY(8px)}.whatsapp-qr-wrap:hover .whatsapp-qr-popover,.whatsapp-qr-wrap:focus-within .whatsapp-qr-popover{transform:translateY(0)}}
+@media(hover:none){.whatsapp-qr-popover{display:block;opacity:0;visibility:hidden}.whatsapp-qr-wrap.is-open .whatsapp-qr-popover{opacity:1;visibility:visible}}
 </style>
 </head>
 <body>
@@ -518,7 +527,7 @@ video::-webkit-media-controls-download-button{display:none!important}video::-int
       <div class="links">
         <a href="mailto:pablo.perezpetit@gmail.com">pablo.perezpetit@gmail.com</a>
         <div class="whatsapp-qr-wrap">
-          <a href="https://wa.me/5491158051505" target="_blank" rel="noopener" aria-describedby="whatsapp-qr-hint">WhatsApp</a>
+          <a href="https://wa.me/5491158051505" target="_blank" rel="noopener" >WhatsApp</a><button class="whatsapp-qr-toggle" type="button" aria-label="Mostrar código QR de WhatsApp" aria-expanded="false" aria-controls="whatsapp-qr-hint">▦ QR</button>
           <div class="whatsapp-qr-popover" id="whatsapp-qr-hint" role="note">
             <span class="whatsapp-qr-title">ESCANEÁ Y HABLEMOS</span>
             <img src="https://api.qrserver.com/v1/create-qr-code/?size=220x220&amp;data=https%3A%2F%2Fwa.me%2F5491158051505" width="154" height="154" loading="lazy" alt="Código QR para iniciar una conversación por WhatsApp">
@@ -847,6 +856,9 @@ onScroll();
     });
   });
 })();
+</script>
+<script>
+(() => {const wrap=document.querySelector('.whatsapp-qr-wrap');if(!wrap)return;const btn=wrap.querySelector('.whatsapp-qr-toggle');btn.addEventListener('click',()=>{const open=wrap.classList.toggle('is-open');btn.setAttribute('aria-expanded',String(open));});document.addEventListener('click',e=>{if(!wrap.contains(e.target)){wrap.classList.remove('is-open');btn.setAttribute('aria-expanded','false')}});document.addEventListener('keydown',e=>{if(e.key==='Escape'){wrap.classList.remove('is-open');btn.setAttribute('aria-expanded','false')}});})();
 </script>
 </body>
 </html>
