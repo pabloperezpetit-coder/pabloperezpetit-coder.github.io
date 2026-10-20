@@ -939,6 +939,21 @@ onScroll();
     video.setAttribute('disablePictureInPicture','');
     video.addEventListener('contextmenu', event => event.preventDefault());
   });
+  // Cargar solo las miniaturas de trabajos cercanas a la pantalla.
+  const cvCards = document.querySelectorAll('[data-cv-preview]');
+  const loadCvFrame = card => {
+    const video=card.querySelector('video');
+    if(!video || video.dataset.frameRequested)return;
+    video.dataset.frameRequested='true';
+    video.preload='metadata';
+    video.load();
+  };
+  if('IntersectionObserver' in window){
+    const frameObserver=new IntersectionObserver((entries,observer)=>{
+      entries.forEach(entry=>{if(entry.isIntersecting){loadCvFrame(entry.target);observer.unobserve(entry.target)}});
+    },{rootMargin:'300px 0px'});
+    cvCards.forEach(card=>frameObserver.observe(card));
+  } else cvCards.forEach(loadCvFrame);
   document.querySelectorAll('[data-cv-preview]').forEach(card => {
     const video = card.querySelector('video');
     const cover = card.querySelector('.cv-work-cover');
@@ -949,6 +964,7 @@ onScroll();
       }
     }, {once:true});
     cover.addEventListener('click', async () => {
+      if(!video.dataset.frameRequested)loadCvFrame(card);
       video.controls = true;
       card.classList.add('is-playing');
       try { await video.play(); } catch (_) { card.classList.remove('is-playing'); }
