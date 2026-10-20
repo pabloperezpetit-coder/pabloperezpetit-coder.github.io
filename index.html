@@ -329,6 +329,7 @@ body{overflow-x:hidden}section{scroll-margin-top:90px;padding:100px 0}.wrap{widt
 @media(prefers-reduced-motion:reduce){.cv-work-cover,.cv-work-cover-icon{transition:none}}
 .cv-brandmark--tecno{padding:4px;background:#0a1630;display:flex;align-items:center;justify-content:center}.cv-brandmark--tecno img{display:block;width:44px;height:44px;max-width:none;max-height:none;object-fit:contain;object-position:center;margin:auto;flex:none}
 .showcase-main .vans-hero-loop{display:block;width:100%;height:100%;object-fit:cover;pointer-events:none;transition:transform .5s ease}.showcase-main:hover .vans-hero-loop{transform:scale(1.035)}
+video::-webkit-media-controls-download-button{display:none!important}video::-internal-media-controls-download-button{display:none!important}
 </style>
 </head>
 <body>
@@ -366,7 +367,7 @@ body{overflow-x:hidden}section{scroll-margin-top:90px;padding:100px 0}.wrap{widt
       <div class="showcase" aria-label="Selección de trabajos">
         <div class="showcase-top"><span><i></i> EN MOVIMIENTO</span><span>SELECCIÓN / 2026</span></div>
         <button class="showcase-main" data-project="vans" aria-label="Reproducir Vans Comercial">
-          <video class="vans-hero-loop" src="videos/Vans%20terminado.mp4" poster="imagenes/vans-comercial.svg" autoplay muted loop playsinline preload="metadata" aria-hidden="true" tabindex="-1" disablePictureInPicture></video>
+          <video controlsList="nodownload noplaybackrate" oncontextmenu="return false" class="vans-hero-loop" src="videos/Vans%20terminado.mp4" poster="imagenes/vans-comercial.svg" autoplay muted loop playsinline preload="metadata" aria-hidden="true" tabindex="-1" disablePictureInPicture></video>
           <span class="showcase-overlay"><span><small>COMERCIAL</small><b>Vans — Comercial</b></span><span class="showcase-play" aria-hidden="true">▶</span></span>
         </button>
         <div class="showcase-bottom">
@@ -546,7 +547,7 @@ const projects = [
 
 $('grid').innerHTML = projects.map(p => `
   <button class="card ${p.video ? 'video-card' : 'design-card'}" data-id="${p.id}" aria-label="${p.video ? 'Reproducir' : 'Ver'} ${p.name}">
-    <div class="thumb ${p.g}">${p.id === 'einstein' ? `<video class="project-poster" src="${p.video}#t=1" preload="metadata" muted playsinline aria-hidden="true" tabindex="-1"></video>` : p.id === 'vans' ? `<video class="project-poster vans-thumbnail" src="${p.video}#t=1" poster="${p.poster}" preload="auto" muted playsinline aria-hidden="true" tabindex="-1"></video>` : p.poster ? `<img class="project-poster" src="${p.poster}" alt="${p.name}" loading="lazy">` : ''}<span class="tc">${p.video ? 'MOTION / VIDEO' : 'DISEÑO DIGITAL'}</span>${p.video ? '<div class="play"></div>' : '<span class="case-arrow" aria-hidden="true">↗</span>'}<span class="tag">${p.tag}</span></div>
+    <div class="thumb ${p.g}">${p.id === 'einstein' ? `<video controlsList="nodownload" oncontextmenu="return false" class="project-poster" src="${p.video}#t=1" preload="metadata" muted playsinline aria-hidden="true" tabindex="-1"></video>` : p.id === 'vans' ? `<video controlsList="nodownload" oncontextmenu="return false" class="project-poster vans-thumbnail" src="${p.video}#t=1" poster="${p.poster}" preload="auto" muted playsinline aria-hidden="true" tabindex="-1"></video>` : p.poster ? `<img class="project-poster" src="${p.poster}" alt="${p.name}" loading="lazy">` : ''}<span class="tc">${p.video ? 'MOTION / VIDEO' : 'DISEÑO DIGITAL'}</span>${p.video ? '<div class="play"></div>' : '<span class="case-arrow" aria-hidden="true">↗</span>'}<span class="tag">${p.tag}</span></div>
     <div class="card-body"><span class="card-kicker">${p.type}</span><h3>${p.name}<span class="card-arrow" aria-hidden="true">↗</span></h3><p>${p.desc}</p><span class="card-action">${p.video ? 'Ver proyecto ↗' : 'Explorar caso ↗'}</span></div>
   </button>`).join('');
 
@@ -628,6 +629,9 @@ function openModal(p){
     video.controls = true;
     video.playsInline = true;
     video.preload = 'metadata';
+    video.controlsList = 'nodownload noplaybackrate';
+    video.disablePictureInPicture = true;
+    video.addEventListener('contextmenu', event => event.preventDefault());
     video.setAttribute('aria-label', p.name);
     if(p.poster) video.poster = p.poster;
     video.src = p.video;
