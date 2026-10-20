@@ -332,6 +332,18 @@ body{overflow-x:hidden}section{scroll-margin-top:90px;padding:100px 0}.wrap{widt
 video::-webkit-media-controls-download-button{display:none!important}video::-internal-media-controls-download-button{display:none!important}
 
 .footer-to-top{display:inline-flex;align-items:center;gap:10px;color:var(--teal);font:10px var(--mono);letter-spacing:.1em;text-decoration:none;transition:color .2s,transform .2s}.footer-to-top>span:first-child{display:grid;place-items:center;width:34px;height:34px;border:1px solid var(--border-strong);border-radius:50%;font:20px var(--display);transition:border-color .2s,background .2s}.footer-to-top:hover{color:var(--orange);transform:translateY(-2px)}.footer-to-top:hover>span:first-child{border-color:var(--orange);background:rgba(255,139,82,.08)}.footer-to-top:focus-visible{outline:2px solid var(--teal);outline-offset:5px}@media(max-width:520px){.footer-to-top{font-size:9px}}
+
+/* QR de WhatsApp en contacto: aparece al pasar el mouse o enfocar */
+.whatsapp-qr-wrap{position:relative;width:max-content;max-width:100%}
+.whatsapp-qr-wrap>a{width:max-content}
+.whatsapp-qr-popover{position:absolute;right:calc(100% + 18px);top:50%;transform:translate(8px,-50%);width:192px;padding:14px;background:#202427;border:1px solid var(--border);border-radius:12px;box-shadow:0 18px 45px rgba(0,0,0,.4);z-index:10;opacity:0;visibility:hidden;pointer-events:none;transition:opacity .2s,transform .2s,visibility .2s;text-align:center}
+.whatsapp-qr-wrap:hover .whatsapp-qr-popover,.whatsapp-qr-wrap:focus-within .whatsapp-qr-popover{opacity:1;visibility:visible;transform:translate(0,-50%)}
+.whatsapp-qr-title,.whatsapp-qr-caption{display:block;font:9px var(--mono);letter-spacing:.07em;color:var(--teal);line-height:1.5}
+.whatsapp-qr-caption{color:var(--muted);letter-spacing:0;margin-top:8px}
+.whatsapp-qr-popover img{display:block;width:154px;height:154px;margin:10px auto 0;padding:7px;border-radius:8px;background:#fff;object-fit:contain}
+@media(max-width:800px){.whatsapp-qr-popover{right:auto;left:0;top:calc(100% + 12px);transform:translateY(-8px)}.whatsapp-qr-wrap:hover .whatsapp-qr-popover,.whatsapp-qr-wrap:focus-within .whatsapp-qr-popover{transform:translateY(0)}}
+@media(hover:none){.whatsapp-qr-popover{display:none}}
+@media(prefers-reduced-motion:reduce){.whatsapp-qr-popover{transition:none}}
 </style>
 </head>
 <body>
@@ -505,7 +517,14 @@ video::-webkit-media-controls-download-button{display:none!important}video::-int
       <div class="contact-copy"><span class="eyebrow">Una idea puede ser el comienzo</span><h2>Hablemos de<br><span>tu proyecto.</span></h2><p>Contame qué tenés en mente.</p><a class="btn btn-primary contact-action" href="mailto:pablo.perezpetit@gmail.com">Escribime <span aria-hidden="true">↗</span></a></div>
       <div class="links">
         <a href="mailto:pablo.perezpetit@gmail.com">pablo.perezpetit@gmail.com</a>
-        <a href="https://wa.me/5491158051505" target="_blank" rel="noopener">WhatsApp</a>
+        <div class="whatsapp-qr-wrap">
+          <a href="https://wa.me/5491158051505" target="_blank" rel="noopener" aria-describedby="whatsapp-qr-hint">WhatsApp</a>
+          <div class="whatsapp-qr-popover" id="whatsapp-qr-hint" role="note">
+            <span class="whatsapp-qr-title">ESCANEÁ Y HABLEMOS</span>
+            <img src="https://api.qrserver.com/v1/create-qr-code/?size=220x220&amp;data=https%3A%2F%2Fwa.me%2F5491158051505" width="154" height="154" loading="lazy" alt="Código QR para iniciar una conversación por WhatsApp">
+            <span class="whatsapp-qr-caption">Abrí WhatsApp desde tu celular</span>
+          </div>
+        </div>
         <a href="https://www.linkedin.com/in/pablo-perez-petit-321329211/" target="_blank" rel="noopener">LinkedIn</a>
         
       </div>
