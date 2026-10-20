@@ -313,6 +313,20 @@ body{overflow-x:hidden}section{scroll-margin-top:90px;padding:100px 0}.wrap{widt
 .cv-work-video video{display:block;width:100%;aspect-ratio:16/9;object-fit:contain;background:#080a0c}
 .cv-work-video-meta{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:6px 12px;padding:11px 12px}
 .cv-work-video-meta strong{font-size:12px}.cv-work-video-meta small{font:10px var(--mono);color:var(--muted)}
+
+/* Tarjetas audiovisuales con vista previa y reproducción exclusiva */
+.cv-work-stage{position:relative;aspect-ratio:16/9;overflow:hidden;background:#101315}
+.cv-work-stage video{width:100%;height:100%;aspect-ratio:auto;object-fit:cover}
+.cv-work-cover{position:absolute;inset:0;width:100%;border:0;cursor:pointer;color:#fff;text-align:left;padding:17px;background:linear-gradient(180deg,rgba(6,12,17,.25) 0%,rgba(6,12,17,.08) 34%,rgba(6,12,17,.86) 100%);display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-end;gap:8px;transition:background .25s}
+.cv-work-cover:hover{background:linear-gradient(180deg,rgba(6,12,17,.12) 0%,rgba(6,12,17,.04) 30%,rgba(6,12,17,.78) 100%)}
+.cv-work-cover-category{font:9px var(--mono);letter-spacing:.12em;color:var(--teal)}
+.cv-work-cover-title{font-family:var(--display);font-size:clamp(20px,2.2vw,29px);font-weight:700;line-height:1.1;letter-spacing:-.04em;text-shadow:0 2px 12px #0009}
+.cv-work-cover-action{display:flex;align-items:center;gap:9px;font:10px var(--mono);letter-spacing:.1em}
+.cv-work-cover-icon{display:grid;place-items:center;width:35px;height:35px;border-radius:50%;background:var(--orange);color:#111;font-size:12px;transition:transform .2s}
+.cv-work-cover:hover .cv-work-cover-icon{transform:scale(1.12)}
+.cv-work-video.is-playing .cv-work-cover{display:none}
+.cv-work-video video::-webkit-media-controls-download-button{display:none}
+@media(prefers-reduced-motion:reduce){.cv-work-cover,.cv-work-cover-icon{transition:none}}
 </style>
 </head>
 <body>
@@ -473,8 +487,8 @@ body{overflow-x:hidden}section{scroll-margin-top:90px;padding:100px 0}.wrap{widt
       <div class="cv-work" id="cv-trabajos">
         <div class="cv-work-head"><span class="cv-kicker">04 / Trabajos realizados</span><h3>Experiencia en imágenes<span class="accent-dot">.</span></h3><p>Una selección de piezas audiovisuales realizadas para las empresas con las que trabajé. Videos realizados para MasHumanos y Hardrockexpert Cocktails. Próximamente se sumarán trabajos de Tecnoimagen.</p></div>
         <div class="cv-work-grid">
-          <article class="cv-work-company"><div class="cv-work-company-head"><span class="cv-work-number">01</span><div><h4>MasHumanos</h4><p>Edición audiovisual · Comunicación interna</p></div></div><div class="cv-work-items"><div class="cv-work-video"><video controls preload="none" playsinline aria-label="Compromiso v1" src="videos/Compromiso%20comp.mp4"></video><div class="cv-work-video-meta"><strong>Compromiso v1</strong><small>Edición y diseño audiovisual</small></div></div></div></article>
-          <article class="cv-work-company"><div class="cv-work-company-head"><span class="cv-work-number">02</span><div><h4>Hardrockexpert Cocktails</h4><p>Edición audiovisual · Diseño publicitario</p></div></div><div class="cv-work-items"><div class="cv-work-video"><video controls preload="none" playsinline aria-label="Mojito" src="videos/Mojito%20v3.mp4"></video><div class="cv-work-video-meta"><strong>Mojito</strong><small>Edición y diseño audiovisual</small></div></div><div class="cv-work-video"><video controls preload="none" playsinline aria-label="Passion Fruit" src="videos/Passion%20fruit.mp4"></video><div class="cv-work-video-meta"><strong>Passion Fruit</strong><small>Edición y diseño audiovisual</small></div></div><div class="cv-work-video"><video controls preload="none" playsinline aria-label="Piña Colada" src="videos/Pin%CC%83a%20colada%20.mp4"></video><div class="cv-work-video-meta"><strong>Piña Colada</strong><small>Edición y diseño audiovisual</small></div></div></div></article>
+          <article class="cv-work-company"><div class="cv-work-company-head"><span class="cv-work-number">01</span><div><h4>MasHumanos</h4><p>Edición audiovisual · Comunicación interna</p></div></div><div class="cv-work-items"><div class="cv-work-video" data-cv-preview><div class="cv-work-stage"><video preload="metadata" playsinline controlsList="nodownload noplaybackrate" disablePictureInPicture oncontextmenu="return false" aria-label="Compromiso v1" src="videos/Compromiso%20comp.mp4"></video><button class="cv-work-cover" type="button" aria-label="Reproducir Compromiso v1"><span class="cv-work-cover-category">MASHUMANOS</span><span class="cv-work-cover-title">Compromiso v1</span><span class="cv-work-cover-action"><span class="cv-work-cover-icon">▶</span><span>VER VIDEO</span></span></button></div><div class="cv-work-video-meta"><strong>Compromiso v1</strong><small>Edición y diseño audiovisual</small></div></div></div></article>
+          <article class="cv-work-company"><div class="cv-work-company-head"><span class="cv-work-number">02</span><div><h4>Hardrockexpert Cocktails</h4><p>Edición audiovisual · Diseño publicitario</p></div></div><div class="cv-work-items"><div class="cv-work-video" data-cv-preview><div class="cv-work-stage"><video preload="metadata" playsinline controlsList="nodownload noplaybackrate" disablePictureInPicture oncontextmenu="return false" aria-label="Mojito" src="videos/Mojito%20v3.mp4"></video><button class="cv-work-cover" type="button" aria-label="Reproducir Mojito"><span class="cv-work-cover-category">HARDROCKEXPERT COCKTAILS</span><span class="cv-work-cover-title">Mojito</span><span class="cv-work-cover-action"><span class="cv-work-cover-icon">▶</span><span>VER VIDEO</span></span></button></div><div class="cv-work-video-meta"><strong>Mojito</strong><small>Edición y diseño audiovisual</small></div></div><div class="cv-work-video" data-cv-preview><div class="cv-work-stage"><video preload="metadata" playsinline controlsList="nodownload noplaybackrate" disablePictureInPicture oncontextmenu="return false" aria-label="Passion Fruit" src="videos/Passion%20fruit.mp4"></video><button class="cv-work-cover" type="button" aria-label="Reproducir Passion Fruit"><span class="cv-work-cover-category">HARDROCKEXPERT COCKTAILS</span><span class="cv-work-cover-title">Passion Fruit</span><span class="cv-work-cover-action"><span class="cv-work-cover-icon">▶</span><span>VER VIDEO</span></span></button></div><div class="cv-work-video-meta"><strong>Passion Fruit</strong><small>Edición y diseño audiovisual</small></div></div><div class="cv-work-video" data-cv-preview><div class="cv-work-stage"><video preload="metadata" playsinline controlsList="nodownload noplaybackrate" disablePictureInPicture oncontextmenu="return false" aria-label="Piña Colada" src="videos/Pin%CC%83a%20colada%20.mp4"></video><button class="cv-work-cover" type="button" aria-label="Reproducir Piña Colada"><span class="cv-work-cover-category">HARDROCKEXPERT COCKTAILS</span><span class="cv-work-cover-title">Piña Colada</span><span class="cv-work-cover-action"><span class="cv-work-cover-icon">▶</span><span>VER VIDEO</span></span></button></div><div class="cv-work-video-meta"><strong>Piña Colada</strong><small>Edición y diseño audiovisual</small></div></div></div></article>
           <article class="cv-work-company"><div class="cv-work-company-head"><span class="cv-work-number">03</span><div><h4>Tecnoimagen</h4><p>Filmación · Edición · Diseño visual</p></div></div><div class="cv-work-empty">Próximamente, trabajos audiovisuales de Tecnoimagen.</div></article>
         </div>
       </div>
@@ -764,6 +778,47 @@ onScroll();
   fine.addEventListener('change', () => resets.forEach(reset => reset()));
 })();
 
+</script>
+
+<script>
+/* Galería CV: miniatura extraída del video y un único reproductor activo */
+(() => {
+  const videos = [...document.querySelectorAll('video')];
+  videos.forEach(video => {
+    video.addEventListener('play', () => {
+      document.querySelectorAll('video').forEach(other => {
+        if (other !== video && !other.paused) other.pause();
+      });
+    });
+    video.setAttribute('controlsList','nodownload noplaybackrate');
+    video.setAttribute('disablePictureInPicture','');
+    video.addEventListener('contextmenu', event => event.preventDefault());
+  });
+  document.querySelectorAll('[data-cv-preview]').forEach(card => {
+    const video = card.querySelector('video');
+    const cover = card.querySelector('.cv-work-cover');
+    // Mostrar un fotograma del archivo antes de que el usuario reproduzca.
+    video.addEventListener('loadedmetadata', () => {
+      if (video.duration && Number.isFinite(video.duration) && video.readyState >= 1) {
+        try { video.currentTime = Math.min(1.5, video.duration * .15); } catch (_) {}
+      }
+    }, {once:true});
+    cover.addEventListener('click', async () => {
+      video.controls = true;
+      card.classList.add('is-playing');
+      try { await video.play(); } catch (_) { card.classList.remove('is-playing'); }
+    });
+    video.addEventListener('ended', () => {
+      video.controls = false;
+      card.classList.remove('is-playing');
+    });
+    video.addEventListener('pause', () => {
+      if (!video.ended) return;
+      video.controls = false;
+      card.classList.remove('is-playing');
+    });
+  });
+})();
 </script>
 </body>
 </html>
