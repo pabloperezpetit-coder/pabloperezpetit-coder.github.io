@@ -287,6 +287,27 @@ body{overflow-x:hidden}section{scroll-margin-top:90px;padding:100px 0}.wrap{widt
 .cv-app--code b{width:auto;min-width:29px;padding:0 5px;font-size:11px}
 .cv-cta .cv-kicker{display:block;margin-bottom:8px}
 .cv-cta>div{min-width:0}
+
+/* CV — galería de trabajos por empresa */
+.cv-work{margin-top:32px}
+.cv-work-head{margin-bottom:22px}
+.cv-work-head h3{font-family:var(--display);font-size:clamp(24px,3vw,38px);letter-spacing:-.04em;margin:9px 0}
+.cv-work-head p{color:var(--muted);font-size:13px;line-height:1.65;max-width:690px}
+.cv-work-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.cv-work-company{background:var(--surface);border:1px solid var(--border);border-radius:13px;padding:20px;min-width:0}
+.cv-work-company-head{display:flex;align-items:flex-start;gap:12px;padding-bottom:16px;border-bottom:1px solid var(--border)}
+.cv-work-number{font:11px var(--mono);color:var(--orange);padding-top:3px}
+.cv-work-company h4{font-family:var(--display);font-size:17px;line-height:1.25;margin:0 0 5px}
+.cv-work-company-head p{font-size:11px;color:var(--muted);line-height:1.5}
+.cv-work-items{display:grid;gap:10px;margin-top:16px}
+.cv-work-item{display:flex;gap:12px;align-items:center;background:rgba(255,255,255,.025);border:1px solid var(--border);border-radius:9px;padding:12px}
+.cv-work-play{display:grid;place-items:center;flex:none;width:35px;height:35px;border:1px solid var(--border);border-radius:8px;color:var(--teal);font-size:12px}
+.cv-work-item strong,.cv-work-item small{display:block}
+.cv-work-item strong{font-size:12px;margin-bottom:5px}
+.cv-work-item small,.cv-work-empty{font:10px var(--mono);color:var(--muted);line-height:1.6}
+.cv-work-empty{padding-top:19px}
+@media(max-width:850px){.cv-work-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:590px){.cv-work-grid{grid-template-columns:1fr}.cv-work-company{padding:17px}}
 </style>
 </head>
 <body>
@@ -444,7 +465,14 @@ body{overflow-x:hidden}section{scroll-margin-top:90px;padding:100px 0}.wrap{widt
           </div>
         </div>
       </div>
-      <div class="cv-cta"><div><span class="cv-kicker">04 / Trabajos realizados</span><p>Próximamente: una selección de piezas desarrolladas para Tecnoimagen, MasHumanos y Hardrockexpert Cocktails.</p></div><a class="btn btn-secondary" href="#projects">Ver proyectos actuales <span aria-hidden="true">↗</span></a></div>
+      <div class="cv-work" id="cv-trabajos">
+        <div class="cv-work-head"><span class="cv-kicker">04 / Trabajos realizados</span><h3>Experiencia en imágenes<span class="accent-dot">.</span></h3><p>Una selección de piezas audiovisuales realizadas para las empresas con las que trabajé. Los videos se incorporarán a medida que estén disponibles.</p></div>
+        <div class="cv-work-grid">
+          <article class="cv-work-company"><div class="cv-work-company-head"><span class="cv-work-number">01</span><div><h4>MasHumanos</h4><p>Edición audiovisual · Comunicación interna</p></div></div><div class="cv-work-items"><div class="cv-work-item"><span class="cv-work-play" aria-hidden="true">▶</span><div><strong>Compromiso v1</strong><small>Video · Pendiente de publicación</small></div></div></div></article>
+          <article class="cv-work-company"><div class="cv-work-company-head"><span class="cv-work-number">02</span><div><h4>Hardrockexpert Cocktails</h4><p>Edición audiovisual · Diseño publicitario</p></div></div><div class="cv-work-items"><div class="cv-work-item"><span class="cv-work-play" aria-hidden="true">▶</span><div><strong>Mojito</strong><small>Video · Pendiente de publicación</small></div></div><div class="cv-work-item"><span class="cv-work-play" aria-hidden="true">▶</span><div><strong>Passion Fruit</strong><small>Video · Pendiente de publicación</small></div></div><div class="cv-work-item"><span class="cv-work-play" aria-hidden="true">▶</span><div><strong>Piña Colada</strong><small>Video · Pendiente de publicación</small></div></div></div></article>
+          <article class="cv-work-company"><div class="cv-work-company-head"><span class="cv-work-number">03</span><div><h4>Tecnoimagen</h4><p>Filmación · Edición · Diseño visual</p></div></div><div class="cv-work-empty">Próximamente, trabajos audiovisuales de Tecnoimagen.</div></article>
+        </div>
+      </div>
     </div>
   </section>
 
