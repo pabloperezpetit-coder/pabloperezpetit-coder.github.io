@@ -378,6 +378,23 @@ video::-webkit-media-controls-download-button{display:none!important}video::-int
 #contact .contact-action:hover{transform:translateY(-2px)}
 }
 #contact .contact-action{transition:transform .25s,background .25s}
+
+/* Cinematic project presentation and modal transitions */
+#grid .card{will-change:auto;transition:transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .35s,border-color .35s}
+#grid .card .project-poster,#grid .card .vans-thumbnail,#grid .card img{transition:transform .65s cubic-bezier(.2,.8,.2,1),filter .4s}
+@media(hover:hover) and (prefers-reduced-motion:no-preference){
+#grid .card:hover{transform:translateY(-6px);box-shadow:0 18px 46px rgba(0,0,0,.25)}
+#grid .card:hover .project-poster,#grid .card:hover .vans-thumbnail,#grid .card:hover img{transform:scale(1.035)}
+}
+#grid .card:focus-within{outline:1px solid var(--teal);outline-offset:3px}
+#grid .card.is-filter-entering{animation:projectFilterIn .42s cubic-bezier(.2,.8,.2,1) both}
+@keyframes projectFilterIn{from{opacity:0;transform:translateY(15px)}to{opacity:1;transform:translateY(0)}}
+.backdrop.open .modal{animation:projectModalIn .38s cubic-bezier(.16,1,.3,1) both}
+@keyframes projectModalIn{from{opacity:.4;transform:translateY(20px) scale(.985)}to{opacity:1;transform:translateY(0) scale(1)}}
+.modal .reel{position:relative;overflow:hidden}
+.modal .reel.has-video::after{content:'';position:absolute;inset:0;pointer-events:none;background:linear-gradient(110deg,transparent 30%,rgba(96,211,195,.07) 50%,transparent 70%);opacity:0;animation:reelLightSweep .8s ease-out 1}
+@keyframes reelLightSweep{0%{opacity:0;transform:translateX(-65%)}30%{opacity:1}100%{opacity:0;transform:translateX(65%)}}
+@media(prefers-reduced-motion:reduce){#grid .card,#grid .card img,#grid .card .project-poster,#grid .card .vans-thumbnail{transition:none}#grid .card.is-filter-entering,.backdrop.open .modal,.modal .reel.has-video::after{animation:none}}
 </style>
 </head>
 <body>
@@ -664,6 +681,9 @@ let lastFocus;
 
 function openModal(p){
   lastFocus = document.activeElement;
+  // Al cambiar de proyecto, detenemos el video anterior antes de crear el siguiente.
+  const previousVideo = $('mReel').querySelector('video');
+  if (previousVideo) { previousVideo.pause(); previousVideo.removeAttribute('src'); previousVideo.load(); }
   $('mReel').replaceChildren();
   $('videoStatus').hidden = true;
   $('mReel').className = 'reel ' + p.g + (p.video ? ' has-video' : '');
@@ -679,6 +699,13 @@ function openModal(p){
   document.querySelector('header').inert = true;
   document.querySelector('footer').inert = true;
   backdrop.classList.add('open');
+  // Reiniciar la transición al navegar entre proyectos sin cerrar la ficha.
+  const modalPanel = backdrop.querySelector('.modal');
+  if (modalPanel && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    modalPanel.style.animation = 'none';
+    void modalPanel.offsetWidth;
+    modalPanel.style.animation = '';
+  }
   document.body.style.overflow = 'hidden';
   $('close').focus();
   if(p.video){
@@ -732,7 +759,7 @@ const projectCategories={vans:['commercial','editing'],reel:['motion'],audiovisu
 document.querySelectorAll('[data-filter]').forEach(button=>button.addEventListener('click',()=>{
  const filter=button.dataset.filter;
  document.querySelectorAll('[data-filter]').forEach(item=>{item.classList.toggle('active',item===button);item.setAttribute('aria-pressed',String(item===button))});
- let count=0;document.querySelectorAll('#grid .card').forEach(card=>{const show=filter==='all'||(projectCategories[card.dataset.id]||[]).includes(filter);card.hidden=!show;card.style.display=show?'':'none';if(show)count++});
+ let count=0;document.querySelectorAll('#grid .card').forEach(card=>{const show=filter==='all'||(projectCategories[card.dataset.id]||[]).includes(filter);card.hidden=!show;card.style.display=show?'':'none';if(show){count++;if(!window.matchMedia('(prefers-reduced-motion: reduce)').matches){card.classList.remove('is-filter-entering');void card.offsetWidth;card.classList.add('is-filter-entering');card.addEventListener('animationend',()=>card.classList.remove('is-filter-entering'),{once:true})}}});
  $('filter-status').textContent=count+' proyectos visibles';
 }));
 const reelSequence=['vans','briefly','reel','sonora'];let reelIndex=-1;
