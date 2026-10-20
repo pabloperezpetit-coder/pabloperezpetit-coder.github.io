@@ -415,6 +415,16 @@ video::-webkit-media-controls-download-button{display:none!important}video::-int
 .kinetic-title .kinetic-word{display:inline-block;will-change:transform}
 @media(max-width:650px){.case-process-grid{grid-template-columns:1fr}.project-cinema-intro strong{font-size:32px}}
 @media(prefers-reduced-motion:reduce){#grid .card .hover-preview{display:none}.project-cinema-intro{display:none}.kinetic-title .kinetic-word{will-change:auto}}
+
+/* Extra 3D elements: atmospheric scenes in showreel and about */
+#showreel .wrap,#about .wrap{position:relative;isolation:isolate}
+.three-scene-accent{position:absolute;pointer-events:none;z-index:-1;overflow:hidden;opacity:.38}
+.three-scene-accent canvas{display:block;width:100%;height:100%}
+#showreel-3d{width:min(40vw,470px);height:320px;right:-4%;top:5%;mask-image:radial-gradient(ellipse,#000 25%,transparent 73%)}
+#about-3d{width:min(32vw,390px);height:360px;right:0;top:5%;opacity:.28;mask-image:radial-gradient(ellipse,#000 30%,transparent 76%)}
+#hero-3d-accent{opacity:.42}
+@media(max-width:800px){#showreel-3d,#about-3d{display:none}#hero-3d-accent{opacity:.18}}
+@media(prefers-reduced-motion:reduce){.three-scene-accent{display:none}}
 </style>
 </head>
 <body>
@@ -472,9 +482,9 @@ video::-webkit-media-controls-download-button{display:none!important}video::-int
     </div>
   </section>
 
-  <section id="showreel" class="showreel-section"><div class="wrap"><div class="head"><span class="num">02 /</span><h2>En movimiento<span class="accent-dot">.</span></h2><div class="rule"></div></div><div class="reel-layout"><div class="reel-copy"><span class="eyebrow">SELECCIÓN AUDIOVISUAL</span><h3>Un recorrido por mis trabajos.</h3><p>Vans, Nike, Amazon y AirPods: cuatro piezas originales reproducidas consecutivamente.</p><button class="btn btn-primary" id="start-reel" type="button">Ver selección ↗</button><p class="reel-note">4 videos · reproducción consecutiva</p></div><div class="reel-feature"><img src="imagenes/nike-comercial.jpg" alt="Comercial Nike" loading="lazy"><span class="reel-stamp">MOTION / VIDEO / 2026</span></div></div></div></section>
+  <section id="showreel" class="showreel-section"><div class="wrap"><div class="three-scene-accent" id="showreel-3d" aria-hidden="true"></div><div class="head"><span class="num">02 /</span><h2>En movimiento<span class="accent-dot">.</span></h2><div class="rule"></div></div><div class="reel-layout"><div class="reel-copy"><span class="eyebrow">SELECCIÓN AUDIOVISUAL</span><h3>Un recorrido por mis trabajos.</h3><p>Vans, Nike, Amazon y AirPods: cuatro piezas originales reproducidas consecutivamente.</p><button class="btn btn-primary" id="start-reel" type="button">Ver selección ↗</button><p class="reel-note">4 videos · reproducción consecutiva</p></div><div class="reel-feature"><img src="imagenes/nike-comercial.jpg" alt="Comercial Nike" loading="lazy"><span class="reel-stamp">MOTION / VIDEO / 2026</span></div></div></div></section>
   <section id="about">
-    <div class="wrap">
+    <div class="wrap"><div class="three-scene-accent" id="about-3d" aria-hidden="true"></div>
       <div class="head"><span class="num">03 /</span><h2>Sobre mí</h2><div class="rule"></div></div>
       <div class="about about-refined">
         <div><h3 class="about-statement">Diseño con intención.<br><em>Movimiento con identidad.</em></h3>
@@ -1028,6 +1038,17 @@ window.addEventListener('load', () => {
     const outer = new T.Mesh(new T.TorusKnotGeometry(1.65,.035,170,10,2,3),new T.MeshBasicMaterial({color:0x60d3c3,transparent:true,opacity:.68}));
     const inner = new T.Mesh(new T.IcosahedronGeometry(1.4,1),new T.MeshBasicMaterial({color:0xff8b52,wireframe:true,transparent:true,opacity:.38}));
     group.add(outer,inner);
+    // Secondary orbiting forms and floating points.
+    const ring = new T.Mesh(new T.TorusGeometry(2.05,.013,6,120),new T.MeshBasicMaterial({color:0xff8b52,transparent:true,opacity:.55}));
+    ring.rotation.x=.7;ring.rotation.y=.4;group.add(ring);
+    const satellites = new T.Group();
+    for(let i=0;i<9;i++){
+      const angle=i*Math.PI*2/9;
+      const bead=new T.Mesh(new T.OctahedronGeometry(i%3===0?.09:.045),new T.MeshBasicMaterial({color:i%2?0x60d3c3:0xff8b52,transparent:true,opacity:.75}));
+      bead.position.set(Math.cos(angle)*2.3,Math.sin(angle)*1.65,Math.sin(angle*2)*.55);
+      satellites.add(bead);
+    }
+    group.add(satellites);
     // Interacción 3D suave: el objeto sigue el cursor sin interferir con los enlaces.
     let pointerX=0,pointerY=0;
     const heroSection=host.closest('.hero');
@@ -1046,7 +1067,7 @@ window.addEventListener('load', () => {
     let active=true,frame=0;
     const observer=new IntersectionObserver(entries=>{active=entries[0].isIntersecting&&!document.hidden;if(active)requestAnimationFrame(tick)},{threshold:0});
     document.addEventListener('visibilitychange',()=>{active=!document.hidden&&host.getBoundingClientRect().bottom>0;if(active)requestAnimationFrame(tick)});
-    function tick(){if(!active)return;group.rotation.y+=(pointerX-group.rotation.y)*.012+.0015;group.rotation.x+=(pointerY-group.rotation.x)*.012+.0007;renderer.render(scene,camera);frame=requestAnimationFrame(tick)}
+    function tick(){if(!active)return;satellites.rotation.z+=.001;ring.rotation.z-=.0012;group.rotation.y+=(pointerX-group.rotation.y)*.012+.0015;group.rotation.x+=(pointerY-group.rotation.x)*.012+.0007;renderer.render(scene,camera);frame=requestAnimationFrame(tick)}
     observer.observe(host);
   } catch(e) { host.replaceChildren(); }
 });
@@ -1074,6 +1095,47 @@ window.addEventListener('load', () => {
       el.addEventListener('pointerleave',()=>window.gsap.to(el,{x:0,y:0,duration:.4,overwrite:true}));
     });
   }
+});
+</script>
+<script>
+window.addEventListener('load',()=>{
+  if(!window.THREE||window.innerWidth<=800||window.matchMedia('(prefers-reduced-motion:reduce)').matches)return;
+  const T=window.THREE;
+  [
+    {id:'showreel-3d',kind:'reel'},
+    {id:'about-3d',kind:'about'}
+  ].forEach(({id,kind})=>{
+    const host=document.getElementById(id);if(!host)return;
+    let renderer,observer,raf=0;
+    try{
+      const scene=new T.Scene(),camera=new T.PerspectiveCamera(42,1,.1,50);
+      camera.position.z=6;
+      renderer=new T.WebGLRenderer({alpha:true,antialias:true,powerPreference:'low-power'});
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio||1,1.25));
+      host.appendChild(renderer.domElement);
+      const group=new T.Group();scene.add(group);
+      const teal=new T.MeshBasicMaterial({color:0x60d3c3,wireframe:true,transparent:true,opacity:.55});
+      const orange=new T.MeshBasicMaterial({color:0xff8b52,wireframe:true,transparent:true,opacity:.6});
+      if(kind==='reel'){
+        // Floating film-inspired rings and icosahedron.
+        const main=new T.Mesh(new T.TorusGeometry(1.25,.24,12,70),teal);main.rotation.x=.5;group.add(main);
+        const inner=new T.Mesh(new T.IcosahedronGeometry(.85,1),orange);group.add(inner);
+        const orbit=new T.Mesh(new T.TorusGeometry(1.9,.018,6,90),orange);orbit.rotation.y=.9;group.add(orbit);
+      }else{
+        // Nested geometric wireframe forms.
+        group.add(new T.Mesh(new T.OctahedronGeometry(1.4,1),teal));
+        const cube=new T.Mesh(new T.BoxGeometry(1.55,1.55,1.55),orange);cube.rotation.set(.35,.4,.2);group.add(cube);
+        const halo=new T.Mesh(new T.TorusGeometry(1.9,.02,6,90),teal);halo.rotation.x=1.15;group.add(halo);
+      }
+      const resize=()=>{const w=host.clientWidth,h=host.clientHeight;if(!w||!h)return;renderer.setSize(w,h,false);camera.aspect=w/h;camera.updateProjectionMatrix()};
+      resize();window.addEventListener('resize',resize,{passive:true});
+      let visible=false;
+      function animate(){if(!visible||document.hidden)return;group.rotation.y+=.002;group.rotation.x+=.0009;renderer.render(scene,camera);raf=requestAnimationFrame(animate)}
+      observer=new IntersectionObserver(entries=>{visible=entries[0].isIntersecting;if(visible&&!document.hidden){cancelAnimationFrame(raf);animate()}else cancelAnimationFrame(raf)});
+      observer.observe(host);
+      document.addEventListener('visibilitychange',()=>{cancelAnimationFrame(raf);if(visible&&!document.hidden)animate()});
+    }catch(err){if(observer)observer.disconnect();if(renderer)renderer.dispose();host.replaceChildren()}
+  });
 });
 </script>
 </body>
