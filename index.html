@@ -275,6 +275,18 @@ body{overflow-x:hidden}section{scroll-margin-top:90px;padding:100px 0}.wrap{widt
 
 .cv-brand{display:flex;align-items:center;gap:15px;margin-bottom:4px}.cv-brandmark{flex:0 0 68px;width:68px;height:54px;border:1px solid var(--border-strong);border-radius:10px;display:grid;place-items:center;background:#f1efe9;overflow:hidden;padding:8px}.cv-brandmark img{max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain}.cv-brandmark--type{background:#22282a;color:var(--teal);font:700 18px var(--display);letter-spacing:-.08em}.cv-brandmark--hardrock{background:#27211b;color:#f5ca80;font:700 12px/1.1 var(--display);text-align:center}.cv-brandmark--placeholder{background:#22282a;color:var(--teal);font:700 18px var(--display)}@media(max-width:600px){.cv-brandmark{flex-basis:56px;width:56px;height:50px}.cv-brand{gap:12px}}
 .cv-app-icon{width:29px;height:29px;object-fit:contain;flex:none}.cv-app{min-height:46px}.cv-icon-fallback{flex:none}
+
+/* CV: categorías profesionales */
+.cv-software-intro{font-size:12px;color:var(--muted);margin:-12px 0 20px}
+.cv-software-groups{display:grid;gap:19px}
+.cv-software-group{padding-top:16px;border-top:1px solid var(--border)}
+.cv-software-group:first-child{padding-top:0;border-top:0}
+.cv-software-group h4{font:10px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--teal);margin-bottom:10px}
+.cv-software-group .cv-apps{gap:8px}
+.cv-software-group .cv-app{font-size:11px;padding:7px 9px}
+.cv-app--code b{width:auto;min-width:29px;padding:0 5px;font-size:11px}
+.cv-cta .cv-kicker{display:block;margin-bottom:8px}
+.cv-cta>div{min-width:0}
 </style>
 </head>
 <body>
@@ -397,13 +409,13 @@ body{overflow-x:hidden}section{scroll-margin-top:90px;padding:100px 0}.wrap{widt
   <section id="cv" aria-labelledby="cv-title">
     <div class="wrap">
       <div class="head"><span class="num">CV /</span><h2 id="cv-title">Experiencia &amp; formación<span class="accent-dot">.</span></h2><div class="rule"></div></div>
-      <p class="cv-intro">Además de los proyectos que ves en este sitio, este es mi recorrido profesional: contenido audiovisual, diseño y comunicación para marcas y equipos.</p>
+      <p class="cv-intro">Mi recorrido profesional en edición, diseño visual y producción de contenido para marcas. Cada experiencia reúne creatividad, comunicación y trabajo audiovisual.</p>
       <div class="cv-layout">
         <div class="cv-panel">
           <div class="cv-kicker">01 / Experiencia profesional</div>
-          <article class="cv-job"><span class="cv-year">2022 — 2025</span><div><div class="cv-brand"><span class="cv-brandmark"><img src="https://raw.githubusercontent.com/pabloperezpetit-coder/Portafolio-multimedia-/main/imagenes/Tecnoimagen.jpg" alt="Logo de Tecnoimagen" loading="lazy"></span><h3>Tecnoimagen</h3></div><p class="cv-role">REALIZACIÓN Y EDICIÓN AUDIOVISUAL · FREELANCE</p><p>Filmación y edición de videos para redes sociales y para el sitio web de la empresa.</p></div></article>
-          <article class="cv-job"><span class="cv-year">2022 — 2024</span><div><div class="cv-brand"><span class="cv-brandmark"><img src="https://raw.githubusercontent.com/pabloperezpetit-coder/Portafolio-multimedia-/main/imagenes/MasHumanos.png" alt="Logo de MasHumanos" loading="lazy"></span><h3>MasHumanos</h3></div><p class="cv-role">STARTUP · DESARROLLO PERSONAL EN EMPRESAS</p><p>Experiencia en una startup dedicada al crecimiento personal en organizaciones, con un enfoque conceptual inspirado en Deleuze y Spinoza.</p></div></article>
-          <article class="cv-job"><span class="cv-year">2023 · 2 meses</span><div><div class="cv-brand"><span class="cv-brandmark"><img src="https://raw.githubusercontent.com/pabloperezpetit-coder/Portafolio-multimedia-/main/imagenes/Hardrock.jpeg" alt="Logo de Hardrockexpert Cocktails" loading="lazy"></span><h3>Hardrockexpert Cocktails</h3></div><p class="cv-role">PUBLICIDAD · PROMOCIÓN DE PRODUCTO</p><p>Trabajo publicitario en la promoción de cócteles en lata, incluyendo variedades inspiradas en Martini y otros cócteles.</p></div></article>
+          <article class="cv-job"><span class="cv-year">2022 — 2025</span><div><div class="cv-brand"><span class="cv-brandmark"><img src="https://raw.githubusercontent.com/pabloperezpetit-coder/Portafolio-multimedia-/main/imagenes/Tecnoimagen.jpg" alt="Logo de Tecnoimagen" loading="lazy"></span><h3>Tecnoimagen</h3></div><p class="cv-role">FILMACIÓN · EDICIÓN · DISEÑO VISUAL · FREELANCE</p><p>Filmación, edición y desarrollo visual de piezas audiovisuales para las redes sociales y el sitio web de Tecnoimagen.</p></div></article>
+          <article class="cv-job"><span class="cv-year">2022 — 2024</span><div><div class="cv-brand"><span class="cv-brandmark"><img src="https://raw.githubusercontent.com/pabloperezpetit-coder/Portafolio-multimedia-/main/imagenes/MasHumanos.png" alt="Logo de MasHumanos" loading="lazy"></span><h3>MasHumanos</h3></div><p class="cv-role">EDICIÓN AUDIOVISUAL · DISEÑO DE CONTENIDOS</p><p>Edición de videos y diseño visual de contenidos para la comunicación de una startup enfocada en el crecimiento personal dentro de las empresas.</p></div></article>
+          <article class="cv-job"><span class="cv-year">2023 · 2 meses</span><div><div class="cv-brand"><span class="cv-brandmark"><img src="https://raw.githubusercontent.com/pabloperezpetit-coder/Portafolio-multimedia-/main/imagenes/Hardrock.jpeg" alt="Logo de Hardrockexpert Cocktails" loading="lazy"></span><h3>Hardrockexpert Cocktails</h3></div><p class="cv-role">EDICIÓN AUDIOVISUAL · DISEÑO PUBLICITARIO</p><p>Edición y diseño visual de contenidos publicitarios para promocionar cócteles en lata, entre ellos variedades con sabor a Martini.</p></div></article>
         </div>
         <div class="cv-side">
           <div class="cv-panel"><div class="cv-kicker">02 / Formación</div>
@@ -411,15 +423,28 @@ body{overflow-x:hidden}section{scroll-margin-top:90px;padding:100px 0}.wrap{widt
             <div class="cv-education"><strong>ORT Argentina</strong><span>Diplomado en sonido y producción</span></div>
             <div class="cv-education"><strong>Inglés</strong><span>Nivel B2 · Intermedio avanzado</span></div>
           </div>
-          <div class="cv-panel"><div class="cv-kicker">03 / Software &amp; habilidades</div>
-            <div class="cv-apps" aria-label="Herramientas de diseño y edición">
-              <span class="cv-app"><b>Ae</b>After Effects</span><span class="cv-app"><b>Pr</b>Premiere Pro</span><span class="cv-app"><b>Ps</b>Photoshop</span><span class="cv-app"><b>Ai</b>Illustrator</span><span class="cv-app"><img class="cv-app-icon" src="https://cdn.simpleicons.org/figma" alt="" loading="lazy">Figma</span><span class="cv-app"><img class="cv-app-icon" src="https://cdn.simpleicons.org/steinberg/ffffff" alt="" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'"><b class="cv-icon-fallback" style="display:none">Cu</b>Cubase</span><span class="cv-app"><img class="cv-app-icon" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/audition/audition-original.svg" alt="" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'"><b class="cv-icon-fallback" style="display:none">Au</b>Adobe Audition</span><span class="cv-app"><img class="cv-app-icon" src="https://cdn.simpleicons.org/cinema4d" alt="" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'"><b class="cv-icon-fallback" style="display:none">C4D</b>Cinema 4D</span>
+          <div class="cv-panel"><div class="cv-kicker">03 / Software &amp; habilidades</div><p class="cv-software-intro">Herramientas organizadas por especialidad.</p>
+            <div class="cv-software-groups">
+              <div class="cv-software-group"><h4>Video &amp; motion</h4><div class="cv-apps">
+                <span class="cv-app"><b>Ae</b>After Effects</span><span class="cv-app"><b>Pr</b>Premiere Pro</span>
+              </div></div>
+              <div class="cv-software-group"><h4>Diseño</h4><div class="cv-apps">
+                <span class="cv-app"><b>Ps</b>Photoshop</span><span class="cv-app"><b>Ai</b>Illustrator</span><span class="cv-app"><img class="cv-app-icon" src="https://cdn.simpleicons.org/figma" alt="" loading="lazy">Figma</span>
+              </div></div>
+              <div class="cv-software-group"><h4>Audio</h4><div class="cv-apps">
+                <span class="cv-app"><img class="cv-app-icon" src="https://cdn.simpleicons.org/steinberg/ffffff" alt="" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'"><b class="cv-icon-fallback" style="display:none">Cu</b>Cubase</span>
+                <span class="cv-app"><img class="cv-app-icon" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/audition/audition-original.svg" alt="" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'"><b class="cv-icon-fallback" style="display:none">Au</b>Adobe Audition</span>
+              </div></div>
+              <div class="cv-software-group"><h4>3D &amp; desarrollo</h4><div class="cv-apps">
+                <span class="cv-app"><img class="cv-app-icon" src="https://cdn.simpleicons.org/cinema4d" alt="" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'"><b class="cv-icon-fallback" style="display:none">C4D</b>Cinema 4D</span>
+                <span class="cv-app cv-app--code"><b>&lt;/&gt;</b>HTML · CSS · JS</span>
+              </div></div>
             </div>
-            <div class="chips"><span class="chip">Motion Graphics</span><span class="chip">Edición</span><span class="chip">Diseño gráfico</span><span class="chip">HTML / CSS / JS</span></div>
+            <div class="chips"><span class="chip">Motion Graphics</span><span class="chip">Edición audiovisual</span><span class="chip">Diseño visual</span><span class="chip">Filmación</span></div>
           </div>
         </div>
       </div>
-      <div class="cv-cta"><p>¿Querés guardar una versión para revisar sin conexión? También podés descargar mi CV en PDF.</p><button class="btn btn-primary" type="button" onclick="document.querySelector('.nav-cta').click()">Descargar CV <span aria-hidden="true">↗</span></button></div>
+      <div class="cv-cta"><div><span class="cv-kicker">04 / Trabajos realizados</span><p>Próximamente: una selección de piezas desarrolladas para Tecnoimagen, MasHumanos y Hardrockexpert Cocktails.</p></div><a class="btn btn-secondary" href="#projects">Ver proyectos actuales <span aria-hidden="true">↗</span></a></div>
     </div>
   </section>
 
