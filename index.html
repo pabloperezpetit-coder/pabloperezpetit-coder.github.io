@@ -395,6 +395,26 @@ video::-webkit-media-controls-download-button{display:none!important}video::-int
 .modal .reel.has-video::after{content:'';position:absolute;inset:0;pointer-events:none;background:linear-gradient(110deg,transparent 30%,rgba(96,211,195,.07) 50%,transparent 70%);opacity:0;animation:reelLightSweep .8s ease-out 1}
 @keyframes reelLightSweep{0%{opacity:0;transform:translateX(-65%)}30%{opacity:1}100%{opacity:0;transform:translateX(65%)}}
 @media(prefers-reduced-motion:reduce){#grid .card,#grid .card img,#grid .card .project-poster,#grid .card .vans-thumbnail{transition:none}#grid .card.is-filter-entering,.backdrop.open .modal,.modal .reel.has-video::after{animation:none}}
+
+/* Six enhancements: previews, cinematic reveal, kinetic headings, case studies, 3D, magnetic CTAs */
+#grid .card .thumb{position:relative;overflow:hidden}
+#grid .card .hover-preview{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .3s;pointer-events:none;z-index:2}
+#grid .card.is-previewing .hover-preview{opacity:1}
+#grid .card .thumb .tc,#grid .card .thumb .tag,#grid .card .thumb .play{position:relative;z-index:3}
+.project-cinema-intro{position:fixed;inset:0;z-index:210;display:grid;place-items:center;pointer-events:none;background:#111315;color:#fff;opacity:0;visibility:hidden}
+.project-cinema-intro.is-active{visibility:visible;animation:cinemaCurtain .62s cubic-bezier(.16,1,.3,1) both}
+.project-cinema-intro strong{font:clamp(28px,5vw,72px) 'Space Grotesk',sans-serif;text-align:center;letter-spacing:-.045em;padding:20px}
+.project-cinema-intro small{display:block;text-align:center;font:11px var(--mono);color:var(--teal);letter-spacing:.18em;margin-bottom:15px}
+@keyframes cinemaCurtain{0%{opacity:0}20%,65%{opacity:1}100%{opacity:0}}
+.case-process{margin-top:22px;border-top:1px solid var(--border);padding-top:18px}
+.case-process h4{font:11px var(--mono);letter-spacing:.13em;color:var(--teal);margin-bottom:12px}
+.case-process-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.case-process-grid div{padding:14px;border:1px solid var(--border);border-radius:9px;background:rgba(255,255,255,.025)}
+.case-process-grid span{display:block;color:var(--orange);font:10px var(--mono);margin-bottom:9px}
+.case-process-grid p{font-size:12px;line-height:1.55;color:var(--muted)}
+.kinetic-title .kinetic-word{display:inline-block;will-change:transform}
+@media(max-width:650px){.case-process-grid{grid-template-columns:1fr}.project-cinema-intro strong{font-size:32px}}
+@media(prefers-reduced-motion:reduce){#grid .card .hover-preview{display:none}.project-cinema-intro{display:none}.kinetic-title .kinetic-word{will-change:auto}}
 </style>
 </head>
 <body>
@@ -592,6 +612,7 @@ video::-webkit-media-controls-download-button{display:none!important}video::-int
   </div>
 </footer>
 
+<div class="project-cinema-intro" id="project-cinema-intro" aria-hidden="true"><div><small>PROYECTO SELECCIONADO</small><strong id="cinema-project-name"></strong></div></div>
 <div class="backdrop" id="backdrop" inert>
   <div class="modal" role="dialog" aria-modal="true" aria-labelledby="mTitle">
     <button class="close" id="close" aria-label="Cerrar">✕</button>
@@ -601,7 +622,7 @@ video::-webkit-media-controls-download-button{display:none!important}video::-int
       <div class="meta" id="mMeta"></div>
       <h3 id="mTitle"></h3>
       <p class="desc" id="mDesc"></p>
-      <div class="chips" id="mTags"></div><div class="case-detail"><h4>Detrás del proyecto</h4><div class="case-grid"><div><span>ENFOQUE</span><p id="mFocus"></p></div><div><span>HERRAMIENTAS Y DISCIPLINAS</span><p id="mTools"></p></div></div></div><div class="modal-nav"><button type="button" id="prev-project">← Anterior</button><button type="button" id="next-project">Siguiente →</button></div>
+      <div class="chips" id="mTags"></div><div class="case-detail"><h4>Detrás del proyecto</h4><div class="case-grid"><div><span>ENFOQUE</span><p id="mFocus"></p></div><div><span>HERRAMIENTAS Y DISCIPLINAS</span><p id="mTools"></p></div></div></div><div class="case-process"><h4>PROCESO CREATIVO</h4><div class="case-process-grid"><div><span>01 / OBJETIVO</span><p id="case-objective"></p></div><div><span>02 / DECISIONES</span><p id="case-decisions"></p></div><div><span>03 / RESULTADO</span><p id="case-result"></p></div></div></div><div class="modal-nav"><button type="button" id="prev-project">← Anterior</button><button type="button" id="next-project">Siguiente →</button></div>
     </div>
   </div>
 </div>
@@ -693,6 +714,18 @@ function openModal(p){
   $('mDesc').textContent = p.desc;
   $('mFocus').textContent = ({vans:'Ritmo de montaje e identidad visual de producto.',reel:'Animación de marca y composición.',audiovisual:'Narrativa y atmósfera documental.',einstein:'Narrativa documental y edición audiovisual.',sonora:'Presentación audiovisual de producto.',briefly:'Composición y ritmo comercial.'})[p.id] || 'Exploración audiovisual.';
   $('mTools').textContent = p.tags.join(' · ');
+  const caseNotes = {
+    vans:['Explorar el lenguaje de un comercial de producto.','Trabajar el ritmo de montaje y la presencia de la marca.','Una pieza audiovisual comercial terminada.'],
+    einstein:['Presentar información en formato documental.','Organizar imágenes y edición para sostener la narrativa.','Un documental audiovisual terminado.'],
+    reel:['Explorar animación de identidad de marca.','Componer y animar elementos gráficos en After Effects.','Una pieza de motion graphics.'],
+    audiovisual:['Construir una narración audiovisual documental.','Combinar edición y recursos de After Effects.','Una pieza documental terminada.'],
+    sonora:['Presentar un producto en formato audiovisual.','Utilizar composición, montaje y ritmo visual.','Un video de presentación de producto.'],
+    briefly:['Experimentar con lenguaje visual comercial.','Trabajar composición, timing y recursos de motion.','Una pieza audiovisual comercial.']
+  };
+  const notes = caseNotes[p.id] || ['Desarrollar una pieza audiovisual.','Aplicar las herramientas y disciplinas indicadas.','Proyecto final presentado en este portfolio.'];
+  $('case-objective').textContent = notes[0];
+  $('case-decisions').textContent = notes[1];
+  $('case-result').textContent = notes[2];
   $('mTags').innerHTML = p.tags.map(t => `<span class="chip">${t}</span>`).join('');
   backdrop.inert = false;
   document.querySelector('main').inert = true;
@@ -746,11 +779,53 @@ function closeModal(){
   lastFocus?.focus();
 }
 
+// Vista previa de video bajo demanda: sin sonido y solo en dispositivos con hover.
+if (window.matchMedia('(hover:hover) and (pointer:fine)').matches && !window.matchMedia('(prefers-reduced-motion:reduce)').matches) {
+  let previewTimer;
+  document.querySelectorAll('#grid .card').forEach(card => {
+    const project = projects.find(p => p.id === card.dataset.id);
+    if (!project?.video) return;
+    const stop = () => {
+      clearTimeout(previewTimer);
+      card.classList.remove('is-previewing');
+      const video=card.querySelector('.hover-preview');
+      if(video){video.pause();video.removeAttribute('src');video.load();video.remove();}
+    };
+    card.addEventListener('pointerenter', () => {
+      clearTimeout(previewTimer);
+      previewTimer=setTimeout(() => {
+        if(!card.matches(':hover') || backdrop.classList.contains('open')) return;
+        const video=document.createElement('video');
+        video.className='hover-preview';
+        video.muted=true;video.loop=true;video.playsInline=true;video.preload='none';
+        video.disablePictureInPicture=true;
+        video.setAttribute('aria-hidden','true');
+        video.src=project.video;
+        card.querySelector('.thumb')?.appendChild(video);
+        video.play().then(()=>card.classList.add('is-previewing')).catch(stop);
+      },350);
+    });
+    card.addEventListener('pointerleave',stop);
+    card.addEventListener('click',stop);
+  });
+}
+// Transición cinematográfica breve antes de mostrar una ficha; sin bloquear controles.
+function openProjectWithTransition(project) {
+  if (!project) return;
+  const curtain=$('project-cinema-intro');
+  if (window.matchMedia('(prefers-reduced-motion:reduce)').matches || !curtain) {openModal(project);return;}
+  $('cinema-project-name').textContent=project.name;
+  curtain.classList.remove('is-active');
+  void curtain.offsetWidth;
+  curtain.classList.add('is-active');
+  openModal(project);
+  window.setTimeout(()=>curtain.classList.remove('is-active'),650);
+}
 $('grid').addEventListener('click', e => {
   const card = e.target.closest('.card');
-  if(card) openModal(projects.find(p => p.id === card.dataset.id));
+  if(card) openProjectWithTransition(projects.find(p => p.id === card.dataset.id));
 });
-document.querySelectorAll('[data-project]').forEach(button => button.addEventListener('click', () => openModal(projects.find(p => p.id === button.dataset.project))));
+document.querySelectorAll('[data-project]').forEach(button => button.addEventListener('click', () => openProjectWithTransition(projects.find(p => p.id === button.dataset.project))));
 $('close').addEventListener('click', closeModal);
 backdrop.addEventListener('click', e => { if(e.target === backdrop) closeModal(); });
 document.addEventListener('keydown', e => { if(e.key === 'Escape' && backdrop.classList.contains('open')) closeModal(); });
@@ -962,6 +1037,31 @@ window.addEventListener('load', () => {
     function tick(){if(!active)return;group.rotation.y+=.0015;group.rotation.x+=.0007;renderer.render(scene,camera);frame=requestAnimationFrame(tick)}
     observer.observe(host);
   } catch(e) { host.replaceChildren(); }
+});
+</script>
+<script>
+window.addEventListener('load', () => {
+  if(window.matchMedia('(prefers-reduced-motion:reduce)').matches)return;
+  // Kinetic typography on section titles.
+  if(window.gsap && window.ScrollTrigger){
+    document.querySelectorAll('#projects .head h2,#showreel .head h2,#about .head h2,#skills .head h2,#cv .head h2').forEach(h=>{
+      h.classList.add('kinetic-title');
+      const textNodes=Array.from(h.childNodes).filter(n=>n.nodeType===Node.TEXT_NODE && n.textContent.trim());
+      textNodes.forEach(n=>{
+        const frag=document.createDocumentFragment();
+        n.textContent.split(/(\s+)/).forEach(part=>{if(!part)return;if(/^\s+$/.test(part)){frag.appendChild(document.createTextNode(part));return;}const span=document.createElement('span');span.className='kinetic-word';span.textContent=part;frag.appendChild(span)});
+        n.replaceWith(frag);
+      });
+      window.gsap.from(h.querySelectorAll('.kinetic-word'),{scrollTrigger:{trigger:h,start:'top 90%',once:true},y:18,opacity:0,stagger:.07,duration:.65,ease:'power3.out',clearProps:'all'});
+    });
+  }
+  // Magnetic CTAs: limited displacement, pointer devices only.
+  if(window.matchMedia('(hover:hover) and (pointer:fine)').matches && window.gsap){
+    document.querySelectorAll('.hero .btn, #contact .contact-action, #start-reel').forEach(el=>{
+      el.addEventListener('pointermove',e=>{const rect=el.getBoundingClientRect();window.gsap.to(el,{x:(e.clientX-rect.left-rect.width/2)*.1,y:(e.clientY-rect.top-rect.height/2)*.1,duration:.3,overwrite:true})});
+      el.addEventListener('pointerleave',()=>window.gsap.to(el,{x:0,y:0,duration:.4,overwrite:true}));
+    });
+  }
 });
 </script>
 </body>
