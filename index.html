@@ -246,7 +246,33 @@ body{overflow-x:hidden}section{scroll-margin-top:90px;padding:100px 0}.wrap{widt
 /* Editorial refresh */
 .hero{padding-top:155px;padding-bottom:75px}.hero-layout{gap:clamp(30px,4vw,70px);grid-template-columns:1fr 1.04fr}.hero h1{font-size:clamp(50px,6.4vw,94px);letter-spacing:-.075em;line-height:1;max-width:11ch}.hero-specialty{margin-top:24px;color:var(--muted);font:10px/1.9 var(--mono);letter-spacing:.08em}.showcase{transform:rotate(1deg);transition:transform .45s,box-shadow .45s}.showcase:hover{transform:rotate(0) translateY(-5px);box-shadow:0 35px 90px -35px #000}.showcase-main{aspect-ratio:16/9}.projects-intro{max-width:65ch;color:var(--muted);font-size:15px;line-height:1.8;margin:-12px 0 32px}.card .thumb{aspect-ratio:16/9}.card-body{display:flex;flex-direction:column;flex:1}.card-kicker{font:10px var(--mono);text-transform:uppercase;letter-spacing:.09em;color:var(--teal);margin-bottom:10px}.card-body p{font:13px/1.65 var(--body);color:var(--muted);margin-top:10px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}.card-action{display:block;margin-top:auto;padding-top:20px;font:11px var(--mono);color:var(--orange)}.project-poster{filter:saturate(.92);transition:transform .65s,filter .4s}.card:hover .project-poster{filter:saturate(1.12);transform:scale(1.055)}.card .thumb .tc,.card .thumb .tag,.card .thumb .play{z-index:2}.card.reveal-ready{opacity:0;transform:translateY(25px);transition:opacity .6s,transform .6s,border-color .3s,box-shadow .3s}.card.reveal-ready.is-visible{opacity:1;transform:translateY(0)}.card.reveal-ready.is-visible:hover{transform:translateY(-5px)}@media(max-width:760px){.hero-layout{grid-template-columns:1fr}.hero{padding-top:115px}.hero h1{font-size:clamp(49px,10vw,76px)}.showcase{transform:none}}@media(prefers-reduced-motion:reduce){.card.reveal-ready{opacity:1;transform:none;transition:none}.showcase{transform:none!important}}
 .showcase-main .showcase-preview{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s ease}.showcase-main:hover .showcase-preview{transform:scale(1.035)}@media(prefers-reduced-motion:reduce){.showcase-main .showcase-preview{transition:none}}
-.project-filters{display:flex;flex-wrap:wrap;gap:10px;margin:0 0 30px}.filter-btn{border:1px solid #394042;background:#191d1f;color:#c5c8c8;border-radius:999px;padding:12px 18px;font:11px var(--mono);cursor:pointer;transition:background .2s,color .2s,transform .2s}.filter-btn:hover{transform:translateY(-2px);border-color:var(--teal)}.filter-btn.active{background:var(--teal);color:#101415}.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)}.showreel-section{padding:100px 0;border-top:1px solid #292d2f}.reel-layout{display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(28px,5vw,80px);align-items:center}.reel-copy h3{font-size:clamp(30px,4vw,54px);letter-spacing:-.055em;line-height:1.12;margin:20px 0}.reel-copy p{color:var(--muted);line-height:1.75;margin-bottom:25px}.reel-copy .reel-note{font:11px var(--mono);margin:16px 0 0}.reel-feature{position:relative;border:1px solid #454a4b;border-radius:18px;overflow:hidden;aspect-ratio:16/9}.reel-feature img{width:100%;height:100%;object-fit:cover;display:block}.reel-stamp{position:absolute;bottom:18px;left:18px;padding:9px 13px;border-radius:99px;background:#15191bdc;color:var(--teal);font:10px var(--mono)}.about-refined{align-items:center}.about-statement{font-size:clamp(30px,3.5vw,51px);letter-spacing:-.05em;line-height:1.15;margin:18px 0 28px}.about-statement em{color:var(--orange);font-style:normal}.about-photo .frame{overflow:hidden;border-radius:18px}.about-photo-caption{display:block;font:10px var(--mono);letter-spacing:.09em;color:var(--teal);padding:13px 0}.case-detail{margin-top:30px;padding-top:25px;border-top:1px solid #3b4041}.case-detail h4{font-size:20px;margin:0 0 18px}.case-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}.case-grid span{font:10px var(--mono);color:var(--teal)}.case-grid p{margin:9px 0;color:#d5d7d7;line-height:1.6}.modal-nav{display:flex;justify-content:space-between;gap:12px;margin-top:25px}.modal-nav button{background:transparent;color:var(--orange);border:1px solid #424749;border-radius:100px;padding:12px 20px;cursor:pointer}.modal-nav button:hover{border-color:var(--orange)}@media(max-width:760px){.reel-layout{grid-template-columns:1fr}.showreel-section{padding:65px 0}.case-grid{grid-template-columns:1fr}.filter-btn{padding:10px 13px}}@media(prefers-reduced-motion:reduce){.filter-btn{transition:none}}</style>
+.project-filters{display:flex;flex-wrap:wrap;gap:10px;margin:0 0 30px}.filter-btn{border:1px solid #394042;background:#191d1f;color:#c5c8c8;border-radius:999px;padding:12px 18px;font:11px var(--mono);cursor:pointer;transition:background .2s,color .2s,transform .2s}.filter-btn:hover{transform:translateY(-2px);border-color:var(--teal)}.filter-btn.active{background:var(--teal);color:#101415}.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)}.showreel-section{padding:100px 0;border-top:1px solid #292d2f}.reel-layout{display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(28px,5vw,80px);align-items:center}.reel-copy h3{font-size:clamp(30px,4vw,54px);letter-spacing:-.055em;line-height:1.12;margin:20px 0}.reel-copy p{color:var(--muted);line-height:1.75;margin-bottom:25px}.reel-copy .reel-note{font:11px var(--mono);margin:16px 0 0}.reel-feature{position:relative;border:1px solid #454a4b;border-radius:18px;overflow:hidden;aspect-ratio:16/9}.reel-feature img{width:100%;height:100%;object-fit:cover;display:block}.reel-stamp{position:absolute;bottom:18px;left:18px;padding:9px 13px;border-radius:99px;background:#15191bdc;color:var(--teal);font:10px var(--mono)}.about-refined{align-items:center}.about-statement{font-size:clamp(30px,3.5vw,51px);letter-spacing:-.05em;line-height:1.15;margin:18px 0 28px}.about-statement em{color:var(--orange);font-style:normal}.about-photo .frame{overflow:hidden;border-radius:18px}.about-photo-caption{display:block;font:10px var(--mono);letter-spacing:.09em;color:var(--teal);padding:13px 0}.case-detail{margin-top:30px;padding-top:25px;border-top:1px solid #3b4041}.case-detail h4{font-size:20px;margin:0 0 18px}.case-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}.case-grid span{font:10px var(--mono);color:var(--teal)}.case-grid p{margin:9px 0;color:#d5d7d7;line-height:1.6}.modal-nav{display:flex;justify-content:space-between;gap:12px;margin-top:25px}.modal-nav button{background:transparent;color:var(--orange);border:1px solid #424749;border-radius:100px;padding:12px 20px;cursor:pointer}.modal-nav button:hover{border-color:var(--orange)}@media(max-width:760px){.reel-layout{grid-template-columns:1fr}.showreel-section{padding:65px 0}.case-grid{grid-template-columns:1fr}.filter-btn{padding:10px 13px}}@media(prefers-reduced-motion:reduce){.filter-btn{transition:none}}
+/* CV integrado */
+#cv{background:linear-gradient(145deg,#161b1d,#111315 60%);scroll-margin-top:88px}
+.cv-intro{color:var(--muted);max-width:68ch;font-size:15px;line-height:1.8;margin:-12px 0 34px}
+.cv-layout{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(270px,.85fr);gap:24px;align-items:start}
+.cv-panel{border:1px solid var(--border-strong);background:var(--surface);border-radius:18px;padding:30px}
+.cv-kicker{font:10px var(--mono);color:var(--teal);letter-spacing:.12em;text-transform:uppercase;margin-bottom:22px}
+.cv-job{display:grid;grid-template-columns:112px minmax(0,1fr);gap:20px;padding:22px 0;border-top:1px solid var(--border)}
+.cv-job:first-of-type{border-top:0;padding-top:0}
+.cv-year{font:11px var(--mono);color:var(--orange);padding-top:5px}
+.cv-job h3{font:600 22px var(--display);letter-spacing:-.035em}
+.cv-role{font:11px var(--mono);color:var(--teal);margin:6px 0 10px}
+.cv-job p:last-child{font-size:14px;color:var(--muted);line-height:1.75}
+.cv-side{display:grid;gap:20px}
+.cv-education{padding:15px 0;border-top:1px solid var(--border)}
+.cv-education strong{display:block;font:600 16px var(--display)}
+.cv-education span{display:block;color:var(--muted);font-size:13px;margin-top:5px}
+.cv-apps{display:flex;flex-wrap:wrap;gap:9px}
+.cv-app{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--border-strong);padding:8px 10px;border-radius:9px;font-size:12px;color:var(--text)}
+.cv-app b{display:grid;place-items:center;width:29px;height:29px;border-radius:6px;font:700 12px var(--display);background:#26213e;color:#d4bcff}
+.cv-app:nth-child(2) b{background:#252447;color:#c3b9ff}.cv-app:nth-child(3) b{background:#173247;color:#9cddff}.cv-app:nth-child(4) b{background:#382318;color:#ffb37c}.cv-app:nth-child(5) b{background:#2b2930;color:#f0c3b7}
+.cv-cta{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:18px;margin-top:24px;padding:24px 28px;border:1px solid var(--border-strong);border-radius:14px;background:linear-gradient(110deg,rgba(96,211,195,.07),rgba(255,139,82,.07))}
+.cv-cta p{font-size:13px;color:var(--muted);max-width:48ch}
+@media(max-width:850px){.cv-layout{grid-template-columns:1fr}.cv-side{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:600px){.cv-panel{padding:22px}.cv-side{grid-template-columns:1fr}.cv-job{grid-template-columns:1fr;gap:5px}.cv-job h3{font-size:20px}.cv-cta{padding:22px}}
+
+</style>
 </head>
 <body>
 
@@ -361,6 +387,36 @@ body{overflow-x:hidden}section{scroll-margin-top:90px;padding:100px 0}.wrap{widt
         <div><small>UX</small><b>Wireframing</b></div>
         <div><small>Idioma</small><b>Inglés B2 (Intermedio)</b></div>
       </div>
+    </div>
+  </section>
+
+
+  <section id="cv" aria-labelledby="cv-title">
+    <div class="wrap">
+      <div class="head"><span class="num">CV /</span><h2 id="cv-title">Experiencia &amp; formación<span class="accent-dot">.</span></h2><div class="rule"></div></div>
+      <p class="cv-intro">Además de los proyectos que ves en este sitio, este es mi recorrido profesional: contenido audiovisual, diseño y comunicación para marcas y equipos.</p>
+      <div class="cv-layout">
+        <div class="cv-panel">
+          <div class="cv-kicker">01 / Experiencia profesional</div>
+          <article class="cv-job"><span class="cv-year">2022 — 2025</span><div><h3>Tecnoimagen</h3><p class="cv-role">REALIZACIÓN Y EDICIÓN AUDIOVISUAL · FREELANCE</p><p>Filmación y edición de videos para redes sociales y para el sitio web de la empresa.</p></div></article>
+          <article class="cv-job"><span class="cv-year">2022 — 2024</span><div><h3>MasHumano</h3><p class="cv-role">STARTUP · DESARROLLO PERSONAL EN EMPRESAS</p><p>Experiencia en una startup dedicada al crecimiento personal en organizaciones, con un enfoque conceptual inspirado en Deleuze y Spinoza.</p></div></article>
+          <article class="cv-job"><span class="cv-year">2023 · 2 meses</span><div><h3>Hardrockexpert Cocktails</h3><p class="cv-role">PUBLICIDAD · PROMOCIÓN DE PRODUCTO</p><p>Trabajo publicitario en la promoción de cócteles en lata, incluyendo variedades inspiradas en Martini y otros cócteles.</p></div></article>
+        </div>
+        <div class="cv-side">
+          <div class="cv-panel"><div class="cv-kicker">02 / Formación</div>
+            <div class="cv-education"><strong>Escuela Da Vinci</strong><span>Diseño Multimedial · En curso</span></div>
+            <div class="cv-education"><strong>ORT Argentina</strong><span>Diplomado en sonido y producción</span></div>
+            <div class="cv-education"><strong>Inglés</strong><span>Nivel B2 · Intermedio avanzado</span></div>
+          </div>
+          <div class="cv-panel"><div class="cv-kicker">03 / Software &amp; habilidades</div>
+            <div class="cv-apps" aria-label="Herramientas de diseño y edición">
+              <span class="cv-app"><b>Ae</b>After Effects</span><span class="cv-app"><b>Pr</b>Premiere Pro</span><span class="cv-app"><b>Ps</b>Photoshop</span><span class="cv-app"><b>Ai</b>Illustrator</span><span class="cv-app"><b>F</b>Figma</span>
+            </div>
+            <div class="chips"><span class="chip">Motion Graphics</span><span class="chip">Edición</span><span class="chip">Diseño gráfico</span><span class="chip">HTML / CSS / JS</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="cv-cta"><p>¿Querés guardar una versión para revisar sin conexión? También podés descargar mi CV en PDF.</p><button class="btn btn-primary" type="button" onclick="document.querySelector('.nav-cta').click()">Descargar CV <span aria-hidden="true">↗</span></button></div>
     </div>
   </section>
 
