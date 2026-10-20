@@ -362,6 +362,22 @@ video::-webkit-media-controls-download-button{display:none!important}video::-int
 @media(max-width:850px){#hero-3d-accent{opacity:.12;width:75vw;right:-20vw}}
 @media(max-width:600px){#hero-3d-accent{display:none}}
 @media(prefers-reduced-motion:reduce){#hero-3d-accent{display:none}}
+
+/* Contact QR: contained below the trigger, never clipped by the top of the card */
+#contact .contact{overflow:visible}
+#contact .whatsapp-qr-wrap{position:relative}
+#contact .whatsapp-qr-popover{top:calc(100% + 14px);bottom:auto;left:auto;right:0;transform:translateY(-6px);z-index:120;box-sizing:border-box;max-width:min(220px,calc(100vw - 48px))}
+#contact .whatsapp-qr-wrap:hover .whatsapp-qr-popover,
+#contact .whatsapp-qr-wrap:focus-within .whatsapp-qr-popover,
+#contact .whatsapp-qr-wrap.is-open .whatsapp-qr-popover{transform:translateY(0)}
+@media(max-width:800px){#contact .whatsapp-qr-popover{top:calc(100% + 12px);bottom:auto;left:auto;right:0}}
+/* Refined site-wide microinteractions */
+#projects [data-project],#showreel [data-project],.showcase-bottom button,.cv-work-card{transition:transform .32s cubic-bezier(.2,.8,.2,1),box-shadow .32s,border-color .32s}
+@media(hover:hover) and (prefers-reduced-motion:no-preference){
+#projects [data-project]:hover,#showreel [data-project]:hover,.showcase-bottom button:hover,.cv-work-card:hover{transform:translateY(-5px)}
+#contact .contact-action:hover{transform:translateY(-2px)}
+}
+#contact .contact-action{transition:transform .25s,background .25s}
 </style>
 </head>
 <body>
@@ -886,8 +902,11 @@ window.addEventListener('load', () => {
     gsap.from('.showcase', {y: 28, opacity: 0, duration: 1, delay: .2, ease: 'power2.out', clearProps:'all'});
     if (window.ScrollTrigger) {
       gsap.registerPlugin(window.ScrollTrigger);
-      document.querySelectorAll('#projects .card, #cv .cv-job, #cv .cv-work-company, #about .about-card').forEach(el => {
-        gsap.from(el, {scrollTrigger:{trigger:el,start:'top 94%',once:true},y:24,opacity:0,duration:.65,ease:'power2.out',clearProps:'all'});
+      document.querySelectorAll('#projects .card, #projects [data-project], #showreel .showreel-card, #about .about-card, #skills .skill-card, #cv .cv-job, #cv .cv-work-company, #cv .cv-work-card, #contact .contact').forEach(el => {
+        gsap.from(el, {scrollTrigger:{trigger:el,start:'top 92%',once:true},y:22,opacity:0,duration:.65,ease:'power2.out',clearProps:'all'});
+      });
+      document.querySelectorAll('#projects h2, #showreel h2, #about h2, #skills h2, #cv h2').forEach(el => {
+        gsap.from(el, {scrollTrigger:{trigger:el,start:'top 93%',once:true},y:16,opacity:0,duration:.7,ease:'power2.out',clearProps:'all'});
       });
     }
   }
