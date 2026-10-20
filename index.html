@@ -438,6 +438,9 @@ video::-webkit-media-controls-download-button{display:none!important}video::-int
 
 /* Faster rendering below the fold, without changing the layout */
 @supports (content-visibility:auto){#projects,#showreel,#about,#skills,#cv,#contact{content-visibility:auto;contain-intrinsic-size:auto 850px}}
+
+/* Miniaturas reales de video: preservar fotograma y evitar interacción accidental */
+#grid .actual-video-poster{pointer-events:none;display:block;object-fit:cover;background:#141827}
 </style>
 </head>
 <body>
@@ -665,7 +668,7 @@ const projects = [
 
 $('grid').innerHTML = projects.map(p => `
   <button class="card ${p.video ? 'video-card' : 'design-card'}" data-id="${p.id}" aria-label="${p.video ? 'Reproducir' : 'Ver'} ${p.name}">
-    <div class="thumb ${p.g}">${p.id === 'einstein' ? `<img class="project-poster" src="imagenes/einstein-preview.svg" alt="Documental Einstein" loading="lazy" decoding="async">` : p.id === 'vans' ? `<img class="project-poster" src="${p.poster}" alt="Comercial Vans" loading="lazy" decoding="async">` : p.poster ? `<img class="project-poster" src="${p.poster}" alt="${p.name}" loading="lazy">` : ''}<span class="tc">${p.video ? 'MOTION / VIDEO' : 'DISEÑO DIGITAL'}</span>${p.video ? '<div class="play"></div>' : '<span class="case-arrow" aria-hidden="true">↗</span>'}<span class="tag">${p.tag}</span></div>
+    <div class="thumb ${p.g}">${(p.id === 'einstein' || p.id === 'vans') ? `<video class="project-poster actual-video-poster" data-thumbnail-video="${p.id}" preload="none" muted playsinline disablePictureInPicture tabindex="-1" aria-hidden="true"></video>` : p.poster ? `<img class="project-poster" src="${p.poster}" alt="${p.name}" loading="lazy">` : ''}<span class="tc">${p.video ? 'MOTION / VIDEO' : 'DISEÑO DIGITAL'}</span>${p.video ? '<div class="play"></div>' : '<span class="case-arrow" aria-hidden="true">↗</span>'}<span class="tag">${p.tag}</span></div>
     <div class="card-body"><span class="card-kicker">${p.type}</span><h3>${p.name}<span class="card-arrow" aria-hidden="true">↗</span></h3><p>${p.desc}</p><span class="card-action">${p.video ? 'Ver proyecto ↗' : 'Explorar caso ↗'}</span></div>
   </button>`).join('');
 
@@ -759,6 +762,29 @@ function closeModal(){
   lastFocus?.focus();
 }
 
+// Fotogramas auténticos de Vans y Einstein, cargados solo al acercarse a sus tarjetas.
+{
+  const thumbs = document.querySelectorAll('[data-thumbnail-video]');
+  const loadThumb = video => {
+    if(video.dataset.thumbLoaded)return;
+    const project=projects.find(p=>p.id===video.dataset.thumbnailVideo);
+    if(!project?.video)return;
+    video.dataset.thumbLoaded='1';
+    video.preload='metadata';
+    video.src=project.video+'#t=1';
+    video.addEventListener('loadedmetadata',()=>{
+      if(Number.isFinite(video.duration)&&video.duration>0){
+        try{video.currentTime=Math.min(1,video.duration*.2)}catch(_){}
+      }
+    },{once:true});
+  };
+  if('IntersectionObserver' in window){
+    const observer=new IntersectionObserver(entries=>{
+      entries.forEach(entry=>{if(entry.isIntersecting){loadThumb(entry.target);observer.unobserve(entry.target)}});
+    },{rootMargin:'300px 0px'});
+    thumbs.forEach(v=>observer.observe(v));
+  }else thumbs.forEach(loadThumb);
+}
 // Vista previa de video bajo demanda: sin sonido y solo en dispositivos con hover.
 if (window.matchMedia('(hover:hover) and (pointer:fine)').matches && !window.matchMedia('(prefers-reduced-motion:reduce)').matches) {
   let previewTimer;
