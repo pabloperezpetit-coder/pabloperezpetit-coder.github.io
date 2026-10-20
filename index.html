@@ -11,6 +11,7 @@
 <meta name="twitter:card" content="summary">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%8E%AC%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
@@ -163,7 +164,7 @@ footer{border-top:1px solid var(--border);padding:26px 0}
 .thumb .play{position:relative;z-index:1}
 
 /* Visual refinement */
-:root{--bg:#111315;--bg-alt:#191c1f;--surface:#1a1d20;--muted:#a3aaaf;--orange:#a78bfa;--teal:#579aff}
+:root{--bg:#10121d;--bg-alt:#171a2b;--surface:#1c2033;--muted:#9ba2ba;--orange:#a78bfa;--teal:#579aff}
 body{overflow-x:hidden}section{scroll-margin-top:90px;padding:100px 0}.wrap{width:100%;max-width:1240px}
 .nav{background:rgba(17,19,21,.92)}.nav-inner{max-width:1240px;height:78px}.nav-cta{padding:10px 16px;background:rgba(255,255,255,.025)}
 .hero{min-height:0;padding:150px 0 38px}.hero::before{background:radial-gradient(ellipse at 85% 25%,rgba(87,154,255,.065),transparent 60%)}
@@ -434,6 +435,9 @@ video::-webkit-media-controls-download-button{display:none!important}video::-int
 .palette-preview-note{position:fixed;bottom:18px;left:18px;z-index:190;display:flex;align-items:center;gap:10px;flex-wrap:wrap;background:rgba(18,21,36,.94);border:1px solid rgba(167,139,250,.4);box-shadow:0 12px 30px rgba(0,0,0,.35);border-radius:12px;padding:10px 14px;font:11px var(--mono);color:var(--text)}
 .palette-preview-note a{color:#a8c8ff;text-decoration:underline;text-underline-offset:3px}
 @media(max-width:600px){.palette-preview-note{bottom:10px;left:10px;right:10px;justify-content:center}}
+
+/* Faster rendering below the fold, without changing the layout */
+@supports (content-visibility:auto){#projects,#showreel,#about,#skills,#cv,#contact{content-visibility:auto;contain-intrinsic-size:auto 850px}}
 </style>
 </head>
 <body>
@@ -472,7 +476,7 @@ video::-webkit-media-controls-download-button{display:none!important}video::-int
       <div class="showcase" aria-label="Selección de trabajos">
         <div class="showcase-top"><span><i></i> EN MOVIMIENTO</span><span>SELECCIÓN / 2026</span></div>
         <button class="showcase-main" data-project="vans" aria-label="Reproducir Vans Comercial">
-          <video controlsList="nodownload noplaybackrate" oncontextmenu="return false" class="vans-hero-loop" src="videos/Vans%20terminado.mp4" poster="imagenes/vans-comercial.svg" autoplay muted loop playsinline preload="metadata" aria-hidden="true" tabindex="-1" disablePictureInPicture></video>
+          <video controlsList="nodownload noplaybackrate" oncontextmenu="return false" class="vans-hero-loop" src="videos/Vans%20terminado.mp4" poster="imagenes/vans-comercial.svg" autoplay muted loop playsinline preload="none" aria-hidden="true" tabindex="-1" disablePictureInPicture></video>
           <span class="showcase-overlay"><span><small>COMERCIAL</small><b>Vans — Comercial</b></span><span class="showcase-play" aria-hidden="true">▶</span></span>
         </button>
         <div class="showcase-bottom">
@@ -491,7 +495,7 @@ video::-webkit-media-controls-download-button{display:none!important}video::-int
     </div>
   </section>
 
-  <section id="showreel" class="showreel-section"><div class="wrap"><div class="three-scene-accent" id="showreel-3d" aria-hidden="true"></div><div class="head"><span class="num">02 /</span><h2>En movimiento<span class="accent-dot">.</span></h2><div class="rule"></div></div><div class="reel-layout"><div class="reel-copy"><span class="eyebrow">SELECCIÓN AUDIOVISUAL</span><h3>Un recorrido por mis trabajos.</h3><p>Vans, Nike, Amazon y AirPods: cuatro piezas originales reproducidas consecutivamente.</p><button class="btn btn-primary" id="start-reel" type="button">Ver selección ↗</button><p class="reel-note">4 videos · reproducción consecutiva</p></div><div class="reel-feature"><img src="imagenes/nike-comercial.jpg" alt="Comercial Nike" loading="lazy"><span class="reel-stamp">MOTION / VIDEO / 2026</span></div></div></div></section>
+  <section id="showreel" class="showreel-section"><div class="wrap"><div class="three-scene-accent" id="showreel-3d" aria-hidden="true"></div><div class="head"><span class="num">02 /</span><h2>En movimiento<span class="accent-dot">.</span></h2><div class="rule"></div></div><div class="reel-layout"><div class="reel-copy"><span class="eyebrow">SELECCIÓN AUDIOVISUAL</span><h3>Un recorrido por mis trabajos.</h3><p>Vans, Nike, Amazon y AirPods: cuatro piezas originales reproducidas consecutivamente.</p><button class="btn btn-primary" id="start-reel" type="button">Ver selección ↗</button><p class="reel-note">4 videos · reproducción consecutiva</p></div><div class="reel-feature"><img src="imagenes/nike-comercial.jpg" alt="Comercial Nike" loading="lazy" decoding="async"><span class="reel-stamp">MOTION / VIDEO / 2026</span></div></div></div></section>
   <section id="about">
     <div class="wrap"><div class="three-scene-accent" id="about-3d" aria-hidden="true"></div>
       <div class="head"><span class="num">03 /</span><h2>Sobre mí</h2><div class="rule"></div></div>
@@ -595,8 +599,8 @@ video::-webkit-media-controls-download-button{display:none!important}video::-int
       <div class="cv-work" id="cv-trabajos">
         <div class="cv-work-head"><span class="cv-kicker">04 / Trabajos realizados</span><h3>Experiencia en imágenes<span class="accent-dot">.</span></h3><p>Una selección de piezas audiovisuales realizadas para las empresas con las que trabajé. Videos realizados para MasHumanos y Hardrockexpert Cocktails. Próximamente se sumarán trabajos de Tecnoimagen.</p></div>
         <div class="cv-work-grid">
-          <article class="cv-work-company"><div class="cv-work-company-head"><span class="cv-work-number">01</span><div><h4>MasHumanos</h4><p>Edición audiovisual · Comunicación interna</p></div></div><div class="cv-work-items"><div class="cv-work-video" data-cv-preview><div class="cv-work-stage"><video preload="metadata" playsinline controlsList="nodownload noplaybackrate" disablePictureInPicture oncontextmenu="return false" aria-label="Compromiso v1" src="videos/Compromiso%20comp.mp4"></video><button class="cv-work-cover" type="button" aria-label="Reproducir Compromiso v1"><span class="cv-work-cover-category">MASHUMANOS</span><span class="cv-work-cover-title">Compromiso v1</span><span class="cv-work-cover-action"><span class="cv-work-cover-icon">▶</span><span>VER VIDEO</span></span></button></div><div class="cv-work-video-meta"><strong>Compromiso v1</strong><small>Edición y diseño audiovisual</small></div></div></div></article>
-          <article class="cv-work-company"><div class="cv-work-company-head"><span class="cv-work-number">02</span><div><h4>Hardrockexpert Cocktails</h4><p>Edición audiovisual · Diseño publicitario</p></div></div><div class="cv-work-items"><div class="cv-work-video" data-cv-preview><div class="cv-work-stage"><video preload="metadata" playsinline controlsList="nodownload noplaybackrate" disablePictureInPicture oncontextmenu="return false" aria-label="Mojito" src="videos/Mojito%20v3.mp4"></video><button class="cv-work-cover" type="button" aria-label="Reproducir Mojito"><span class="cv-work-cover-category">HARDROCKEXPERT COCKTAILS</span><span class="cv-work-cover-title">Mojito</span><span class="cv-work-cover-action"><span class="cv-work-cover-icon">▶</span><span>VER VIDEO</span></span></button></div><div class="cv-work-video-meta"><strong>Mojito</strong><small>Edición y diseño audiovisual</small></div></div><div class="cv-work-video" data-cv-preview><div class="cv-work-stage"><video preload="metadata" playsinline controlsList="nodownload noplaybackrate" disablePictureInPicture oncontextmenu="return false" aria-label="Passion Fruit" src="videos/Passion%20fruit.mp4"></video><button class="cv-work-cover" type="button" aria-label="Reproducir Passion Fruit"><span class="cv-work-cover-category">HARDROCKEXPERT COCKTAILS</span><span class="cv-work-cover-title">Passion Fruit</span><span class="cv-work-cover-action"><span class="cv-work-cover-icon">▶</span><span>VER VIDEO</span></span></button></div><div class="cv-work-video-meta"><strong>Passion Fruit</strong><small>Edición y diseño audiovisual</small></div></div><div class="cv-work-video" data-cv-preview><div class="cv-work-stage"><video preload="metadata" playsinline controlsList="nodownload noplaybackrate" disablePictureInPicture oncontextmenu="return false" aria-label="Piña Colada" src="videos/Pin%CC%83a%20colada%20.mp4"></video><button class="cv-work-cover" type="button" aria-label="Reproducir Piña Colada"><span class="cv-work-cover-category">HARDROCKEXPERT COCKTAILS</span><span class="cv-work-cover-title">Piña Colada</span><span class="cv-work-cover-action"><span class="cv-work-cover-icon">▶</span><span>VER VIDEO</span></span></button></div><div class="cv-work-video-meta"><strong>Piña Colada</strong><small>Edición y diseño audiovisual</small></div></div></div></article>
+          <article class="cv-work-company"><div class="cv-work-company-head"><span class="cv-work-number">01</span><div><h4>MasHumanos</h4><p>Edición audiovisual · Comunicación interna</p></div></div><div class="cv-work-items"><div class="cv-work-video" data-cv-preview><div class="cv-work-stage"><video preload="none" playsinline controlsList="nodownload noplaybackrate" disablePictureInPicture oncontextmenu="return false" aria-label="Compromiso v1" src="videos/Compromiso%20comp.mp4"></video><button class="cv-work-cover" type="button" aria-label="Reproducir Compromiso v1"><span class="cv-work-cover-category">MASHUMANOS</span><span class="cv-work-cover-title">Compromiso v1</span><span class="cv-work-cover-action"><span class="cv-work-cover-icon">▶</span><span>VER VIDEO</span></span></button></div><div class="cv-work-video-meta"><strong>Compromiso v1</strong><small>Edición y diseño audiovisual</small></div></div></div></article>
+          <article class="cv-work-company"><div class="cv-work-company-head"><span class="cv-work-number">02</span><div><h4>Hardrockexpert Cocktails</h4><p>Edición audiovisual · Diseño publicitario</p></div></div><div class="cv-work-items"><div class="cv-work-video" data-cv-preview><div class="cv-work-stage"><video preload="none" playsinline controlsList="nodownload noplaybackrate" disablePictureInPicture oncontextmenu="return false" aria-label="Mojito" src="videos/Mojito%20v3.mp4"></video><button class="cv-work-cover" type="button" aria-label="Reproducir Mojito"><span class="cv-work-cover-category">HARDROCKEXPERT COCKTAILS</span><span class="cv-work-cover-title">Mojito</span><span class="cv-work-cover-action"><span class="cv-work-cover-icon">▶</span><span>VER VIDEO</span></span></button></div><div class="cv-work-video-meta"><strong>Mojito</strong><small>Edición y diseño audiovisual</small></div></div><div class="cv-work-video" data-cv-preview><div class="cv-work-stage"><video preload="none" playsinline controlsList="nodownload noplaybackrate" disablePictureInPicture oncontextmenu="return false" aria-label="Passion Fruit" src="videos/Passion%20fruit.mp4"></video><button class="cv-work-cover" type="button" aria-label="Reproducir Passion Fruit"><span class="cv-work-cover-category">HARDROCKEXPERT COCKTAILS</span><span class="cv-work-cover-title">Passion Fruit</span><span class="cv-work-cover-action"><span class="cv-work-cover-icon">▶</span><span>VER VIDEO</span></span></button></div><div class="cv-work-video-meta"><strong>Passion Fruit</strong><small>Edición y diseño audiovisual</small></div></div><div class="cv-work-video" data-cv-preview><div class="cv-work-stage"><video preload="none" playsinline controlsList="nodownload noplaybackrate" disablePictureInPicture oncontextmenu="return false" aria-label="Piña Colada" src="videos/Pin%CC%83a%20colada%20.mp4"></video><button class="cv-work-cover" type="button" aria-label="Reproducir Piña Colada"><span class="cv-work-cover-category">HARDROCKEXPERT COCKTAILS</span><span class="cv-work-cover-title">Piña Colada</span><span class="cv-work-cover-action"><span class="cv-work-cover-icon">▶</span><span>VER VIDEO</span></span></button></div><div class="cv-work-video-meta"><strong>Piña Colada</strong><small>Edición y diseño audiovisual</small></div></div></div></article>
           <article class="cv-work-company"><div class="cv-work-company-head"><span class="cv-work-number">03</span><div><h4>Tecnoimagen</h4><p>Filmación · Edición · Diseño visual</p></div></div><div class="cv-work-empty">Próximamente, trabajos audiovisuales de Tecnoimagen.</div></article>
         </div>
       </div>
@@ -661,7 +665,7 @@ const projects = [
 
 $('grid').innerHTML = projects.map(p => `
   <button class="card ${p.video ? 'video-card' : 'design-card'}" data-id="${p.id}" aria-label="${p.video ? 'Reproducir' : 'Ver'} ${p.name}">
-    <div class="thumb ${p.g}">${p.id === 'einstein' ? `<video controlsList="nodownload" oncontextmenu="return false" class="project-poster" src="${p.video}#t=1" preload="metadata" muted playsinline aria-hidden="true" tabindex="-1"></video>` : p.id === 'vans' ? `<video controlsList="nodownload" oncontextmenu="return false" class="project-poster vans-thumbnail" src="${p.video}#t=1" poster="${p.poster}" preload="auto" muted playsinline aria-hidden="true" tabindex="-1"></video>` : p.poster ? `<img class="project-poster" src="${p.poster}" alt="${p.name}" loading="lazy">` : ''}<span class="tc">${p.video ? 'MOTION / VIDEO' : 'DISEÑO DIGITAL'}</span>${p.video ? '<div class="play"></div>' : '<span class="case-arrow" aria-hidden="true">↗</span>'}<span class="tag">${p.tag}</span></div>
+    <div class="thumb ${p.g}">${p.id === 'einstein' ? `<img class="project-poster" src="imagenes/einstein-preview.svg" alt="Documental Einstein" loading="lazy" decoding="async">` : p.id === 'vans' ? `<img class="project-poster" src="${p.poster}" alt="Comercial Vans" loading="lazy" decoding="async">` : p.poster ? `<img class="project-poster" src="${p.poster}" alt="${p.name}" loading="lazy">` : ''}<span class="tc">${p.video ? 'MOTION / VIDEO' : 'DISEÑO DIGITAL'}</span>${p.video ? '<div class="play"></div>' : '<span class="case-arrow" aria-hidden="true">↗</span>'}<span class="tag">${p.tag}</span></div>
     <div class="card-body"><span class="card-kicker">${p.type}</span><h3>${p.name}<span class="card-arrow" aria-hidden="true">↗</span></h3><p>${p.desc}</p><span class="card-action">${p.video ? 'Ver proyecto ↗' : 'Explorar caso ↗'}</span></div>
   </button>`).join('');
 
@@ -671,50 +675,6 @@ if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-mot
  document.querySelectorAll('#grid .card').forEach((card,i)=>{card.classList.add('reveal-ready');card.style.transitionDelay=(i%2)*85+'ms';observer.observe(card)});
 }
 
-// Extraer un fotograma auténtico del archivo Vans para usarlo como miniatura,
-// tanto en el destacado inicial como en la tarjeta de proyectos.
-(function loadVansThumbnail(){
-  const targets = document.querySelectorAll('.vans-frame');
-  if (!targets.length) return;
-  const source = document.createElement('video');
-  source.preload = 'auto';
-  source.muted = true;
-  source.playsInline = true;
-  source.src = 'videos/Vans terminado.mp4';
-  source.addEventListener('loadedmetadata', () => {
-    source.currentTime = Math.min(1.5, Math.max(.1, source.duration / 3));
-  }, {once:true});
-  source.addEventListener('seeked', () => {
-    try {
-      const canvas = document.createElement('canvas');
-      canvas.width = Math.min(960, source.videoWidth);
-      canvas.height = Math.round(canvas.width * source.videoHeight / source.videoWidth);
-      canvas.getContext('2d').drawImage(source, 0, 0, canvas.width, canvas.height);
-      const image = canvas.toDataURL('image/jpeg', .86);
-      targets.forEach(el => {
-        if(el.tagName === 'IMG') el.src = image;
-        else {
-          const img = document.createElement('img');
-          img.className = 'project-poster';
-          img.alt = 'Fotograma del comercial Vans';
-          img.src = image;
-          el.replaceWith(img);
-        }
-      });
-    } catch(err) { console.warn('Miniatura Vans no disponible:', err); }
-    source.removeAttribute('src');
-    source.load();
-  }, {once:true});
-})();
-
-// El fotograma del video de Vans queda visible y en pausa en su tarjeta.
-const vansCardVideo = document.querySelector('.card[data-id="vans"] .vans-thumbnail');
-if (vansCardVideo) {
-  vansCardVideo.addEventListener('loadedmetadata', () => {
-    if (Number.isFinite(vansCardVideo.duration) && vansCardVideo.duration > 0) vansCardVideo.currentTime = Math.min(1, vansCardVideo.duration / 2);
-  }, {once:true});
-  vansCardVideo.addEventListener('seeked', () => vansCardVideo.pause());
-}
 // Modal
 const backdrop = $('backdrop');
 let lastFocus;
@@ -764,12 +724,13 @@ function openModal(p){
     const video = document.createElement('video');
     video.controls = true;
     video.playsInline = true;
-    video.preload = 'metadata';
+    video.preload = 'none';
     video.controlsList = 'nodownload noplaybackrate';
     video.disablePictureInPicture = true;
     video.addEventListener('contextmenu', event => event.preventDefault());
     video.setAttribute('aria-label', p.name);
     if(p.poster) video.poster = p.poster;
+    else if(p.id === 'einstein') video.poster = 'imagenes/einstein-preview.svg';
     video.src = p.video;
     $('mReel').appendChild(video);
     video.addEventListener('error', () => {
@@ -1009,7 +970,7 @@ onScroll();
 </script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js" defer></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollTrigger.min.js" defer></script>
-<script src="https://cdn.jsdelivr.net/npm/three@0.160.1/build/three.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.159.0/build/three.min.js" defer></script>
 <script>
 window.addEventListener('load', () => {
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
