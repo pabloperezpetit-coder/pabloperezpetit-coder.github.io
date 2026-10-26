@@ -658,6 +658,7 @@ video::-webkit-media-controls-download-button{display:none!important}video::-int
 const $ = id => document.getElementById(id);
 
 const projects = [
+  {id:'airmax-v1', name:'Air Max — Animación', video:'videos/Airmax v1.mp4', tag:'Motion', tc:'', g:'g2', role:'Diseñador Multimedia', year:'2026', type:'Animación de producto conceptual', desc:'Ejercicio audiovisual de animación de producto inspirado en Air Max. Proyecto conceptual no oficial.', tags:['Motion Graphics','Animación de producto','Diseño multimedia']},
   {id:'open-deportes', name:'Open Deportes — Animación', video:'videos/Open Deportes.mp4', tag:'Motion', tc:'', g:'g5', role:'Diseñador Multimedia', year:'2026', type:'Animación deportiva', desc:'Pieza de apertura deportiva con animación y edición audiovisual.', tags:['Motion Graphics','Animación','Edición audiovisual']},
   {id:'einstein', name:'Einstein — Documental', video:'videos/Documental Einstein final.mp4', tag:'Documental', tc:'', g:'g6', role:'Diseñador Multimedia', year:'—', type:'Documental audiovisual', desc:'Documental audiovisual sobre Albert Einstein. Proyecto de edición y narrativa documental.', tags:['Documental','Edición audiovisual','Diseño multimedia']},
   {id:'vans', name:'Vans — Comercial', poster:'imagenes/vans-comercial.svg', video:'videos/Vans terminado.mp4', tag:'Comercial', tc:'', g:'g3', role:'Diseñador Multimedia', year:'—', type:'Comercial conceptual (no oficial)', desc:'Pieza audiovisual conceptual, no encargada por Vans. Exploración de ritmo, montaje e identidad visual aplicada a contenido de producto.', tags:['Video','Edición audiovisual','Diseño multimedia']},
@@ -670,7 +671,7 @@ const projects = [
 
 $('grid').innerHTML = projects.map(p => `
   <button class="card ${p.video ? 'video-card' : 'design-card'}" data-id="${p.id}" aria-label="${p.video ? 'Reproducir' : 'Ver'} ${p.name}">
-    <div class="thumb ${p.g}">${(p.id === 'einstein' || p.id === 'vans' || p.id === 'open-deportes') ? `<video class="project-poster actual-video-poster" data-thumbnail-video="${p.id}" preload="metadata" muted playsinline disablePictureInPicture tabindex="-1" aria-hidden="true" poster="${p.poster || ''}"></video>` : p.poster ? `<img class="project-poster" src="${p.poster}" alt="${p.name}" loading="lazy">` : ''}<span class="tc">${p.video ? 'MOTION / VIDEO' : 'DISEÑO DIGITAL'}</span>${p.video ? '<div class="play"></div>' : '<span class="case-arrow" aria-hidden="true">↗</span>'}<span class="tag">${p.tag}</span></div>
+    <div class="thumb ${p.g}">${(p.id === 'einstein' || p.id === 'vans' || p.id === 'open-deportes' || p.id === 'airmax-v1') ? `<video class="project-poster actual-video-poster" data-thumbnail-video="${p.id}" preload="metadata" muted playsinline disablePictureInPicture tabindex="-1" aria-hidden="true" poster="${p.poster || ''}"></video>` : p.poster ? `<img class="project-poster" src="${p.poster}" alt="${p.name}" loading="lazy">` : ''}<span class="tc">${p.video ? 'MOTION / VIDEO' : 'DISEÑO DIGITAL'}</span>${p.video ? '<div class="play"></div>' : '<span class="case-arrow" aria-hidden="true">↗</span>'}<span class="tag">${p.tag}</span></div>
     <div class="card-body"><span class="card-kicker">${p.type}</span><h3>${p.name}<span class="card-arrow" aria-hidden="true">↗</span></h3><p>${p.desc}</p><span class="card-action">${p.video ? 'Ver proyecto ↗' : 'Explorar caso ↗'}</span></div>
   </button>`).join('');
 
@@ -696,9 +697,10 @@ function openModal(p){
   $('mMeta').innerHTML = `<span>Rol<b>${p.role}</b></span>${p.year && p.year !== '—' ? `<span>Año<b>${p.year}</b></span>` : ''}<span>Tipo<b>${p.type}</b></span>`;
   $('mTitle').textContent = p.name;
   $('mDesc').textContent = p.desc;
-  $('mFocus').textContent = ({vans:'Ritmo de montaje e identidad visual de producto.',reel:'Animación de marca y composición.',audiovisual:'Narrativa y atmósfera documental.',einstein:'Narrativa documental y edición audiovisual.',sonora:'Presentación audiovisual de producto.',briefly:'Composición y ritmo comercial.'})[p.id] || 'Exploración audiovisual.';
+  $('mFocus').textContent = ({'airmax-v1':'Animación visual de producto y composición.',vans:'Ritmo de montaje e identidad visual de producto.',reel:'Animación de marca y composición.',audiovisual:'Narrativa y atmósfera documental.',einstein:'Narrativa documental y edición audiovisual.',sonora:'Presentación audiovisual de producto.',briefly:'Composición y ritmo comercial.'})[p.id] || 'Exploración audiovisual.';
   $('mTools').textContent = p.tags.join(' · ');
   const caseNotes = {
+    'airmax-v1':['Explorar una presentación visual de producto.','Combinar composición y animación en una pieza conceptual.','Animación audiovisual de producto.'],
     vans:['Explorar el lenguaje de un comercial de producto.','Trabajar el ritmo de montaje y la presencia de la marca.','Una pieza audiovisual comercial terminada.'],
     einstein:['Presentar información en formato documental.','Organizar imágenes y edición para sostener la narrativa.','Un documental audiovisual terminado.'],
     reel:['Explorar animación de identidad de marca.','Componer y animar elementos gráficos en After Effects.','Una pieza de motion graphics.'],
@@ -832,7 +834,7 @@ $('close').addEventListener('click', closeModal);
 backdrop.addEventListener('click', e => { if(e.target === backdrop) closeModal(); });
 document.addEventListener('keydown', e => { if(e.key === 'Escape' && backdrop.classList.contains('open')) closeModal(); });
 
-const projectCategories={'open-deportes':['motion','editing'],vans:['commercial','editing'],reel:['motion'],audiovisual:['editing'],einstein:['editing'],sonora:['motion','commercial'],briefly:['commercial','motion']};
+const projectCategories={'airmax-v1':['motion','commercial'],'open-deportes':['motion','editing'],vans:['commercial','editing'],reel:['motion'],audiovisual:['editing'],einstein:['editing'],sonora:['motion','commercial'],briefly:['commercial','motion']};
 document.querySelectorAll('[data-filter]').forEach(button=>button.addEventListener('click',()=>{
  const filter=button.dataset.filter;
  document.querySelectorAll('[data-filter]').forEach(item=>{item.classList.toggle('active',item===button);item.setAttribute('aria-pressed',String(item===button))});
