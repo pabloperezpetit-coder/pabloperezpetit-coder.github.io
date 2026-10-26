@@ -774,14 +774,35 @@ function closeModal(){
     const project=projects.find(p=>p.id===video.dataset.thumbnailVideo);
     if(!project?.video)return;
     video.dataset.thumbLoaded='1';
-    video.preload='metadata';
-    video.src=project.video+'#t=1';
-    video.addEventListener('loadeddata',()=>{try{video.pause();if(video.currentTime<.2)video.currentTime=1;}catch(_){}},{once:true});
+    video.preload='auto';
+    // Air Max: buscar un fotograma del tercio central, no la pantalla inicial.
+    const isAirMax = project.id === 'airmax-v1';
+    const capture = () => {
+      if (!isAirMax || !video.videoWidth || !video.videoHeight) return;
+      try {
+        const canvas=document.createElement('canvas');
+        canvas.width=960; canvas.height=540;
+        const ctx=canvas.getContext('2d');
+        const scale=Math.max(canvas.width/video.videoWidth,canvas.height/video.videoHeight);
+        const w=video.videoWidth*scale,h=video.videoHeight*scale;
+        ctx.drawImage(video,(canvas.width-w)/2,(canvas.height-h)/2,w,h);
+        const frame=document.createElement('img');
+        frame.className='project-poster airmax-frame';
+        frame.src=canvas.toDataURL('image/jpeg',.88);
+        frame.alt='Fotograma de Air Max — Animación';
+        frame.loading='lazy';
+        video.replaceWith(frame);
+      } catch(e) { video.pause(); }
+    };
+    video.addEventListener('seeked',capture,{once:true});
     video.addEventListener('loadedmetadata',()=>{
       if(Number.isFinite(video.duration)&&video.duration>0){
-        try{video.currentTime=Math.min(1,video.duration*.2)}catch(_){}
+        const moment=isAirMax?Math.max(.2,Math.min(video.duration*.38,video.duration-.1)):Math.min(1,video.duration*.2);
+        try{video.currentTime=moment;}catch(_){}
       }
     },{once:true});
+    video.src=project.video+(isAirMax?'':'#t=1');
+    video.load();
   };
   if('IntersectionObserver' in window){
     const observer=new IntersectionObserver(entries=>{
