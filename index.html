@@ -402,11 +402,11 @@ video::-webkit-media-controls-download-button{display:none!important}video::-int
 #grid .card .hover-preview{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .3s;pointer-events:none;z-index:2}
 #grid .card.is-previewing .hover-preview{opacity:1}
 #grid .card .thumb .tc,#grid .card .thumb .tag{position:absolute;z-index:3}#grid .card .thumb .tc{top:12px;left:12px}#grid .card .thumb .tag{right:12px;bottom:12px}#grid .card .thumb .play{position:relative;z-index:3;flex-shrink:0}
-.project-cinema-intro{position:fixed;inset:0;z-index:210;display:grid;place-items:center;pointer-events:none;background:#111315;color:#fff;opacity:0;visibility:hidden}
-.project-cinema-intro.is-active{visibility:visible;animation:cinemaCurtain .62s cubic-bezier(.16,1,.3,1) both}
-.project-cinema-intro strong{font:clamp(28px,5vw,72px) 'Space Grotesk',sans-serif;text-align:center;letter-spacing:-.045em;padding:20px}
-.project-cinema-intro small{display:block;text-align:center;font:11px var(--mono);color:var(--teal);letter-spacing:.18em;margin-bottom:15px}
-@keyframes cinemaCurtain{0%{opacity:0}20%,65%{opacity:1}100%{opacity:0}}
+
+
+
+
+
 .case-process{margin-top:22px;border-top:1px solid var(--border);padding-top:18px}
 .case-process h4{font:11px var(--mono);letter-spacing:.13em;color:var(--teal);margin-bottom:12px}
 .case-process-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
@@ -414,8 +414,8 @@ video::-webkit-media-controls-download-button{display:none!important}video::-int
 .case-process-grid span{display:block;color:var(--orange);font:10px var(--mono);margin-bottom:9px}
 .case-process-grid p{font-size:12px;line-height:1.55;color:var(--muted)}
 .kinetic-title .kinetic-word{display:inline-block;will-change:transform}
-@media(max-width:650px){.case-process-grid{grid-template-columns:1fr}.project-cinema-intro strong{font-size:32px}}
-@media(prefers-reduced-motion:reduce){#grid .card .hover-preview{display:none}.project-cinema-intro{display:none}.kinetic-title .kinetic-word{will-change:auto}}
+@media(max-width:650px){.case-process-grid{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){#grid .card .hover-preview{display:none}.kinetic-title .kinetic-word{will-change:auto}}
 
 /* Extra 3D elements: atmospheric scenes in showreel and about */
 #showreel .wrap,#about .wrap{position:relative;isolation:isolate}
@@ -639,7 +639,7 @@ video::-webkit-media-controls-download-button{display:none!important}video::-int
   </div>
 </footer>
 
-<div class="project-cinema-intro" id="project-cinema-intro" aria-hidden="true"><div><small>PROYECTO SELECCIONADO</small><strong id="cinema-project-name"></strong></div></div>
+
 <div class="backdrop" id="backdrop" inert>
   <div class="modal" role="dialog" aria-modal="true" aria-labelledby="mTitle">
     <button class="close" id="close" aria-label="Cerrar">✕</button>
@@ -670,7 +670,7 @@ const projects = [
 
 $('grid').innerHTML = projects.map(p => `
   <button class="card ${p.video ? 'video-card' : 'design-card'}" data-id="${p.id}" aria-label="${p.video ? 'Reproducir' : 'Ver'} ${p.name}">
-    <div class="thumb ${p.g}">${(p.id === 'einstein' || p.id === 'vans' || p.id === 'open-deportes') ? `<video class="project-poster actual-video-poster" data-thumbnail-video="${p.id}" preload="none" muted playsinline disablePictureInPicture tabindex="-1" aria-hidden="true"></video>` : p.poster ? `<img class="project-poster" src="${p.poster}" alt="${p.name}" loading="lazy">` : ''}<span class="tc">${p.video ? 'MOTION / VIDEO' : 'DISEÑO DIGITAL'}</span>${p.video ? '<div class="play"></div>' : '<span class="case-arrow" aria-hidden="true">↗</span>'}<span class="tag">${p.tag}</span></div>
+    <div class="thumb ${p.g}">${(p.id === 'einstein' || p.id === 'vans' || p.id === 'open-deportes') ? `<video class="project-poster actual-video-poster" data-thumbnail-video="${p.id}" preload="metadata" muted playsinline disablePictureInPicture tabindex="-1" aria-hidden="true" poster="${p.poster || ''}"></video>` : p.poster ? `<img class="project-poster" src="${p.poster}" alt="${p.name}" loading="lazy">` : ''}<span class="tc">${p.video ? 'MOTION / VIDEO' : 'DISEÑO DIGITAL'}</span>${p.video ? '<div class="play"></div>' : '<span class="case-arrow" aria-hidden="true">↗</span>'}<span class="tag">${p.tag}</span></div>
     <div class="card-body"><span class="card-kicker">${p.type}</span><h3>${p.name}<span class="card-arrow" aria-hidden="true">↗</span></h3><p>${p.desc}</p><span class="card-action">${p.video ? 'Ver proyecto ↗' : 'Explorar caso ↗'}</span></div>
   </button>`).join('');
 
@@ -774,6 +774,7 @@ function closeModal(){
     video.dataset.thumbLoaded='1';
     video.preload='metadata';
     video.src=project.video+'#t=1';
+    video.addEventListener('loadeddata',()=>{try{video.pause();if(video.currentTime<.2)video.currentTime=1;}catch(_){}},{once:true});
     video.addEventListener('loadedmetadata',()=>{
       if(Number.isFinite(video.duration)&&video.duration>0){
         try{video.currentTime=Math.min(1,video.duration*.2)}catch(_){}
