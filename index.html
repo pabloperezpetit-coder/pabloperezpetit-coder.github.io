@@ -820,14 +820,7 @@ if (window.matchMedia('(hover:hover) and (pointer:fine)').matches && !window.mat
 // Transición cinematográfica breve antes de mostrar una ficha; sin bloquear controles.
 function openProjectWithTransition(project) {
   if (!project) return;
-  const curtain=$('project-cinema-intro');
-  if (window.matchMedia('(prefers-reduced-motion:reduce)').matches || !curtain) {openModal(project);return;}
-  $('cinema-project-name').textContent=project.name;
-  curtain.classList.remove('is-active');
-  void curtain.offsetWidth;
-  curtain.classList.add('is-active');
   openModal(project);
-  window.setTimeout(()=>curtain.classList.remove('is-active'),650);
 }
 $('grid').addEventListener('click', e => {
   const card = e.target.closest('.card');
