@@ -1,0 +1,277 @@
+[
+  {
+    "id": "vans",
+    "name": "Vans — Comercial",
+    "poster": "assets/thumb-vans.jpg",
+    "video": "videos/Vans terminado.mp4",
+    "tag": "Comercial",
+    "tc": "",
+    "g": "g3",
+    "role": "Diseñador Multimedia",
+    "year": "—",
+    "type": "Comercial conceptual (no oficial)",
+    "desc": "Pieza audiovisual conceptual, no encargada por Vans. Exploración de ritmo, montaje e identidad visual aplicada a contenido de producto.",
+    "tags": [
+      "Video",
+      "Edición audiovisual",
+      "Diseño multimedia"
+    ],
+    "categories": [
+      "motion",
+      "editing"
+    ],
+    "client": false,
+    "label": "Ejercicio conceptual"
+  },
+  {
+    "id": "airmax-v1",
+    "name": "Air Max — Animación",
+    "video": "videos/Airmax v1.mp4",
+    "tag": "Motion",
+    "tc": "",
+    "g": "g2",
+    "role": "Diseñador Multimedia",
+    "year": "2026",
+    "type": "Animación de producto conceptual",
+    "desc": "Ejercicio audiovisual de animación de producto inspirado en Air Max. Proyecto conceptual no oficial.",
+    "tags": [
+      "Motion Graphics",
+      "Animación de producto",
+      "Diseño multimedia"
+    ],
+    "categories": [
+      "motion"
+    ],
+    "client": false,
+    "label": "Ejercicio conceptual",
+    "poster": "assets/thumb-airmax-v1.jpg"
+  },
+  {
+    "id": "mojito",
+    "name": "Hardrockexpert — Mojito",
+    "video": "videos/Mojito v3.mp4",
+    "poster": "assets/thumb-mojito.jpg",
+    "tag": "Cliente",
+    "client": true,
+    "categories": [
+      "clients",
+      "editing"
+    ],
+    "label": "Trabajo para cliente",
+    "type": "Contenido publicitario",
+    "desc": "Pieza publicitaria para promocionar el cóctel Mojito en lata de Hardrockexpert Cocktails.",
+    "role": "Edición audiovisual · Diseño visual",
+    "year": "2023",
+    "tags": [
+      "Edición audiovisual",
+      "Diseño visual",
+      "Premiere Pro",
+      "After Effects"
+    ]
+  },
+  {
+    "id": "compromiso",
+    "name": "MasHumanos — Compromiso",
+    "video": "videos/Compromiso comp.mp4",
+    "poster": "assets/thumb-compromiso.jpg",
+    "tag": "Cliente",
+    "client": true,
+    "categories": [
+      "clients",
+      "editing"
+    ],
+    "label": "Trabajo para cliente",
+    "type": "Comunicación interna",
+    "desc": "Edición y diseño visual para comunicación interna de MasHumanos.",
+    "role": "Edición audiovisual · Diseño visual",
+    "year": "2022–2024",
+    "tags": [
+      "Edición audiovisual",
+      "Diseño visual",
+      "Premiere Pro",
+      "After Effects"
+    ]
+  },
+  {
+    "id": "sonora",
+    "name": "AirPods — Motion",
+    "poster": "assets/thumb-sonora.jpg",
+    "video": "videos/airpods.mp4",
+    "tag": "Video",
+    "tc": "00:00:06:20",
+    "g": "g2",
+    "role": "Diseñador Multimedia",
+    "year": "—",
+    "type": "Video conceptual",
+    "desc": "Ejercicio conceptual AirPods. Realizado en After Effects.",
+    "tags": [
+      "Video",
+      "After Effects"
+    ],
+    "categories": [
+      "motion"
+    ],
+    "client": false,
+    "label": "Ejercicio conceptual"
+  },
+  {
+    "id": "open-deportes",
+    "name": "Open Deportes — Animación",
+    "video": "videos/Open Deportes.mp4",
+    "tag": "Motion",
+    "tc": "",
+    "g": "g5",
+    "role": "Diseñador Multimedia",
+    "year": "2026",
+    "type": "Animación deportiva",
+    "desc": "Pieza de apertura deportiva con animación y edición audiovisual.",
+    "tags": [
+      "Motion Graphics",
+      "Animación",
+      "Edición audiovisual"
+    ],
+    "categories": [
+      "motion",
+      "editing"
+    ],
+    "client": false,
+    "label": "Proyecto personal",
+    "poster": "assets/thumb-open-deportes.jpg"
+  },
+  {
+    "id": "reel",
+    "name": "Amazon — Motion",
+    "poster": "assets/thumb-reel.jpg",
+    "video": "videos/amazon-video.mp4",
+    "tag": "Motion",
+    "tc": "00:00:12:04",
+    "g": "g5",
+    "role": "Motion Designer",
+    "year": "2025",
+    "type": "Motion graphics conceptual",
+    "desc": "Ejercicio conceptual de motion graphics realizado en After Effects.",
+    "tags": [
+      "Motion",
+      "After Effects"
+    ],
+    "categories": [
+      "motion"
+    ],
+    "client": false,
+    "label": "Ejercicio conceptual"
+  },
+  {
+    "id": "einstein",
+    "name": "Einstein — Documental",
+    "video": "videos/Documental Einstein final.mp4",
+    "tag": "Documental",
+    "tc": "",
+    "g": "g6",
+    "role": "Diseñador Multimedia",
+    "year": "—",
+    "type": "Documental audiovisual",
+    "desc": "Documental audiovisual sobre Albert Einstein. Proyecto de edición y narrativa documental.",
+    "tags": [
+      "Documental",
+      "Edición audiovisual",
+      "Diseño multimedia"
+    ],
+    "categories": [
+      "editing"
+    ],
+    "client": false,
+    "label": "Proyecto personal",
+    "poster": "assets/thumb-einstein.jpg"
+  },
+  {
+    "id": "briefly",
+    "name": "Nike — Comercial",
+    "poster": "assets/thumb-briefly.jpg",
+    "video": "videos/nike-comercial.mp4",
+    "tag": "Comercial",
+    "tc": "00:00:05:08",
+    "g": "g1",
+    "role": "Diseñador Multimedia",
+    "year": "—",
+    "type": "Comercial conceptual",
+    "desc": "Ejercicio conceptual Nike. Realizado en After Effects.",
+    "tags": [
+      "Comercial",
+      "After Effects"
+    ],
+    "categories": [
+      "motion",
+      "editing"
+    ],
+    "client": false,
+    "label": "Ejercicio conceptual"
+  },
+  {
+    "id": "audiovisual",
+    "name": "Pablo Escobar — Documental",
+    "poster": "assets/thumb-audiovisual.jpg",
+    "video": "videos/pablo-escobar-documental.mp4",
+    "tag": "Documental",
+    "tc": "00:00:20:13",
+    "g": "g6",
+    "role": "Diseñador Multimedia",
+    "year": "—",
+    "type": "Documental",
+    "desc": "Proyecto documental sobre Pablo Escobar. Edición y diseño audiovisual realizados en After Effects.",
+    "tags": [
+      "Documental",
+      "After Effects"
+    ],
+    "categories": [
+      "editing"
+    ],
+    "client": false,
+    "label": "Proyecto personal"
+  },
+  {
+    "id": "passion",
+    "name": "Hardrockexpert — Passion Fruit",
+    "video": "videos/Passion fruit.mp4",
+    "poster": "assets/thumb-passion.jpg",
+    "tag": "Cliente",
+    "client": true,
+    "categories": [
+      "clients",
+      "editing"
+    ],
+    "label": "Trabajo para cliente",
+    "type": "Contenido publicitario",
+    "desc": "Edición y diseño visual de contenido publicitario para Hardrockexpert Cocktails.",
+    "role": "Edición audiovisual · Diseño visual",
+    "year": "2023",
+    "tags": [
+      "Edición audiovisual",
+      "Diseño visual",
+      "Premiere Pro",
+      "After Effects"
+    ]
+  },
+  {
+    "id": "colada",
+    "name": "Hardrockexpert — Piña Colada",
+    "video": "videos/Piña colada .mp4",
+    "poster": "assets/thumb-colada.jpg",
+    "tag": "Cliente",
+    "client": true,
+    "categories": [
+      "clients",
+      "editing"
+    ],
+    "label": "Trabajo para cliente",
+    "type": "Contenido publicitario",
+    "desc": "Pieza audiovisual para promocionar Piña Colada de Hardrockexpert Cocktails.",
+    "role": "Edición audiovisual · Diseño visual",
+    "year": "2023",
+    "tags": [
+      "Edición audiovisual",
+      "Diseño visual",
+      "Premiere Pro",
+      "After Effects"
+    ]
+  }
+]
