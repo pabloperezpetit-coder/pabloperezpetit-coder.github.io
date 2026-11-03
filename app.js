@@ -334,7 +334,6 @@ function renderProjects() {
     return article;
   }));
   $('project-count').textContent = `${list.length} PROYECTO${list.length === 1 ? '' : 'S'}`;
-  $('shown-count').textContent = `${String(visible.length).padStart(2,'0')} / ${String(list.length).padStart(2,'0')}`;
   $('show-more').hidden = list.length <= 6;
   $('show-more').innerHTML = expanded ? 'Mostrar menos <span aria-hidden="true">−</span>' : 'Ver todos los proyectos <span aria-hidden="true">＋</span>';
 }

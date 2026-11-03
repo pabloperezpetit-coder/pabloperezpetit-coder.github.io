@@ -22,3 +22,9 @@ html{scroll-padding-top:90px}.section-width{width:calc(100% - var(--gutter)*2);m
 @media(prefers-reduced-motion:reduce){.campaign-cta:hover{transform:none}.project-button:hover .project-visual>img{transform:none}}
 .project-action{display:flex;align-items:center;gap:25px}.project-action:before{margin:0}
 @media(max-width:760px){.project-action{gap:12px}}
+/* Revisions requested on the published portfolio. */
+.brand-mark{width:40px;height:49px;flex:none;transition:transform .2s ease}.brand:hover .brand-mark{transform:translateY(-2px)}
+.back-to-top{display:grid;place-items:center;width:44px;height:44px;border:1px solid var(--line);font-size:25px;color:var(--purple)!important;transition:background .2s,color .2s}
+.back-to-top:hover{background:var(--purple);color:var(--bg)!important}.footer{padding-block:18px}.footer>a{margin-left:auto}
+@media(max-width:760px){.brand-mark{width:31px;height:39px}.about-section .section-heading h2{font-size:clamp(29px,6vw,38px)}.contact-heading{padding-top:15px}}
+@media(prefers-reduced-motion:reduce){.brand:hover .brand-mark{transform:none}}
