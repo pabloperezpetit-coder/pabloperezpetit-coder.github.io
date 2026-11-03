@@ -305,8 +305,13 @@ function renderProjects() {
     button.dataset.project = p.id;
     button.setAttribute('aria-label', `Ver ${p.name}`);
     // Project data is maintained locally; names and paths never come from visitor input.
-    button.innerHTML = `<div class="project-visual"><div class="thumbnail-fallback" aria-hidden="true"><span>${p.client ? 'CLIENT WORK' : 'MOTION / AUDIOVISUAL'}</span>${p.name.split(' — ')[0]}</div><img src="${mediaPath(p.poster)}" alt="${p.name}" loading="lazy" width="960" height="580"><span class="project-badge">${p.label.toUpperCase()}</span><span class="project-action" aria-hidden="true">↗</span></div><div class="project-meta"><div><h3>${p.name}</h3><p>${p.client ? p.type : p.tag === 'Documental' ? 'Documental · Edición audiovisual' : 'Motion graphics · Edición'}</p></div><span>${String(i+1).padStart(2,'0')}</span></div>`;
-    button.querySelector('img').addEventListener('error', e => { e.currentTarget.hidden = true; });
+    button.innerHTML = `<div class="project-visual"><div class="thumbnail-fallback" aria-hidden="true"><span>${p.client ? 'CLIENT WORK' : 'MOTION / AUDIOVISUAL'}</span>${p.name.split(' — ')[0]}</div><img class="project-thumbnail" src="${mediaPath(p.poster)}" alt="${p.name}" loading="eager" decoding="async" width="960" height="580"><span class="project-badge">${p.label.toUpperCase()}</span><span class="project-action" aria-hidden="true">↗</span></div><div class="project-meta"><div><h3>${p.name}</h3><p>${p.client ? p.type : p.tag === 'Documental' ? 'Documental · Edición audiovisual' : 'Motion graphics · Edición'}</p></div><span>${String(i+1).padStart(2,'0')}</span></div>`;
+    const thumbnail = button.querySelector('.project-thumbnail');
+    const fallback = button.querySelector('.thumbnail-fallback');
+    const showThumbnail = () => { if (thumbnail.naturalWidth > 0) fallback.hidden = true; };
+    thumbnail.addEventListener('load', showThumbnail);
+    thumbnail.addEventListener('error', () => { thumbnail.hidden = true; fallback.hidden = false; });
+    if (thumbnail.complete) showThumbnail();
     if (finePointer.matches && !reducedMotion.matches && !saveData) {
       let hoverTimer = null;
       const visual = button.querySelector('.project-visual');
