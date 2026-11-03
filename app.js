@@ -95,7 +95,7 @@ const projects = [
   },
   {
     "id": "sonora",
-    "name": "AirPods — Motion",
+    "name": "AirPods",
     "poster": "assets/thumb-sonora.jpg",
     "video": "videos/airpods.mp4",
     "tag": "Video",
@@ -150,7 +150,7 @@ const projects = [
     "role": "Motion Designer",
     "year": "2025",
     "type": "Motion graphics conceptual",
-    "desc": "Ejercicio conceptual de motion graphics realizado en After Effects.",
+    "desc": "Ejercicio conceptual de motion graphics realizada en After Effects.",
     "tags": [
       "Motion",
       "After Effects"
@@ -218,7 +218,7 @@ const projects = [
     "role": "Diseñador Multimedia",
     "year": "—",
     "type": "Documental",
-    "desc": "Proyecto documental sobre Pablo Escobar. Edición y diseño audiovisual realizados en After Effects.",
+    "desc": "Pablo Escobar Documental. Realizado en After Effects.",
     "tags": [
       "Documental",
       "After Effects"
