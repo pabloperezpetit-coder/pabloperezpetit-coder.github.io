@@ -276,6 +276,9 @@ const projects = [
     ]
   }
 ];
+// Curated order: product motion, concept films and commissioned work.
+const editorialOrder = ['airmax-v1','vans','mojito','compromiso','sonora','open-deportes','reel','einstein','briefly','audiovisual','passion','colada'];
+projects.sort((a,b) => editorialOrder.indexOf(a.id)-editorialOrder.indexOf(b.id));
 const $ = (id) => document.getElementById(id);
 const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
 const finePointer = matchMedia('(hover: hover) and (pointer: fine)');
@@ -324,6 +327,10 @@ function renderProjects() {
       });
     }
     article.append(button);
+    const notes = document.createElement('details');
+    notes.className = 'project-notes';
+    notes.innerHTML = `<summary><span>Sobre este proyecto</span><span class="detail-icon" aria-hidden="true">＋</span></summary><div class="project-note-content"><p>${p.desc}</p><dl><div><dt>MI ROL</dt><dd>${p.role}</dd></div><div><dt>DISCIPLINAS</dt><dd>${p.tags.join(' · ')}</dd></div></dl><button data-project="${p.id}" class="note-watch">Ver película <span aria-hidden="true">↗</span></button></div>`;
+    article.append(notes);
     return article;
   }));
   $('project-count').textContent = `${list.length} PROYECTO${list.length === 1 ? '' : 'S'}`;
@@ -428,3 +435,22 @@ document.addEventListener('visibilitychange',()=>{
 reducedMotion.addEventListener('change',()=>{if(reducedMotion.matches){pauseHero();stopCardVideos();}});
 renderProjects();
 if (!reducedMotion.matches && !saveData) playHero();
+
+// The film controls follow the selected preview without forcing a slideshow.
+function updateFilmProgress() {
+ const duration = heroVideo.duration;
+ const current = heroVideo.currentTime || 0;
+ const format = n => `${String(Math.floor(n/60)).padStart(2,'0')}:${String(Math.floor(n%60)).padStart(2,'0')}`;
+ $('film-progress-fill').style.width = `${Number.isFinite(duration)&&duration>0?current/duration*100:0}%`;
+ $('hero-time').textContent = `${format(current)} / ${Number.isFinite(duration)?format(duration):'00:00'}`;
+}
+heroVideo.addEventListener('timeupdate',updateFilmProgress);
+heroVideo.addEventListener('loadedmetadata',updateFilmProgress);
+heroVideo.addEventListener('emptied',updateFilmProgress);
+const heroChoices = [...document.querySelectorAll('[data-hero]')];
+heroChoices.forEach((button,index) => button.addEventListener('keydown',event=>{
+ if(!['ArrowLeft','ArrowRight','Home','End'].includes(event.key))return;
+ event.preventDefault();
+ const next = event.key==='Home'?0:event.key==='End'?heroChoices.length-1:(index+(event.key==='ArrowRight'?1:-1)+heroChoices.length)%heroChoices.length;
+ heroChoices[next].focus(); heroChoices[next].click();
+}));
