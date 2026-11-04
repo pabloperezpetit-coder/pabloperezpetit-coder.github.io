@@ -195,13 +195,12 @@ html{scroll-padding-top:90px}.section-width{width:calc(100% - var(--gutter)*2);m
   }
 }
 
-/* The six faces form a small dimensional brand mark over the hero film. */
-.hero-object {
-  --cube-size: clamp(88px, 11vw, 146px);
+/* The six faces form a dimensional brand mark beside the services list. */
+.services-object {
+  --cube-size: clamp(80px, 8vw, 116px);
   --cube-half: calc(var(--cube-size) / 2);
-  position: absolute;
-  top: clamp(56px, 11vh, 125px);
-  right: clamp(44px, 12vw, 190px);
+  position: relative;
+  margin-top: 12px;
   display: grid;
   place-items: center;
   width: calc(var(--cube-size) * 1.55);
@@ -209,7 +208,7 @@ html{scroll-padding-top:90px}.section-width{width:calc(100% - var(--gutter)*2);m
   perspective: 720px;
 }
 
-.hero-object::before {
+.services-object::before {
   position: absolute;
   inset: 7% -15% -12%;
   background: radial-gradient(ellipse at center, #a78bfa40, #a78bfa00 66%);
@@ -263,15 +262,26 @@ html{scroll-padding-top:90px}.section-width{width:calc(100% - var(--gutter)*2);m
     transition: transform .65s cubic-bezier(.22, .8, .25, 1);
   }
 
-  .hero-object:hover .monogram-cube {
+  .services-object:hover .monogram-cube {
     transform: translateY(-7px) rotateX(-34deg) rotateY(-51deg) rotateZ(3deg);
   }
 }
 
 @media (max-width: 760px) {
-  .hero-object {
-    --cube-size: clamp(62px, 17vw, 94px);
-    top: 38px;
-    right: 22px;
+  .services-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+  }
+
+  .services-title p,
+  .services-object {
+    margin-top: 0;
+  }
+
+  .services-object {
+    --cube-size: 60px;
+    flex: none;
   }
 }
