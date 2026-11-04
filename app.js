@@ -456,8 +456,7 @@ $('copy-email').addEventListener('click', async () => {
   try { await navigator.clipboard.writeText('pablo.perezpetit@gmail.com'); $('copy-status').textContent='Mail copiado. ¡Hablemos!'; }
   catch { $('copy-status').textContent='Podés escribir a pablo.perezpetit@gmail.com o tocar el enlace.'; }
 });
-function updateClock() { $('local-time').textContent = new Intl.DateTimeFormat('es-AR',{timeZone:'America/Argentina/Buenos_Aires',hour:'2-digit',minute:'2-digit',hour12:false}).format(new Date()); }
-updateClock(); setInterval(updateClock,60000); $('year').textContent = new Date().getFullYear();
+$('year').textContent = new Date().getFullYear();
 let scrollTick = false;
 window.addEventListener('scroll', () => { if(scrollTick)return; scrollTick=true;requestAnimationFrame(()=>{const d=document.documentElement;const max=d.scrollHeight-d.clientHeight;document.querySelector('.reading-progress').style.width=`${max>0?d.scrollTop/max*100:0}%`;scrollTick=false;}); },{passive:true});
 new IntersectionObserver(entries => { entries.forEach(e => { if(e.isIntersecting) document.querySelectorAll('nav a').forEach(a => a.classList.toggle('current',a.hash===`#${e.target.id}`)); }); }, {rootMargin:'-20% 0px -50% 0px'}).observe($('proyectos'));
