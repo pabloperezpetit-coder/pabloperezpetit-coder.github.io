@@ -288,7 +288,9 @@ const grid = $('project-grid');
 const dialog = $('project-dialog');
 const player = $('project-player');
 const heroVideo = $('hero-video');
-let filter = 'all', expanded = false, activeId = 'vans', dialogId = null, previousFocus = null;
+const heroChoices = [...document.querySelectorAll('[data-hero]')];
+let activeId = heroChoices.find(button => button.classList.contains('selected')).dataset.hero;
+let filter = 'all', expanded = false, dialogId = null, previousFocus = null;
 let heroPlaying = false, heroShouldResume = false;
 const filtered = () => projects.filter(p => filter === 'all' || p.categories.includes(filter));
 const stopCardVideos = () => grid.querySelectorAll('.hover-preview').forEach(v => { v.pause(); v.removeAttribute('src'); v.load(); v.remove(); });
@@ -367,18 +369,53 @@ function selectHero(id) {
   activeId = id; pauseHero();
   heroVideo.src = mediaPath(p.video); heroVideo.poster = mediaPath(p.poster);
   heroVideo.setAttribute('aria-label',`Vista previa del proyecto ${p.name}`);
-  const choices = ['vans','sonora','reel'];
-  $('hero-number').textContent = `0${choices.indexOf(id)+1} / 03`;
+  const position = heroChoices.findIndex(button => button.dataset.hero === id) + 1;
+  $('hero-number').textContent = `${String(position).padStart(2, '0')} / ${String(heroChoices.length).padStart(2, '0')}`;
   $('hero-title').textContent = p.name.split(' — ')[0];
   $('hero-kind').textContent = p.type.replace(' (no oficial)','');
   $('hero-open').setAttribute('aria-label',`Ver proyecto ${p.name} con sonido`);
-  document.querySelectorAll('[data-hero]').forEach(b => { const selected = b.dataset.hero === id; b.classList.toggle('selected',selected); b.setAttribute('aria-pressed',String(selected)); });
+  heroChoices.forEach(b => { const selected = b.dataset.hero === id; b.classList.toggle('selected',selected); b.setAttribute('aria-pressed',String(selected)); });
   if (resume && !reducedMotion.matches) playHero();
 }
-document.querySelectorAll('[data-hero]').forEach(b => b.addEventListener('click', () => selectHero(b.dataset.hero)));
+heroChoices.forEach(b => b.addEventListener('click', () => selectHero(b.dataset.hero)));
 $('preview-toggle').addEventListener('click', () => heroPlaying ? pauseHero() : playHero());
 heroVideo.addEventListener('pause', () => setHeroState(false));
 heroVideo.addEventListener('play', () => setHeroState(true));
+
+const heroMute = $('hero-mute');
+const heroVolume = $('hero-volume');
+let lastAudibleVolume = 0.5;
+heroVideo.volume = lastAudibleVolume;
+// Some mobile browsers reserve media volume for the device controls.
+const supportsHeroVolume = heroVideo.volume === lastAudibleVolume;
+heroVolume.hidden = !supportsHeroVolume;
+
+function syncHeroAudio() {
+  const silent = heroVideo.muted || heroVideo.volume === 0;
+  const percent = silent ? 0 : Math.round(heroVideo.volume * 100);
+  heroMute.textContent = silent ? 'Activar sonido' : 'Silenciar';
+  heroVolume.value = String(percent);
+  heroVolume.setAttribute('aria-valuetext', `${percent}%`);
+}
+
+heroVolume.addEventListener('input', () => {
+  const volume = Number(heroVolume.value) / 100;
+  if (volume > 0) lastAudibleVolume = volume;
+  heroVideo.volume = volume;
+  heroVideo.muted = volume === 0;
+  syncHeroAudio();
+});
+
+heroMute.addEventListener('click', () => {
+  const silent = heroVideo.muted || heroVideo.volume === 0;
+  if (silent && supportsHeroVolume) heroVideo.volume = lastAudibleVolume;
+  heroVideo.muted = !silent;
+  syncHeroAudio();
+});
+
+heroVideo.addEventListener('volumechange', syncHeroAudio);
+syncHeroAudio();
+
 function openProject(id) {
   const p = projects.find(p => p.id === id); if (!p) return;
   if (!dialog.open) { previousFocus = document.activeElement; heroShouldResume = heroPlaying; pauseHero(); dialog.showModal(); document.body.classList.add('modal-open'); }
@@ -451,7 +488,6 @@ function updateFilmProgress() {
 heroVideo.addEventListener('timeupdate',updateFilmProgress);
 heroVideo.addEventListener('loadedmetadata',updateFilmProgress);
 heroVideo.addEventListener('emptied',updateFilmProgress);
-const heroChoices = [...document.querySelectorAll('[data-hero]')];
 heroChoices.forEach((button,index) => button.addEventListener('keydown',event=>{
  if(!['ArrowLeft','ArrowRight','Home','End'].includes(event.key))return;
  event.preventDefault();

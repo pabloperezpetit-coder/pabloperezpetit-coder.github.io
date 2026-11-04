@@ -12,7 +12,7 @@
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;450;500;550;600;650;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=20261103-miniaturas"><link rel="stylesheet" href="editorial.css?v=20261104-relieve"><script src="app.js?v=20261104-relieve" defer></script>
+<link rel="stylesheet" href="styles.css?v=20261103-miniaturas"><link rel="stylesheet" href="editorial.css?v=20261104-airmax"><script src="app.js?v=20261104-airmax" defer></script>
 </head>
 <body>
 <a class="skip" href="#main">Saltar al contenido</a><div class="reading-progress" aria-hidden="true"></div>
@@ -23,12 +23,32 @@
 </header>
 <main id="main">
 <section id="inicio" class="cinematic-hero" aria-label="Proyectos destacados">
-<div class="cinematic-media"><video id="hero-video" src="videos/Vans%20terminado.mp4" poster="assets/thumb-vans.jpg" muted loop playsinline preload="metadata" aria-label="Vista previa del proyecto Vans"></video></div>
+<div class="cinematic-media"><video id="hero-video" src="videos/Airmax%20v1.mp4" poster="assets/thumb-airmax-v1.jpg" muted loop playsinline preload="metadata" aria-label="Vista previa del proyecto Air Max — Animación"></video></div>
 <div class="cinematic-top"><span><i class="status-dot"></i> PABLO PEREZ PETIT / DISEÑADOR MULTIMEDIA</span><span>BUENOS AIRES <time id="local-time"></time></span></div>
-<div class="cinematic-content"><h1>Diseñador<br><em>Multimedia</em></h1><p>DISEÑO MULTIMEDIA · MOTION GRAPHICS · EDICIÓN DE VIDEO</p><button class="campaign-cta" id="hero-open" aria-label="Ver proyecto Vans con sonido">Ver proyecto <span class="cta-play" aria-hidden="true">▶</span></button></div>
-<div class="cinematic-controls"><div class="featured-caption"><span class="small-label" id="hero-number">01 / 03</span><h2 id="hero-title">Vans</h2><p id="hero-kind">Comercial conceptual</p><span class="featured-disclaimer">EJERCICIO INDEPENDIENTE · NO OFICIAL</span></div><div class="hero-selector" role="group" aria-label="Seleccionar vista previa"><button data-hero="vans" class="selected" aria-pressed="true"><img src="assets/thumb-vans.jpg" alt="" width="112" height="64"><span><small>01</small>Vans</span></button><button data-hero="sonora" aria-pressed="false"><img src="assets/thumb-sonora.jpg" alt="" width="112" height="64"><span><small>02</small>AirPods</span></button><button data-hero="reel" aria-pressed="false"><img src="assets/thumb-reel.jpg" alt="" width="112" height="64"><span><small>03</small>Amazon</span></button></div><div class="playback-controls"><button class="preview-toggle" id="preview-toggle" aria-label="Reproducir vista previa" aria-pressed="false">Reproducir <span aria-hidden="true">▶</span></button><span id="hero-time">00:00 / 00:00</span></div></div><div class="film-progress" aria-hidden="true"><span id="film-progress-fill"></span></div>
+<div class="cinematic-content"><h1>Diseñador<br><em>Multimedia</em></h1><p>DISEÑO MULTIMEDIA · MOTION GRAPHICS · EDICIÓN DE VIDEO</p><button class="campaign-cta" id="hero-open" aria-label="Ver proyecto Air Max — Animación con sonido">Ver proyecto <span class="cta-play" aria-hidden="true">▶</span></button></div>
+<div class="cinematic-controls">
+  <div class="featured-caption">
+    <span class="small-label" id="hero-number">01 / 04</span>
+    <h2 id="hero-title">Air Max</h2>
+    <p id="hero-kind">Animación de producto conceptual</p>
+    <span class="featured-disclaimer">EJERCICIO INDEPENDIENTE · NO OFICIAL</span>
+  </div>
+  <div class="hero-selector" role="group" aria-label="Seleccionar vista previa">
+    <button data-hero="airmax-v1" class="selected" aria-pressed="true"><img src="assets/thumb-airmax-v1.jpg" alt="" width="112" height="64"><span><small>01</small>Air Max</span></button>
+    <button data-hero="vans" aria-pressed="false"><img src="assets/thumb-vans.jpg" alt="" width="112" height="64"><span><small>02</small>Vans</span></button>
+    <button data-hero="sonora" aria-pressed="false"><img src="assets/thumb-sonora.jpg" alt="" width="112" height="64"><span><small>03</small>AirPods</span></button>
+    <button data-hero="reel" aria-pressed="false"><img src="assets/thumb-reel.jpg" alt="" width="112" height="64"><span><small>04</small>Amazon</span></button>
+  </div>
+  <div class="playback-controls">
+    <button class="preview-toggle" id="preview-toggle" aria-label="Reproducir vista previa" aria-pressed="false">Reproducir <span aria-hidden="true">▶</span></button>
+    <div class="hero-audio" role="group" aria-label="Sonido de la vista previa">
+      <button type="button" id="hero-mute">Activar sonido</button>
+      <input type="range" id="hero-volume" min="0" max="100" value="0" aria-label="Volumen de la vista previa" aria-valuetext="0%">
+    </div>
+    <span id="hero-time">00:00 / 00:00</span>
+  </div>
+</div><div class="film-progress" aria-hidden="true"><span id="film-progress-fill"></span></div>
 </section>
-<section class="editorial-intro section-width" aria-label="Presentación"><div class="intro-index"><a href="#proyectos" class="intro-down" aria-label="Explorar trabajos">↓</a></div><div><h2>Diseñador<br><em>Multimedia</em></h2><div class="intro-bottom"><p>Soy Pablo Perez Petit. Me especializo en <strong>motion graphics y edición audiovisual</strong>. Trabajé creando contenido para Tecnoimagen, MasHumanos y Hardrockexpert Cocktails.</p><a href="#sobre-mi" class="text-link">Conocé mi recorrido <span aria-hidden="true">↗</span></a></div></div></section>
 <section class="work-section section-width" id="proyectos">
 <div class="section-heading"><div><span class="small-label"><span class="section-index">01 /</span> PORTFOLIO</span><h2>Trabajos seleccionados</h2></div></div>
 <div class="work-toolbar"><div class="filters" role="group" aria-label="Filtrar proyectos"><button data-filter="all" aria-pressed="true" class="active">Todos <span>12</span></button><button data-filter="clients" aria-pressed="false">Para clientes</button><button data-filter="motion" aria-pressed="false">Motion</button><button data-filter="editing" aria-pressed="false">Edición</button></div><span id="project-count" class="small-label" role="status" aria-live="polite">12 PROYECTOS</span></div>
