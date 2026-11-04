@@ -38,3 +38,25 @@ html{scroll-padding-top:90px}.section-width{width:calc(100% - var(--gutter)*2);m
 .project-visual>.hover-preview{z-index:2}
 .project-visual:after{z-index:3}
 .project-visual>.project-badge,.project-visual>.project-action{z-index:4}
+
+.software-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 16px;
+  padding: 0;
+  margin: 12px 0 0;
+  list-style: none;
+}
+
+.software-list li {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 11px;
+}
+
+.software-list img {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+}
