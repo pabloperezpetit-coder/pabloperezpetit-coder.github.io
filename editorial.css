@@ -60,3 +60,103 @@ html{scroll-padding-top:90px}.section-width{width:calc(100% - var(--gutter)*2);m
   height: 24px;
   object-fit: contain;
 }
+
+/* Soft surface depth keeps the gallery and portrait distinct from the page. */
+.cinematic-content h1 {
+  text-shadow: 0 2px 4px #08091380, 0 12px 36px #080913b0;
+}
+
+.cinematic-controls {
+  border-top-color: #dcd2ff55;
+  box-shadow: 0 -14px 40px -34px #a78bfa80;
+}
+
+.about-section {
+  background: radial-gradient(ellipse at 20% 26%, #a78bfa14, transparent 58%), var(--alt);
+}
+
+.contact-section {
+  background: radial-gradient(ellipse at 78% 24%, #a78bfa12, transparent 58%), var(--bg);
+}
+
+.project-visual,
+.portrait img {
+  box-shadow: 0 0 0 1px #c9b5ff24, 0 16px 36px -18px #05060dbf;
+}
+
+.project-visual::before {
+  position: absolute;
+  z-index: 5;
+  inset: 0;
+  pointer-events: none;
+  content: "";
+  opacity: 0;
+  background: radial-gradient(ellipse at var(--depth-light-x, 50%) var(--depth-light-y, 50%), #e2d8ff25, transparent 55%);
+}
+
+.hero-selector button.selected img,
+.hero-selector button:focus-visible img {
+  box-shadow: 0 0 16px -4px #a78bfa80;
+}
+
+.software-list li {
+  padding: 4px 7px;
+  border: 1px solid #c9b5ff20;
+  border-radius: 5px;
+  background: #10121d66;
+}
+
+.experience-list summary,
+.service-list summary,
+.project-notes summary {
+  border-radius: 4px;
+}
+
+.experience-list summary:is(:hover, :focus-visible),
+.service-list summary:is(:hover, :focus-visible),
+.project-notes summary:is(:hover, :focus-visible) {
+  background: linear-gradient(90deg, #a78bfa13, transparent);
+}
+
+.software-list li:hover {
+  border-color: #a78bfa66;
+}
+
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .project-visual,
+  .portrait img {
+    transition: transform .24s ease-out, box-shadow .24s ease-out;
+  }
+
+  .project-visual::before {
+    transition: opacity .24s ease-out;
+  }
+
+  .project-button:hover .project-visual,
+  .portrait:hover img {
+    transform: perspective(1100px) translateY(-4px) rotateX(var(--depth-tilt-x, 0deg)) rotateY(var(--depth-tilt-y, 0deg));
+    box-shadow: 0 0 0 1px #c9b5ff55, 0 26px 50px -20px #05060de0;
+  }
+
+  .project-button:hover .project-visual::before {
+    opacity: 1;
+  }
+
+  .project-button:focus-visible .project-visual {
+    box-shadow: 0 0 0 1px #a78bfa80, 0 22px 42px -18px #05060de0;
+  }
+
+  .hero-selector button img,
+  .software-list li,
+  .header-cv,
+  .social-links a {
+    transition: transform .2s ease-out, box-shadow .2s ease-out, border-color .2s ease-out, opacity .2s ease-out;
+  }
+
+  .hero-selector button:hover img,
+  .software-list li:hover,
+  .header-cv:hover,
+  .social-links a:hover {
+    transform: translateY(-3px);
+  }
+}

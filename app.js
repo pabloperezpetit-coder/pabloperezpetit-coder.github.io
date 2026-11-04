@@ -458,3 +458,30 @@ heroChoices.forEach((button,index) => button.addEventListener('keydown',event=>{
  const next = event.key==='Home'?0:event.key==='End'?heroChoices.length-1:(index+(event.key==='ArrowRight'?1:-1)+heroChoices.length)%heroChoices.length;
  heroChoices[next].focus(); heroChoices[next].click();
 }));
+
+// Use the stationary card or figure to measure pointer position while its image tilts.
+const depthSurfaces = '.project-button, .portrait';
+
+document.addEventListener('pointermove', event => {
+  if (!finePointer.matches || reducedMotion.matches || event.pointerType !== 'mouse') return;
+
+  const surface = event.target.closest(depthSurfaces);
+  if (!surface) return;
+
+  const bounds = surface.getBoundingClientRect();
+  const x = Math.max(0, Math.min(1, (event.clientX - bounds.left) / bounds.width));
+  const y = Math.max(0, Math.min(1, (event.clientY - bounds.top) / bounds.height));
+  surface.style.setProperty('--depth-tilt-x', `${(0.5 - y) * 10}deg`);
+  surface.style.setProperty('--depth-tilt-y', `${(x - 0.5) * 10}deg`);
+  surface.style.setProperty('--depth-light-x', `${x * 100}%`);
+  surface.style.setProperty('--depth-light-y', `${y * 100}%`);
+}, { passive: true });
+
+document.addEventListener('pointerout', event => {
+  const surface = event.target.closest(depthSurfaces);
+  if (!surface || surface.contains(event.relatedTarget)) return;
+
+  for (const property of ['--depth-tilt-x', '--depth-tilt-y', '--depth-light-x', '--depth-light-y']) {
+    surface.style.removeProperty(property);
+  }
+});
