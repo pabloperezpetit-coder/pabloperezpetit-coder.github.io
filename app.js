@@ -294,14 +294,29 @@ let filter = 'all', expanded = false, dialogId = null, previousFocus = null;
 let heroPlaying = false, heroShouldResume = false;
 const filtered = () => projects.filter(p => filter === 'all' || p.categories.includes(filter));
 const stopCardVideos = () => grid.querySelectorAll('.hover-preview').forEach(v => { v.pause(); v.removeAttribute('src'); v.load(); v.remove(); });
-function renderProjects() {
+const revealedProjects = new Set();
+const projectObserver = new IntersectionObserver(entries => {
+  for (const entry of entries) {
+    if (!entry.isIntersecting || !entry.target.isConnected) continue;
+    const card = entry.target;
+    projectObserver.unobserve(card);
+    revealedProjects.add(card.dataset.projectId);
+    card.dataset.reveal = card.dataset.reveal === 'filter-pending' ? 'filter' : 'scroll';
+  }
+}, { threshold: 0.08 });
+
+function renderProjects({ fromFilter = false } = {}) {
+  grid.querySelectorAll('[data-reveal]').forEach(card => projectObserver.unobserve(card));
   stopCardVideos();
   const list = filtered();
   const visible = expanded ? list : list.slice(0, 6);
   grid.replaceChildren(...visible.map((p, i) => {
     const article = document.createElement('article');
     article.className = 'project-card';
-    article.style.animationDelay = `${Math.min(i, 5) * 35}ms`;
+    article.dataset.projectId = p.id;
+    if (fromFilter || !revealedProjects.has(p.id)) {
+      article.dataset.reveal = fromFilter ? 'filter-pending' : 'pending';
+    }
     const button = document.createElement('button');
     button.className = 'project-button';
     button.dataset.project = p.id;
@@ -337,17 +352,29 @@ function renderProjects() {
     const notes = document.createElement('details');
     notes.className = 'project-notes';
     notes.innerHTML = `<summary><span>Sobre este proyecto</span><span class="detail-icon" aria-hidden="true">＋</span></summary><div class="project-note-content"><p>${p.desc}</p><dl><div><dt>MI ROL</dt><dd>${p.role}</dd></div><div><dt>DISCIPLINAS</dt><dd>${p.tags.join(' · ')}</dd></div></dl><button data-project="${p.id}" class="note-watch">Ver <span aria-hidden="true">↗</span></button></div>`;
+    const noteContent = notes.querySelector('.project-note-content');
+    notes.addEventListener('toggle', () => {
+      if (notes.open && !reducedMotion.matches) {
+        noteContent.style.setProperty('--note-height', `${noteContent.scrollHeight}px`);
+        noteContent.classList.add('note-enter');
+      } else {
+        noteContent.classList.remove('note-enter');
+      }
+    });
+    noteContent.addEventListener('animationend', () => noteContent.classList.remove('note-enter'));
     article.append(notes);
     return article;
   }));
+  grid.querySelectorAll('[data-reveal]').forEach(card => projectObserver.observe(card));
   $('project-count').textContent = `${list.length} PROYECTO${list.length === 1 ? '' : 'S'}`;
   $('show-more').hidden = list.length <= 6;
   $('show-more').innerHTML = expanded ? 'Mostrar menos <span aria-hidden="true">−</span>' : 'Ver todos los proyectos <span aria-hidden="true">＋</span>';
 }
 document.querySelectorAll('[data-filter]').forEach(b => b.addEventListener('click', () => {
+  if (filter === b.dataset.filter && !expanded) return;
   filter = b.dataset.filter; expanded = false;
   document.querySelectorAll('[data-filter]').forEach(x => { const active = x === b; x.classList.toggle('active',active); x.setAttribute('aria-pressed',String(active)); });
-  renderProjects();
+  renderProjects({ fromFilter: true });
 }));
 $('show-more').addEventListener('click', () => {
   expanded = !expanded; renderProjects();
