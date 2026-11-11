@@ -310,7 +310,7 @@ function renderProjects({ fromFilter = false } = {}) {
   stopCardVideos();
   const list = filtered();
   const visible = expanded ? list : list.slice(0, 6);
-  grid.replaceChildren(...visible.map((p, i) => {
+  grid.replaceChildren(...visible.map(p => {
     const article = document.createElement('article');
     article.className = 'project-card';
     article.dataset.projectId = p.id;
@@ -322,7 +322,7 @@ function renderProjects({ fromFilter = false } = {}) {
     button.dataset.project = p.id;
     button.setAttribute('aria-label', `Ver ${p.name}`);
     // Project data is maintained locally; names and paths never come from visitor input.
-    button.innerHTML = `<div class="project-visual"><div class="thumbnail-fallback" aria-hidden="true"><span>${p.client ? 'CLIENT WORK' : 'MOTION / AUDIOVISUAL'}</span>${p.name.split(' — ')[0]}</div><img class="project-thumbnail" src="${mediaPath(p.poster)}" alt="${p.name}" loading="eager" decoding="async" width="960" height="580"><span class="project-badge">${p.label.toUpperCase()}</span><span class="project-action" aria-hidden="true">↗</span></div><div class="project-meta"><div><h3>${p.name}</h3><p>${p.client ? p.type : p.tag === 'Documental' ? 'Documental · Edición audiovisual' : 'Motion graphics · Edición'}</p></div><span>${String(i+1).padStart(2,'0')}</span></div>`;
+    button.innerHTML = `<div class="project-visual"><div class="thumbnail-fallback" aria-hidden="true"><span>${p.client ? 'CLIENT WORK' : 'MOTION / AUDIOVISUAL'}</span>${p.name.split(' — ')[0]}</div><img class="project-thumbnail" src="${mediaPath(p.poster)}" alt="${p.name}" loading="eager" decoding="async" width="960" height="580"><span class="project-badge">${p.label.toUpperCase()}</span><span class="project-action" aria-hidden="true">↗</span></div><div class="project-meta"><div><h3>${p.name}</h3><p>${p.client ? p.type : p.tag === 'Documental' ? 'Documental · Edición audiovisual' : 'Motion graphics · Edición'}</p></div></div>`;
     const thumbnail = button.querySelector('.project-thumbnail');
     const fallback = button.querySelector('.thumbnail-fallback');
     const showThumbnail = () => { if (thumbnail.naturalWidth > 0) fallback.hidden = true; };
