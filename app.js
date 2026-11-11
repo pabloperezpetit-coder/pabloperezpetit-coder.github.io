@@ -363,8 +363,94 @@ async function playHero() {
   try { await heroVideo.play(); setHeroState(true); } catch { setHeroState(false); }
 }
 function pauseHero() { heroVideo.pause(); setHeroState(false); }
+let heroWipe;
+function createHeroWipe() {
+  const canvas = document.createElement('canvas');
+  const gl = canvas.getContext('webgl', { antialias: false, powerPreference: 'low-power' });
+  if (!gl) return;
+
+  const program = gl.createProgram();
+  for (const [type, source] of [
+    [gl.VERTEX_SHADER, `
+      attribute vec2 position;
+      varying vec2 uv;
+      void main() {
+        uv = position * 0.5 + 0.5;
+        gl_Position = vec4(position, 0.0, 1.0);
+      }
+    `],
+    [gl.FRAGMENT_SHADER, `
+      precision mediump float;
+      varying vec2 uv;
+      uniform float progress;
+      void main() {
+        float center = mix(-0.35, 1.35, progress);
+        float wave = sin(uv.y * 7.0 + progress * 4.0) * 0.035;
+        float distanceToEdge = abs(uv.x + (uv.y - 0.5) * 0.24 + wave - center);
+        float glow = 1.0 - smoothstep(0.015, 0.19, distanceToEdge);
+        float edge = 1.0 - smoothstep(0.0, 0.022, distanceToEdge);
+        float alpha = glow * 0.48 + edge * 0.15;
+        vec3 color = mix(vec3(0.32, 0.25, 0.70), vec3(0.72, 0.64, 0.96), edge);
+        gl_FragColor = vec4(color * alpha, alpha);
+      }
+    `]
+  ]) {
+    const shader = gl.createShader(type);
+    gl.shaderSource(shader, source);
+    gl.compileShader(shader);
+    gl.attachShader(program, shader);
+    gl.deleteShader(shader);
+  }
+  gl.linkProgram(program);
+  if (!gl.getProgramParameter(program, gl.LINK_STATUS)) return;
+
+  gl.useProgram(program);
+  const progress = gl.getUniformLocation(program, 'progress');
+  const position = gl.getAttribLocation(program, 'position');
+  gl.bindBuffer(gl.ARRAY_BUFFER, gl.createBuffer());
+  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, -1, 3, -1, -1, 3]), gl.STATIC_DRAW);
+  gl.enableVertexAttribArray(position);
+  gl.vertexAttribPointer(position, 2, gl.FLOAT, false, 0, 0);
+
+  canvas.setAttribute('aria-hidden', 'true');
+  Object.assign(canvas.style, {
+    position: 'absolute', inset: '0', width: '100%', height: '100%', pointerEvents: 'none'
+  });
+  canvas.hidden = true;
+  heroVideo.after(canvas);
+  let frame;
+  return () => {
+    cancelAnimationFrame(frame);
+    if (gl.isContextLost()) {
+      canvas.hidden = true;
+      return;
+    }
+    canvas.width = Math.max(1, Math.round(heroVideo.clientWidth / 2));
+    canvas.height = Math.max(1, Math.round(heroVideo.clientHeight / 2));
+    gl.viewport(0, 0, canvas.width, canvas.height);
+    const start = performance.now();
+    function draw(now) {
+      const elapsed = (now - start) / 380;
+      if (elapsed >= 1 || reducedMotion.matches || gl.isContextLost()) {
+        canvas.hidden = true;
+        return;
+      }
+      gl.uniform1f(progress, elapsed);
+      gl.drawArrays(gl.TRIANGLES, 0, 3);
+      canvas.hidden = false;
+      frame = requestAnimationFrame(draw);
+    }
+    canvas.hidden = true;
+    frame = requestAnimationFrame(draw);
+  };
+}
+
 function selectHero(id) {
   const p = projects.find(p => p.id === id); if (!p) return;
+  if (id !== activeId && !reducedMotion.matches && !saveData) {
+    heroWipe ??= createHeroWipe() || (() => {});
+    heroWipe();
+  }
   const resume = heroPlaying;
   activeId = id; pauseHero();
   heroVideo.src = mediaPath(p.video); heroVideo.poster = mediaPath(p.poster);
