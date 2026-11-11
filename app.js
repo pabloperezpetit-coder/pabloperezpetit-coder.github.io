@@ -370,10 +370,13 @@ function renderProjects({ fromFilter = false } = {}) {
   $('show-more').hidden = list.length <= 6;
   $('show-more').innerHTML = expanded ? 'Mostrar menos <span aria-hidden="true">−</span>' : 'Ver todos los proyectos <span aria-hidden="true">＋</span>';
 }
-document.querySelectorAll('[data-filter]').forEach(b => b.addEventListener('click', () => {
+const filterBar = document.querySelector('.filters');
+const filterButtons = [...filterBar.querySelectorAll('[data-filter]')];
+filterButtons.forEach((b, index) => b.addEventListener('click', () => {
   if (filter === b.dataset.filter && !expanded) return;
   filter = b.dataset.filter; expanded = false;
-  document.querySelectorAll('[data-filter]').forEach(x => { const active = x === b; x.classList.toggle('active',active); x.setAttribute('aria-pressed',String(active)); });
+  filterBar.style.setProperty('--filter-index', index);
+  filterButtons.forEach(x => { const active = x === b; x.classList.toggle('active',active); x.setAttribute('aria-pressed',String(active)); });
   renderProjects({ fromFilter: true });
 }));
 $('show-more').addEventListener('click', () => {
@@ -569,10 +572,22 @@ $('copy-email').addEventListener('click', async () => {
 });
 $('year').textContent = new Date().getFullYear();
 let scrollTick = false;
-window.addEventListener('scroll', () => { if(scrollTick)return; scrollTick=true;requestAnimationFrame(()=>{const d=document.documentElement;const max=d.scrollHeight-d.clientHeight;document.querySelector('.reading-progress').style.width=`${max>0?d.scrollTop/max*100:0}%`;scrollTick=false;}); },{passive:true});
-new IntersectionObserver(entries => { entries.forEach(e => { if(e.isIntersecting) document.querySelectorAll('nav a').forEach(a => a.classList.toggle('current',a.hash===`#${e.target.id}`)); }); }, {rootMargin:'-20% 0px -50% 0px'}).observe($('proyectos'));
-const navObserver = new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)document.querySelectorAll('nav a').forEach(a=>a.classList.toggle('current',a.hash===`#${e.target.id}`))}),{rootMargin:'-20% 0px -50% 0px'});
-[$('inicio'),$('sobre-mi'),$('contacto')].forEach(s=>navObserver.observe(s));
+window.addEventListener('scroll', () => { if(scrollTick)return; scrollTick=true;requestAnimationFrame(()=>{const d=document.documentElement;header.classList.toggle('is-scrolled', d.scrollTop > 12);const max=d.scrollHeight-d.clientHeight;document.querySelector('.reading-progress').style.width=`${max>0?d.scrollTop/max*100:0}%`;scrollTick=false;}); },{passive:true});
+const header = document.querySelector('.site-header');
+const navLinks = [...header.querySelectorAll('nav a')];
+const navObserver = new IntersectionObserver(entries => {
+  for (const entry of entries) {
+    if (!entry.isIntersecting) continue;
+    for (const link of navLinks) {
+      const current = link.hash === `#${entry.target.id}`;
+      link.classList.toggle('current', current);
+      if (current) link.setAttribute('aria-current', 'location');
+      else link.removeAttribute('aria-current');
+    }
+  }
+}, { rootMargin: '-20% 0px -50% 0px' });
+['inicio', 'proyectos', 'sobre-mi', 'contacto'].forEach(id => navObserver.observe($(id)));
+header.classList.toggle('is-scrolled', window.scrollY > 12);
 let heroInView = true, resumeOnView = false;
 new IntersectionObserver(entries=>{
  heroInView=entries[0].isIntersecting;
