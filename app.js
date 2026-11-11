@@ -385,7 +385,7 @@ $('show-more').addEventListener('click', () => {
 });
 function setHeroState(playing) {
   heroPlaying = playing;
-  $('preview-toggle').innerHTML = playing ? 'Pausar <span aria-hidden="true">Ⅱ</span>' : 'Reproducir <span aria-hidden="true">▶</span>';
+  $('preview-toggle').innerHTML = playing ? '<span aria-hidden="true">Ⅱ</span>' : '<span aria-hidden="true">▶</span>';
   $('preview-toggle').setAttribute('aria-label',playing?'Pausar vista previa':'Reproducir vista previa');
   $('preview-toggle').setAttribute('aria-pressed',String(playing));
 }
