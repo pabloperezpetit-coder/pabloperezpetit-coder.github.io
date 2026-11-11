@@ -277,7 +277,7 @@ const projects = [
   }
 ];
 // Curated order: product motion, concept films and commissioned work.
-const editorialOrder = ['airmax-v1','vans','mojito','compromiso','sonora','open-deportes','reel','einstein','briefly','audiovisual','passion','colada'];
+const editorialOrder = ['vans','airmax-v1','mojito','compromiso','sonora','open-deportes','reel','einstein','briefly','audiovisual','passion','colada'];
 projects.sort((a,b) => editorialOrder.indexOf(a.id)-editorialOrder.indexOf(b.id));
 const $ = (id) => document.getElementById(id);
 const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
@@ -369,8 +369,6 @@ function selectHero(id) {
   activeId = id; pauseHero();
   heroVideo.src = mediaPath(p.video); heroVideo.poster = mediaPath(p.poster);
   heroVideo.setAttribute('aria-label',`Vista previa del proyecto ${p.name}`);
-  const position = heroChoices.findIndex(button => button.dataset.hero === id) + 1;
-  $('hero-number').textContent = `${String(position).padStart(2, '0')} / ${String(heroChoices.length).padStart(2, '0')}`;
   $('hero-title').textContent = p.name.split(' — ')[0];
   $('hero-kind').textContent = p.type.replace(' (no oficial)','');
   $('hero-open').setAttribute('aria-label',`Ver proyecto ${p.name} con sonido`);
