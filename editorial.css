@@ -238,3 +238,52 @@ html{scroll-padding-top:90px}.section-width{width:calc(100% - var(--gutter)*2);m
     opacity: .45;
   }
 }
+
+/* Reveal projects when they enter the viewport and keep keyboard focus visible. */
+.project-card {
+  animation: none;
+}
+
+.filters button.active {
+  text-shadow: 0 0 12px var(--purple);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .project-card:is([data-reveal="pending"], [data-reveal="filter-pending"]):not(:focus-within) {
+    opacity: 0;
+  }
+
+  .project-card[data-reveal="scroll"]:not(:focus-within) {
+    animation: card-enter .4s cubic-bezier(.22, 1, .36, 1) both;
+  }
+
+  .project-card[data-reveal="filter"]:not(:focus-within) {
+    animation: portfolio-fade .24s ease-out both;
+  }
+
+  .project-note-content.note-enter {
+    box-sizing: border-box;
+    animation: project-note-enter .26s ease-out;
+  }
+
+  #project-dialog[open],
+  #project-dialog[open]::backdrop {
+    animation: portfolio-fade .2s ease-out both;
+  }
+}
+
+@media (min-width: 761px) and (prefers-reduced-motion: no-preference) {
+  .project-card:nth-child(3n)[data-reveal="scroll"]:not(:focus-within) {
+    animation-delay: 65ms;
+  }
+}
+
+@keyframes portfolio-fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes project-note-enter {
+  from { max-height: 0; padding-block: 0; opacity: 0; overflow: clip; }
+  to { max-height: var(--note-height); opacity: 1; overflow: clip; }
+}
