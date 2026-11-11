@@ -336,7 +336,7 @@ function renderProjects() {
     article.append(button);
     const notes = document.createElement('details');
     notes.className = 'project-notes';
-    notes.innerHTML = `<summary><span>Sobre este proyecto</span><span class="detail-icon" aria-hidden="true">＋</span></summary><div class="project-note-content"><p>${p.desc}</p><dl><div><dt>MI ROL</dt><dd>${p.role}</dd></div><div><dt>DISCIPLINAS</dt><dd>${p.tags.join(' · ')}</dd></div></dl><button data-project="${p.id}" class="note-watch">Ver película <span aria-hidden="true">↗</span></button></div>`;
+    notes.innerHTML = `<summary><span>Sobre este proyecto</span><span class="detail-icon" aria-hidden="true">＋</span></summary><div class="project-note-content"><p>${p.desc}</p><dl><div><dt>MI ROL</dt><dd>${p.role}</dd></div><div><dt>DISCIPLINAS</dt><dd>${p.tags.join(' · ')}</dd></div></dl><button data-project="${p.id}" class="note-watch">Ver <span aria-hidden="true">↗</span></button></div>`;
     article.append(notes);
     return article;
   }));
