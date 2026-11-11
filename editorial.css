@@ -287,3 +287,106 @@ html{scroll-padding-top:90px}.section-width{width:calc(100% - var(--gutter)*2);m
   from { max-height: 0; padding-block: 0; opacity: 0; overflow: clip; }
   to { max-height: var(--note-height); opacity: 1; overflow: clip; }
 }
+
+/* Project cards */
+.project-card {
+  --card-inset: clamp(14px, 2vw, 26px);
+  background: linear-gradient(145deg, #1d202c, #171923 70%);
+  border: 1px solid #ffffff16;
+  border-radius: 26px;
+  box-shadow: 0 10px 26px #08091038;
+}
+
+.project-card .project-button {
+  padding: var(--card-inset) var(--card-inset) 0;
+  border-radius: inherit;
+}
+
+.project-card .project-button:focus-visible {
+  outline: 2px solid var(--purple);
+  outline-offset: 3px;
+}
+
+.project-card .project-meta {
+  padding: 0 0 clamp(14px, 1.5vw, 21px);
+}
+
+.project-card .project-meta h3 {
+  font-size: clamp(21px, 2.35vw, 32px);
+  line-height: 1.12;
+  letter-spacing: -.035em;
+}
+
+.project-card .project-meta p {
+  font-size: 13px;
+  margin-top: 6px;
+}
+
+.project-card .project-visual {
+  border-radius: 17px;
+}
+
+.project-card .project-badge {
+  border-radius: 999px;
+  background: #10121ded;
+}
+
+.project-card .project-action {
+  min-height: 38px;
+  min-width: 76px;
+  justify-content: center;
+  gap: 9px;
+  padding: 7px 12px;
+  border: 1px solid #ffffff26;
+  border-radius: 999px;
+  background: #10121df2;
+  color: var(--text);
+  font-size: 15px;
+}
+
+.project-card .project-action::before {
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.project-card .project-button:is(:hover, :focus-visible) .project-action {
+  background: var(--text);
+  color: var(--bg);
+}
+
+.project-card .project-notes {
+  margin: 0 var(--card-inset);
+  border: 0;
+}
+
+.project-card .project-notes summary {
+  min-height: 46px;
+  padding: 11px 2px;
+  border-radius: 10px;
+}
+
+.project-card .project-notes summary > span:first-child {
+  font-size: 12px;
+}
+
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .project-card {
+    transition: border-color .22s ease, box-shadow .22s ease;
+  }
+
+  .project-card:hover {
+    border-color: #ffffff30;
+    box-shadow: 0 16px 34px #08091060;
+  }
+
+  .project-card .project-button:hover .project-visual {
+    transform: none;
+    box-shadow: none;
+  }
+}
+
+@media (max-width: 450px) {
+  .project-card { border-radius: 20px; }
+  .project-card .project-visual { border-radius: 12px; }
+  .project-card .project-meta p { font-size: 12px; }
+}
