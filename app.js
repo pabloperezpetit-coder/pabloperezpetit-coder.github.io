@@ -566,6 +566,20 @@ function navigateProject(direction) {
 $('previous-project').addEventListener('click', () => navigateProject(-1));
 $('next-project').addEventListener('click', () => navigateProject(1));
 dialog.addEventListener('keydown', e => { if (e.target === player) return; if(e.key==='ArrowRight'){e.preventDefault();navigateProject(1)}if(e.key==='ArrowLeft'){e.preventDefault();navigateProject(-1)} });
+$('formulario-contacto')?.addEventListener('submit', event => {
+  event.preventDefault();
+  const form = event.currentTarget;
+  const fields = new FormData(form);
+  const subject = 'Consulta desde el portfolio';
+  const body = [
+    `Nombre: ${fields.get('nombre').trim()}`,
+    `Correo: ${fields.get('correo').trim()}`,
+    '',
+    fields.get('mensaje').trim()
+  ].join('\r\n');
+
+  window.location.href = `${form.action}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+});
 $('copy-email').addEventListener('click', async () => {
   try { await navigator.clipboard.writeText('pablo.perezpetit@gmail.com'); $('copy-status').textContent='Mail copiado. ¡Hablemos!'; }
   catch { $('copy-status').textContent='Podés escribir a pablo.perezpetit@gmail.com o tocar el enlace.'; }
