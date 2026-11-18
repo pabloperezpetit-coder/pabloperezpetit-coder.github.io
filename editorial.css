@@ -787,3 +787,8 @@ html{scroll-padding-top:90px}.section-width{width:calc(100% - var(--gutter)*2);m
 @media (max-width: 600px) {
   .contact-form { grid-template-columns: 1fr; }
 }
+
+/* Transparencia de autoría: nota legible en escritorio y móvil. */
+.portfolio-note{max-width:960px;font-size:12px;line-height:1.75;color:var(--muted)}
+.portfolio-note strong{color:var(--text);font-weight:600}
+@media(max-width:760px){.portfolio-note{font-size:11px;line-height:1.7}}
