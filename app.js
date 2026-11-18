@@ -216,18 +216,18 @@ const projects = [
   },
   {
     "id": "audiovisual",
-    "name": "Pablo Escobar — Documental",
+    "name": "Pablo Escobar — Tutorial",
     "poster": "assets/thumb-audiovisual.jpg",
     "video": "videos/pablo-escobar-documental.mp4",
-    "tag": "Documental",
+    "tag": "Tutorial",
     "tc": "00:00:20:13",
     "g": "g6",
-    "role": "Edición, montaje y/o animación (práctica)",
+    "role": "Práctica de edición y composición siguiendo un tutorial",
     "year": "—",
-    "type": "Práctica de edición documental",
-    "desc": "Ejercicio de montaje y narrativa audiovisual con temática documental sobre Pablo Escobar, realizado con fines de estudio. El foco de mi aporte está en el montaje, la edición, composición y/o animación; esto no implica haber creado desde cero todos los materiales utilizados.",
+    "type": "Práctica guiada mediante tutorial",
+    "desc": "Ejercicio de aprendizaje realizado siguiendo un tutorial de After Effects. Es una práctica guiada de edición y composición, no un documental original ni un proyecto desarrollado íntegramente desde cero.",
     "tags": [
-      "Documental",
+      "Tutorial",
       "After Effects"
     ],
     "categories": [
@@ -235,7 +235,7 @@ const projects = [
       "study"
     ],
     "client": false,
-    "label": "Práctica / estudio"
+    "label": "Tutorial / práctica"
   },
   {
     "id": "passion",
