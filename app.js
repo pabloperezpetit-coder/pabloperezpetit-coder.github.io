@@ -8,10 +8,10 @@ const projects = [
     "tag": "Comercial",
     "tc": "",
     "g": "g3",
-    "role": "Edición, montaje y/o animación (práctica)",
+    "role": "Aprendizaje de edición, montaje y/o animación siguiendo un tutorial",
     "year": "—",
-    "type": "Práctica de edición comercial (no oficial)",
-    "desc": "Práctica estudiantil de montaje y edición audiovisual con estética publicitaria, utilizando referencias visuales asociadas a Vans. No es una campaña oficial. El foco de mi aporte está en el montaje, la edición, composición y/o animación; esto no implica haber creado desde cero todos los materiales utilizados.",
+    "type": "Tutorial · Edición comercial",
+    "desc": "Ejercicio de edición y montaje audiovisual con estética comercial de Vans, realizado siguiendo un tutorial paso a paso. Es una práctica de aprendizaje, no una campaña oficial ni una pieza producida íntegramente desde cero por mí.",
     "tags": [
       "Video",
       "Edición audiovisual",
@@ -23,7 +23,7 @@ const projects = [
       "study"
     ],
     "client": false,
-    "label": "Práctica / estudio"
+    "label": "Práctica con tutorial"
   },
   {
     "id": "airmax-v1",
@@ -32,10 +32,10 @@ const projects = [
     "tag": "Motion",
     "tc": "",
     "g": "g2",
-    "role": "Edición, montaje y/o animación (práctica)",
+    "role": "Aprendizaje de edición, montaje y/o animación siguiendo un tutorial",
     "year": "2026",
-    "type": "Práctica de animación de producto",
-    "desc": "Práctica de motion graphics y animación de producto con temática Air Max. No se realizó por encargo de la marca. El foco de mi aporte está en el montaje, la edición, composición y/o animación; esto no implica haber creado desde cero todos los materiales utilizados.",
+    "type": "Tutorial · Animación de producto",
+    "desc": "Práctica de animación de producto realizada siguiendo un tutorial de motion graphics. Se trabajaron técnicas de composición y animación; no es un encargo oficial de la marca ni una creación íntegra desde cero.",
     "tags": [
       "Motion Graphics",
       "Animación de producto",
@@ -46,7 +46,7 @@ const projects = [
       "study"
     ],
     "client": false,
-    "label": "Práctica / estudio",
+    "label": "Práctica con tutorial",
     "poster": "assets/thumb-airmax-v1.jpg"
   },
   {
@@ -103,10 +103,10 @@ const projects = [
     "tag": "Video",
     "tc": "00:00:06:20",
     "g": "g2",
-    "role": "Edición, montaje y/o animación (práctica)",
+    "role": "Aprendizaje de edición, montaje y/o animación siguiendo un tutorial",
     "year": "—",
-    "type": "Práctica de motion graphics",
-    "desc": "Práctica de composición y animación audiovisual con temática AirPods, desarrollada en After Effects. No es publicidad oficial. El foco de mi aporte está en el montaje, la edición, composición y/o animación; esto no implica haber creado desde cero todos los materiales utilizados.",
+    "type": "Tutorial · Motion graphics",
+    "desc": "Ejercicio de composición y animación en After Effects con temática AirPods, realizado siguiendo un tutorial. Es una práctica guiada de aprendizaje, no publicidad oficial ni una creación íntegra de los recursos utilizados.",
     "tags": [
       "Video",
       "After Effects"
@@ -116,7 +116,7 @@ const projects = [
       "study"
     ],
     "client": false,
-    "label": "Práctica / estudio"
+    "label": "Práctica con tutorial"
   },
   {
     "id": "open-deportes",
@@ -125,10 +125,10 @@ const projects = [
     "tag": "Motion",
     "tc": "",
     "g": "g5",
-    "role": "Edición, montaje y/o animación (práctica)",
+    "role": "Aprendizaje de edición, montaje y/o animación siguiendo un tutorial",
     "year": "2026",
-    "type": "Práctica de apertura deportiva",
-    "desc": "Práctica de edición y animación para una apertura deportiva, realizada con fines de estudio. El foco de mi aporte está en el montaje, la edición, composición y/o animación; esto no implica haber creado desde cero todos los materiales utilizados.",
+    "type": "Tutorial · Animación deportiva",
+    "desc": "Práctica de apertura deportiva, edición y animación realizada siguiendo un tutorial. El objetivo fue aprender y aplicar técnicas audiovisuales, no presentar una producción original hecha íntegramente desde cero.",
     "tags": [
       "Motion Graphics",
       "Animación",
@@ -140,7 +140,7 @@ const projects = [
       "study"
     ],
     "client": false,
-    "label": "Práctica / estudio",
+    "label": "Práctica con tutorial",
     "poster": "assets/thumb-open-deportes.jpg"
   },
   {
@@ -151,10 +151,10 @@ const projects = [
     "tag": "Motion",
     "tc": "00:00:12:04",
     "g": "g5",
-    "role": "Edición, montaje y/o animación (práctica)",
+    "role": "Aprendizaje de edición, montaje y/o animación siguiendo un tutorial",
     "year": "2025",
-    "type": "Práctica de motion graphics",
-    "desc": "Ejercicio de motion graphics en After Effects con referencias visuales asociadas a Amazon. No es una campaña oficial. El foco de mi aporte está en el montaje, la edición, composición y/o animación; esto no implica haber creado desde cero todos los materiales utilizados.",
+    "type": "Tutorial · Motion graphics",
+    "desc": "Ejercicio de motion graphics en After Effects realizado siguiendo un tutorial, con referencias visuales de Amazon. Es una práctica guiada, no una campaña oficial ni una pieza hecha íntegramente desde cero.",
     "tags": [
       "Motion",
       "After Effects"
@@ -164,7 +164,7 @@ const projects = [
       "study"
     ],
     "client": false,
-    "label": "Práctica / estudio"
+    "label": "Práctica con tutorial"
   },
   {
     "id": "einstein",
@@ -173,10 +173,10 @@ const projects = [
     "tag": "Documental",
     "tc": "",
     "g": "g6",
-    "role": "Edición, montaje y/o animación (práctica)",
+    "role": "Aprendizaje de edición, montaje y/o animación siguiendo un tutorial",
     "year": "—",
-    "type": "Práctica de edición documental",
-    "desc": "Práctica de montaje y narrativa documental sobre Albert Einstein realizada con fines de estudio. El foco de mi aporte está en el montaje, la edición, composición y/o animación; esto no implica haber creado desde cero todos los materiales utilizados.",
+    "type": "Tutorial · Edición documental",
+    "desc": "Práctica de edición y narrativa documental sobre Albert Einstein realizada siguiendo un tutorial. Es un ejercicio guiado de aprendizaje, no un documental concebido y producido íntegramente desde cero.",
     "tags": [
       "Documental",
       "Edición audiovisual",
@@ -187,7 +187,7 @@ const projects = [
       "study"
     ],
     "client": false,
-    "label": "Práctica / estudio",
+    "label": "Práctica con tutorial",
     "poster": "assets/thumb-einstein.jpg"
   },
   {
@@ -198,10 +198,10 @@ const projects = [
     "tag": "Comercial",
     "tc": "00:00:05:08",
     "g": "g1",
-    "role": "Edición, montaje y/o animación (práctica)",
+    "role": "Aprendizaje de edición, montaje y/o animación siguiendo un tutorial",
     "year": "—",
-    "type": "Práctica de edición comercial (no oficial)",
-    "desc": "Práctica estudiantil de montaje y motion graphics con estética de comercial Nike. No es una campaña oficial. El foco de mi aporte está en el montaje, la edición, composición y/o animación; esto no implica haber creado desde cero todos los materiales utilizados.",
+    "type": "Tutorial · Edición comercial",
+    "desc": "Ejercicio de edición y motion graphics con estética comercial de Nike, realizado siguiendo un tutorial. No es una campaña oficial de la marca ni una producción creada íntegramente desde cero.",
     "tags": [
       "Comercial",
       "After Effects"
@@ -212,7 +212,7 @@ const projects = [
       "study"
     ],
     "client": false,
-    "label": "Práctica / estudio"
+    "label": "Práctica con tutorial"
   },
   {
     "id": "audiovisual",
@@ -222,10 +222,10 @@ const projects = [
     "tag": "Tutorial",
     "tc": "00:00:20:13",
     "g": "g6",
-    "role": "Práctica de edición y composición siguiendo un tutorial",
+    "role": "Aprendizaje de edición, montaje y/o animación siguiendo un tutorial",
     "year": "—",
-    "type": "Práctica guiada mediante tutorial",
-    "desc": "Ejercicio de aprendizaje realizado siguiendo un tutorial de After Effects. Es una práctica guiada de edición y composición, no un documental original ni un proyecto desarrollado íntegramente desde cero.",
+    "type": "Tutorial · Edición documental",
+    "desc": "Práctica de edición y composición sobre Pablo Escobar realizada siguiendo un tutorial de After Effects. Es un ejercicio guiado de aprendizaje, no un documental original ni una producción desarrollada íntegramente desde cero.",
     "tags": [
       "Tutorial",
       "After Effects"
@@ -235,7 +235,7 @@ const projects = [
       "study"
     ],
     "client": false,
-    "label": "Tutorial / práctica"
+    "label": "Práctica con tutorial"
   },
   {
     "id": "passion",
@@ -330,7 +330,7 @@ function renderProjects({ fromFilter = false } = {}) {
     button.dataset.project = p.id;
     button.setAttribute('aria-label', `Ver ${p.name}`);
     // Project data is maintained locally; names and paths never come from visitor input.
-    button.innerHTML = `<div class="project-visual"><div class="thumbnail-fallback" aria-hidden="true"><span>${p.client ? 'CLIENT WORK' : 'PRÁCTICA / ESTUDIO'}</span>${p.name.split(' — ')[0]}</div><img class="project-thumbnail" src="${mediaPath(p.poster)}" alt="${p.name}" loading="eager" decoding="async" width="960" height="580"><span class="project-badge">${p.label.toUpperCase()}</span><span class="project-action" aria-hidden="true">↗</span></div><div class="project-meta"><div><h3>${p.name}</h3><p>${p.type}</p></div></div>`;
+    button.innerHTML = `<div class="project-visual"><div class="thumbnail-fallback" aria-hidden="true"><span>${p.client ? 'CLIENT WORK' : 'PRÁCTICA CON TUTORIAL'}</span>${p.name.split(' — ')[0]}</div><img class="project-thumbnail" src="${mediaPath(p.poster)}" alt="${p.name}" loading="eager" decoding="async" width="960" height="580"><span class="project-badge">${p.label.toUpperCase()}</span><span class="project-action" aria-hidden="true">↗</span></div><div class="project-meta"><div><h3>${p.name}</h3><p>${p.type}</p></div></div>`;
     const thumbnail = button.querySelector('.project-thumbnail');
     const fallback = button.querySelector('.thumbnail-fallback');
     const showThumbnail = () => { if (thumbnail.naturalWidth > 0) fallback.hidden = true; };
