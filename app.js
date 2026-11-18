@@ -8,10 +8,10 @@ const projects = [
     "tag": "Comercial",
     "tc": "",
     "g": "g3",
-    "role": "Diseñador Multimedia",
+    "role": "Edición, montaje y/o animación (práctica)",
     "year": "—",
-    "type": "Comercial conceptual (no oficial)",
-    "desc": "Pieza audiovisual conceptual, no encargada por Vans. Exploración de ritmo, montaje e identidad visual aplicada a contenido de producto.",
+    "type": "Práctica de edición comercial (no oficial)",
+    "desc": "Práctica estudiantil de montaje y edición audiovisual con estética publicitaria, utilizando referencias visuales asociadas a Vans. No es una campaña oficial. El foco de mi aporte está en el montaje, la edición, composición y/o animación; esto no implica haber creado desde cero todos los materiales utilizados.",
     "tags": [
       "Video",
       "Edición audiovisual",
@@ -19,10 +19,11 @@ const projects = [
     ],
     "categories": [
       "motion",
-      "editing"
+      "editing",
+      "study"
     ],
     "client": false,
-    "label": "Ejercicio conceptual"
+    "label": "Práctica / estudio"
   },
   {
     "id": "airmax-v1",
@@ -31,20 +32,21 @@ const projects = [
     "tag": "Motion",
     "tc": "",
     "g": "g2",
-    "role": "Diseñador Multimedia",
+    "role": "Edición, montaje y/o animación (práctica)",
     "year": "2026",
-    "type": "Animación de producto conceptual",
-    "desc": "Ejercicio audiovisual de animación de producto inspirado en Air Max. Proyecto conceptual no oficial.",
+    "type": "Práctica de animación de producto",
+    "desc": "Práctica de motion graphics y animación de producto con temática Air Max. No se realizó por encargo de la marca. El foco de mi aporte está en el montaje, la edición, composición y/o animación; esto no implica haber creado desde cero todos los materiales utilizados.",
     "tags": [
       "Motion Graphics",
       "Animación de producto",
       "Diseño multimedia"
     ],
     "categories": [
-      "motion"
+      "motion",
+      "study"
     ],
     "client": false,
-    "label": "Ejercicio conceptual",
+    "label": "Práctica / estudio",
     "poster": "assets/thumb-airmax-v1.jpg"
   },
   {
@@ -101,19 +103,20 @@ const projects = [
     "tag": "Video",
     "tc": "00:00:06:20",
     "g": "g2",
-    "role": "Diseñador Multimedia",
+    "role": "Edición, montaje y/o animación (práctica)",
     "year": "—",
-    "type": "Video conceptual",
-    "desc": "Ejercicio conceptual AirPods. Realizado en After Effects.",
+    "type": "Práctica de motion graphics",
+    "desc": "Práctica de composición y animación audiovisual con temática AirPods, desarrollada en After Effects. No es publicidad oficial. El foco de mi aporte está en el montaje, la edición, composición y/o animación; esto no implica haber creado desde cero todos los materiales utilizados.",
     "tags": [
       "Video",
       "After Effects"
     ],
     "categories": [
-      "motion"
+      "motion",
+      "study"
     ],
     "client": false,
-    "label": "Ejercicio conceptual"
+    "label": "Práctica / estudio"
   },
   {
     "id": "open-deportes",
@@ -122,10 +125,10 @@ const projects = [
     "tag": "Motion",
     "tc": "",
     "g": "g5",
-    "role": "Diseñador Multimedia",
+    "role": "Edición, montaje y/o animación (práctica)",
     "year": "2026",
-    "type": "Animación deportiva",
-    "desc": "Pieza de apertura deportiva con animación y edición audiovisual.",
+    "type": "Práctica de apertura deportiva",
+    "desc": "Práctica de edición y animación para una apertura deportiva, realizada con fines de estudio. El foco de mi aporte está en el montaje, la edición, composición y/o animación; esto no implica haber creado desde cero todos los materiales utilizados.",
     "tags": [
       "Motion Graphics",
       "Animación",
@@ -133,10 +136,11 @@ const projects = [
     ],
     "categories": [
       "motion",
-      "editing"
+      "editing",
+      "study"
     ],
     "client": false,
-    "label": "Proyecto personal",
+    "label": "Práctica / estudio",
     "poster": "assets/thumb-open-deportes.jpg"
   },
   {
@@ -147,19 +151,20 @@ const projects = [
     "tag": "Motion",
     "tc": "00:00:12:04",
     "g": "g5",
-    "role": "Motion Designer",
+    "role": "Edición, montaje y/o animación (práctica)",
     "year": "2025",
-    "type": "Motion graphics conceptual",
-    "desc": "Ejercicio conceptual de motion graphics realizada en After Effects.",
+    "type": "Práctica de motion graphics",
+    "desc": "Ejercicio de motion graphics en After Effects con referencias visuales asociadas a Amazon. No es una campaña oficial. El foco de mi aporte está en el montaje, la edición, composición y/o animación; esto no implica haber creado desde cero todos los materiales utilizados.",
     "tags": [
       "Motion",
       "After Effects"
     ],
     "categories": [
-      "motion"
+      "motion",
+      "study"
     ],
     "client": false,
-    "label": "Ejercicio conceptual"
+    "label": "Práctica / estudio"
   },
   {
     "id": "einstein",
@@ -168,20 +173,21 @@ const projects = [
     "tag": "Documental",
     "tc": "",
     "g": "g6",
-    "role": "Diseñador Multimedia",
+    "role": "Edición, montaje y/o animación (práctica)",
     "year": "—",
-    "type": "Documental audiovisual",
-    "desc": "Documental audiovisual sobre Albert Einstein. Proyecto de edición y narrativa documental.",
+    "type": "Práctica de edición documental",
+    "desc": "Práctica de montaje y narrativa documental sobre Albert Einstein realizada con fines de estudio. El foco de mi aporte está en el montaje, la edición, composición y/o animación; esto no implica haber creado desde cero todos los materiales utilizados.",
     "tags": [
       "Documental",
       "Edición audiovisual",
       "Diseño multimedia"
     ],
     "categories": [
-      "editing"
+      "editing",
+      "study"
     ],
     "client": false,
-    "label": "Proyecto personal",
+    "label": "Práctica / estudio",
     "poster": "assets/thumb-einstein.jpg"
   },
   {
@@ -192,20 +198,21 @@ const projects = [
     "tag": "Comercial",
     "tc": "00:00:05:08",
     "g": "g1",
-    "role": "Diseñador Multimedia",
+    "role": "Edición, montaje y/o animación (práctica)",
     "year": "—",
-    "type": "Comercial conceptual",
-    "desc": "Ejercicio conceptual Nike. Realizado en After Effects.",
+    "type": "Práctica de edición comercial (no oficial)",
+    "desc": "Práctica estudiantil de montaje y motion graphics con estética de comercial Nike. No es una campaña oficial. El foco de mi aporte está en el montaje, la edición, composición y/o animación; esto no implica haber creado desde cero todos los materiales utilizados.",
     "tags": [
       "Comercial",
       "After Effects"
     ],
     "categories": [
       "motion",
-      "editing"
+      "editing",
+      "study"
     ],
     "client": false,
-    "label": "Ejercicio conceptual"
+    "label": "Práctica / estudio"
   },
   {
     "id": "audiovisual",
@@ -215,19 +222,20 @@ const projects = [
     "tag": "Documental",
     "tc": "00:00:20:13",
     "g": "g6",
-    "role": "Diseñador Multimedia",
+    "role": "Edición, montaje y/o animación (práctica)",
     "year": "—",
-    "type": "Documental",
-    "desc": "Pablo Escobar Documental. Realizado en After Effects.",
+    "type": "Práctica de edición documental",
+    "desc": "Ejercicio de montaje y narrativa audiovisual con temática documental sobre Pablo Escobar, realizado con fines de estudio. El foco de mi aporte está en el montaje, la edición, composición y/o animación; esto no implica haber creado desde cero todos los materiales utilizados.",
     "tags": [
       "Documental",
       "After Effects"
     ],
     "categories": [
-      "editing"
+      "editing",
+      "study"
     ],
     "client": false,
-    "label": "Proyecto personal"
+    "label": "Práctica / estudio"
   },
   {
     "id": "passion",
@@ -322,7 +330,7 @@ function renderProjects({ fromFilter = false } = {}) {
     button.dataset.project = p.id;
     button.setAttribute('aria-label', `Ver ${p.name}`);
     // Project data is maintained locally; names and paths never come from visitor input.
-    button.innerHTML = `<div class="project-visual"><div class="thumbnail-fallback" aria-hidden="true"><span>${p.client ? 'CLIENT WORK' : 'MOTION / AUDIOVISUAL'}</span>${p.name.split(' — ')[0]}</div><img class="project-thumbnail" src="${mediaPath(p.poster)}" alt="${p.name}" loading="eager" decoding="async" width="960" height="580"><span class="project-badge">${p.label.toUpperCase()}</span><span class="project-action" aria-hidden="true">↗</span></div><div class="project-meta"><div><h3>${p.name}</h3><p>${p.client ? p.type : p.tag === 'Documental' ? 'Documental · Edición audiovisual' : 'Motion graphics · Edición'}</p></div></div>`;
+    button.innerHTML = `<div class="project-visual"><div class="thumbnail-fallback" aria-hidden="true"><span>${p.client ? 'CLIENT WORK' : 'PRÁCTICA / ESTUDIO'}</span>${p.name.split(' — ')[0]}</div><img class="project-thumbnail" src="${mediaPath(p.poster)}" alt="${p.name}" loading="eager" decoding="async" width="960" height="580"><span class="project-badge">${p.label.toUpperCase()}</span><span class="project-action" aria-hidden="true">↗</span></div><div class="project-meta"><div><h3>${p.name}</h3><p>${p.type}</p></div></div>`;
     const thumbnail = button.querySelector('.project-thumbnail');
     const fallback = button.querySelector('.thumbnail-fallback');
     const showThumbnail = () => { if (thumbnail.naturalWidth > 0) fallback.hidden = true; };
